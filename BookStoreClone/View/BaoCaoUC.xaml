@@ -39,7 +39,7 @@
                 Content="{materialDesign:PackIcon Kind=BookAccount}"
                 Style="{StaticResource MaterialDesignFloatingActionButton}"
                 ToolTip="Báo Cáo Tồn"
-                ToolTipService.Placement="Right"  />
+                ToolTipService.Placement="Right" Click="Button_Click"  />
             <Button
                 x:Name="xuat"
                 Width="60"
@@ -232,7 +232,7 @@
                             <materialDesign:PackIcon Kind="BookSearch" Opacity=".56" />
                         </Button>
                         <TextBlock Margin="10,5,0,0">Tháng:</TextBlock>
-                        <ComboBox Margin="10,0,0,0" Width="060" Text="{Binding Thang,Mode=OneWayToSource}" BorderBrush="Black"  VerticalAlignment="Center" HorizontalAlignment="Center" SelectedIndex="0" HorizontalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" >
+                        <ComboBox Name="Thang" Margin="10,0,0,0" Width="060" Text="{Binding Thang,Mode=OneWayToSource}" BorderBrush="Black"  VerticalAlignment="Center" HorizontalAlignment="Center" SelectedIndex="0" HorizontalContentAlignment="Center" SelectionChanged="ComboBox_SelectionChanged" >
 
 
                             <ComboBoxItem HorizontalContentAlignment="Center">
@@ -278,7 +278,7 @@
                                 </i:EventTrigger>
                             </i:Interaction.Triggers>
                         </ComboBox>
-                        <TextBlock Margin="10,5,0,0">Năm:</TextBlock>
+                        <TextBlock x:Name="Nam" Margin="10,5,0,0">Năm:</TextBlock>
                         <TextBox Margin="10,0,0,0" Width="50" Text="{Binding Nam,Mode=TwoWay}" BorderBrush="Black"></TextBox>
                     </StackPanel>
                 </materialDesign:ColorZone>
