@@ -12,12 +12,15 @@ namespace BookStoreClone.ViewModel
 {
     internal class QuanLyHoaDonViewModel : BaseViewModel
     {
+        public bool isdangnhap = false;
         private ObservableCollection<HoaDon> _listHoaDon;
         private ObservableCollection<CTHD> _listCTHD_BanSach;
         public ObservableCollection<HoaDon> ListHoaDon { get => _listHoaDon; set { _listHoaDon = value; OnPropertyChanged(); } }
         public ObservableCollection<CTHD> ListCTHD_BanSach { get => _listCTHD_BanSach; set { _listCTHD_BanSach = value; } }
         public ObservableCollection<int> ListChonSoLuong { get; set; }
         public ObservableCollection<string> ListChonPhuongThuc { get; set; }
+        public ObservableCollection<int> ListChonTinhTrang { get; set; }
+
         private DateTime _selectedDateTime;
         public DateTime SelectedDateTime { get => _selectedDateTime; set { _selectedDateTime = value; OnPropertyChanged(); } }
 
@@ -43,14 +46,17 @@ namespace BookStoreClone.ViewModel
         public ICommand ShowListChonSachCommnad { get; set; }
         public ICommand AnListChonSachComamnd { get; set; }
 
-        public int TongGiaBan { get => _tongGiaBan; set { _tongGiaBan = value; OnPropertyChanged(); foreach (CTHD hd in ListCTHD_BanSach)
-                    if (hd.PhuongThuc == "Mua")
-                        hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan;
-                    else
-                    {
-                        hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100;
-                    }
-            } }
+        public int TongGiaBan { get => _tongGiaBan; set { _tongGiaBan = value; OnPropertyChanged();
+				//TongSachMuon = 0;
+				foreach (CTHD hd in ListCTHD_BanSach)
+					if (hd.PhuongThuc == "Mua")
+						hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
+					else
+					{
+						hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+						//TongSachMuon += (int)hd.SoLuong;
+					}
+			} }
         public int TongSachMuon { get => _tongSachMuon; set { _tongSachMuon = value; OnPropertyChanged(); } }
         public CTHD SelectedItemCTHD
         {
@@ -65,7 +71,9 @@ namespace BookStoreClone.ViewModel
                 for (int i = 2; i < SelectedItemCTHD.Sach.SoLuongTon - Const.QuyDinh_TonToiThieuSauKhiBan; i++)
                 {
                     ListChonSoLuong.Add(i);
-                }                
+                }
+                for (int i = 1; i < 100; i++)
+                    ListChonTinhTrang.Add(i);
             }
         }
 
@@ -114,7 +122,7 @@ namespace BookStoreClone.ViewModel
 
         private Visibility _visibilitBtnChonSach;
         private Visibility _visibilitBtnChonKhachHang;
-
+        private Visibility _nhanvienhien;
         private bool _btnThemMoiKhachHang;
         private bool _iea;
 
@@ -126,7 +134,7 @@ namespace BookStoreClone.ViewModel
         public Visibility eniea { get; set; }
         public Visibility VisibilitBtnChonSach { get => _visibilitBtnChonSach; set { _visibilitBtnChonSach = value; OnPropertyChanged(); } }
         public Visibility VisibilitBtnChonKhachHang { get => _visibilitBtnChonKhachHang; set { _visibilitBtnChonKhachHang = value; OnPropertyChanged(); } }
-           
+        public Visibility nhanvienhien { get => _nhanvienhien; set { _nhanvienhien = value; OnPropertyChanged(); } }
         public bool iea { get => _iea; set { _iea = value; OnPropertyChanged();
                 if (iea == true)
                        eniea = Visibility.Visible; 
@@ -158,7 +166,15 @@ namespace BookStoreClone.ViewModel
             {
                 VisibilityChonSach = Visibility.Collapsed;
                 VisibilityTaoHoaDon = Visibility.Collapsed;
-                VisibilityXemHoaDon = Visibility.Visible;
+                VisibilityXemHoaDon = Visibility.Visible; 
+                try
+                {
+                    if (SelectedHoaDon !=null)
+                    foreach (CTHD hd in SelectedHoaDon.CTHDs)
+                        if (hd.PhuongThuc == null)
+                            hd.PhuongThuc = "Mua";
+                }
+                catch { }
                 VisibilityChonKhachHang = Visibility.Collapsed;
                 iea = true;
                 BtnThemHoaDonMoi = false;
@@ -182,17 +198,20 @@ namespace BookStoreClone.ViewModel
             DateTimeEnd = System.DateTime.Now;
             TextTimKiemHoaDon = "";
             //ListHoaDon = new ObservableCollection<HoaDon>(DataProvider.Ins.DB.HoaDons);
-
             ListCTHD_BanSach = new ObservableCollection<CTHD>();
 
             ListChonSoLuong = new ObservableCollection<int>();
             ListChonPhuongThuc = new ObservableCollection<string>();
+            ListChonTinhTrang = new ObservableCollection<int>();
             ListChonSoLuong.Add(1);
             ListChonPhuongThuc.Add("Mua");
             ListChonPhuongThuc.Add("Mượn");
+            ListChonTinhTrang.Add(100);
             XulyHienThemHoaDon(-1);
-            User = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == Const.IDNguoiDung).First();
-
+            try { User = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == Const.IDNguoiDung).First(); isdangnhap = true; } catch { isdangnhap = false; }
+            if (isdangnhap)
+            { nhanvienhien = Visibility.Visible; }
+            else nhanvienhien = Visibility.Collapsed;
             #region Thêm sách done
 
             ThemSachVaoHoaDonCommand = new RelayCommand<Sach>((p) => { return true; }, (p) =>
@@ -203,13 +222,13 @@ namespace BookStoreClone.ViewModel
                         return;
                 }
 
-                ListCTHD_BanSach.Add(new CTHD() { Sach = DataProvider.Ins.DB.Saches.Where(x => x.MaSach == p.MaSach).First(), DonGiaBan = p.DonGia, SoLuong = 1, PhuongThuc = "Mua" });
+                ListCTHD_BanSach.Add(new CTHD() { Sach = DataProvider.Ins.DB.Saches.Where(x => x.MaSach == p.MaSach).First(), DonGiaBan = p.DonGia, SoLuong = 1, PhuongThuc = "Mua", TinhTrang=100 });
                 //TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.SoLuong * (int)x.DonGiaBan);
                 TongSachMuon = 0;
                 foreach (CTHD hd in ListCTHD_BanSach)
                     if (hd.PhuongThuc == "Mua")
-                        hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan;
-                    else { hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100;
+                        hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan *hd.TinhTrang/100  ;
+                    else { hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang/100  / 100;
                         TongSachMuon += (int)hd.SoLuong;
                     }
                 TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
@@ -230,13 +249,13 @@ namespace BookStoreClone.ViewModel
                     TongSachMuon = 0;
                     foreach (CTHD hd in ListCTHD_BanSach)
                         if (hd.PhuongThuc == "Mua")
-                            hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan;
-                        else {
-                            hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100;
+                            hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang/100 ;
+                        else
+                        {
+                            hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang/100  / 100;
                             TongSachMuon += (int)hd.SoLuong;
                         }
                     TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
-
                 }
                 catch { }
 
@@ -251,20 +270,26 @@ namespace BookStoreClone.ViewModel
             });
             XoaChonSachCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {
-                for (int i = 0; i < ListCTHD_BanSach.Count; i++)
-                {
-                    if (ListCTHD_BanSach[i].Sach.MaSach == SelectedItemCTHD.Sach.MaSach)
+                MessageBoxResult result = MessageBox.Show("Bạn có muốn xóa sách đang chọn?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                    for (int i = 0; i < ListCTHD_BanSach.Count; i++)
                     {
-                        ListCTHD_BanSach.Remove(ListCTHD_BanSach[i]);
-                        TongSachMuon = 0;
-                        foreach (CTHD hd in ListCTHD_BanSach)
-                            if (hd.PhuongThuc == "Mua")
-                                hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan;
-                            else { hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100; TongSachMuon += (int)hd.SoLuong; }
-                        TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
-                        return;
+                        if (ListCTHD_BanSach[i].Sach.MaSach == SelectedItemCTHD.Sach.MaSach)
+                        {
+                            ListCTHD_BanSach.Remove(ListCTHD_BanSach[i]);
+                            TongSachMuon = 0;
+                            foreach (CTHD hd in ListCTHD_BanSach)
+                                if (hd.PhuongThuc == "Mua")
+                                    hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
+                                else
+                                {
+                                    hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+                                    TongSachMuon += (int)hd.SoLuong;
+                                }
+                            TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
+                            return;
+                        }
                     }
-                }
             });
             LoadCardThemSach = new RelayCommand<Card>((p) => { return true; }, (p) =>
             {
@@ -302,6 +327,10 @@ namespace BookStoreClone.ViewModel
                 {
                     //QuanLyHoaDonUC.pnlhoadon
                     if (ListCTHD_BanSach.Count == 0) return false;
+                    if (!isdangnhap)
+                    {
+                        p.IsEnabled = true; return true ;
+                    }
                     p.IsEnabled = false;
 
                     if (SelectedKhachHang == null) return false;
@@ -320,40 +349,45 @@ namespace BookStoreClone.ViewModel
                 },
                 (p) =>
                 {
-                    while (true)
-                        try
-                        {
-                            
-                            HoaDon hoaDon = new HoaDon() { CTHDs = new ObservableCollection<CTHD>(ListCTHD_BanSach), KhachHang = SelectedKhachHang, NguoiDung = User, TongTien = TongGiaBan, NgayBan = SelectedDateTime };
-                            hoaDon.SoTienTra = int.Parse(SoTienTra);
-                            foreach(CTHD hd in ListCTHD_BanSach)
-							{
-                                if(hd.PhuongThuc=="Mượn")
-                                hd.TrangThai ="Chưa trả";
-							}                                
-                            hoaDon.SoSachMuon = TongSachMuon;
-                          DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[HoaDon] ON");
-                            DataProvider.Ins.DB.HoaDons.Add(hoaDon);
-                            DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[HoaDon] OFF");
-                            SelectedKhachHang.SoTienNo += TongGiaBan - int.Parse(SoTienTra);
-                            SelectedKhachHang.SoSachChuaTra += TongSachMuon;
-                           // SelectedKhachHang.SoSachChuaTra +=  - int.Parse(SoTienTra);
-                            for (int i = 0; i < ListCTHD_BanSach.Count; i++)
-                                ListCTHD_BanSach[i].Sach.SoLuongTon -= ListCTHD_BanSach[i].SoLuong;
-                            DataProvider.Ins.DB.SaveChanges();
-                            SoTienTra = 0 + "";
-                            SelectedKhachHang = new KhachHang();
-                            ListCTHD_BanSach.Clear();
-                            SelectedDateTime = new DateTime();
-                            QuanLyDuLieuSachVM.TimKiemSach();
-                            QuanLyKhachHangVM.TimKiemKhachHang();
-                            SelectedHoaDon = hoaDon;
-                            CapNhatHoaDonVaTimKiem();
-                            XulyHienThemHoaDon(-1);
-                            return;
-                        }
-                        catch { }
+                    if (isdangnhap)
+                    {
+                        MessageBoxResult result = MessageBox.Show("Bạn có muốn thanh toán?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                        if (result == MessageBoxResult.Yes)
+                            while (true)
+                                try
+                                {
 
+                                    HoaDon hoaDon = new HoaDon() { CTHDs = new ObservableCollection<CTHD>(ListCTHD_BanSach), KhachHang = SelectedKhachHang, NguoiDung = User, TongTien = TongGiaBan, NgayBan = SelectedDateTime };
+                                    hoaDon.SoTienTra = int.Parse(SoTienTra);
+                                    foreach (CTHD hd in ListCTHD_BanSach)
+                                    {
+                                        if (hd.PhuongThuc == "Mượn")
+                                            hd.TrangThai = "Chưa trả";
+                                    }
+                                    hoaDon.SoSachMuon = TongSachMuon;
+                                    DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[HoaDon] ON");
+                                    DataProvider.Ins.DB.HoaDons.Add(hoaDon);
+                                    DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[HoaDon] OFF");
+                                    SelectedKhachHang.SoTienNo += TongGiaBan - int.Parse(SoTienTra);
+                                    SelectedKhachHang.SoSachChuaTra += TongSachMuon;
+                                    // SelectedKhachHang.SoSachChuaTra +=  - int.Parse(SoTienTra);
+                                    for (int i = 0; i < ListCTHD_BanSach.Count; i++)
+                                        ListCTHD_BanSach[i].Sach.SoLuongTon -= ListCTHD_BanSach[i].SoLuong;
+                                    DataProvider.Ins.DB.SaveChanges();
+                                    SoTienTra = 0 + "";
+                                    SelectedKhachHang = new KhachHang();
+                                    ListCTHD_BanSach.Clear();
+                                    SelectedDateTime = new DateTime();
+                                    QuanLyDuLieuSachVM.TimKiemSach();
+                                    QuanLyKhachHangVM.TimKiemKhachHang();
+                                    SelectedHoaDon = hoaDon;
+                                    CapNhatHoaDonVaTimKiem();
+
+                                    XulyHienThemHoaDon(-1);
+                                    return;
+                                }
+                                catch { }
+                    }
                 });
 
             TaoMoiHoaDonCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -390,7 +424,7 @@ namespace BookStoreClone.ViewModel
                 ListHoaDon = new ObservableCollection<HoaDon>(DataProvider.Ins.DB.HoaDons.Where(x => x.NgayBan >= DateTimeStart && x.NgayBan <=date && x.KhachHang.TenKH.ToLower().Contains(TextTimKiemHoaDon.ToLower())));
             
         }
-
+       
         #endregion Cập nhật dữ liệu
     }
 }

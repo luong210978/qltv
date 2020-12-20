@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace BookStoreClone.View
 {
@@ -7,7 +8,9 @@ namespace BookStoreClone.View
     /// </summary>
     public partial class QuanLyHoaDonUC : UserControl
     {
-        public QuanLyHoaDonUC()
+        private Visibility nhanvienhien { get;set; }
+
+		public QuanLyHoaDonUC()
         {
             InitializeComponent();
         }
@@ -23,6 +26,28 @@ namespace BookStoreClone.View
                 if (printDialog.ShowDialog() == true)
                 {
                     printDialog.PrintVisual(pnlCTHD, "Hóa đơn");
+                }
+            }
+            finally
+            {
+                this.IsEnabled = true;
+            }
+
+        }
+
+		private void btnLuuHoaDon_Click(object sender, System.Windows.RoutedEventArgs e)
+		{
+            MessageBoxResult result = MessageBox.Show("In hóa đơn để xem trước?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+            if (result == MessageBoxResult.Yes)
+                if (nhanvienhien==Visibility.Visible)
+            try
+            {
+
+                this.IsEnabled = false;
+                PrintDialog printDialog = new PrintDialog();
+                if (printDialog.ShowDialog() == true)
+                {
+                    printDialog.PrintVisual(pnlhoadon, "Hóa đơn");
                 }
             }
             finally

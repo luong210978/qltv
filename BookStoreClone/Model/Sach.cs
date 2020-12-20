@@ -18,7 +18,7 @@ using System;
 public partial class Sach
 {
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public Sach()
     {
 
@@ -31,7 +31,6 @@ public partial class Sach
         this.TacGias = new HashSet<TacGia>();
 
         this.TheLoais = new HashSet<TheLoai>();
-        
 
     }
 
@@ -74,8 +73,7 @@ public partial class Sach
 
     public virtual ICollection<TheLoai> TheLoais { get; set; }
 		public bool IsCoTheNhapThem { get; internal set; }
-        public bool IsBtnBanSach { get; internal set; }
-
-    }
+		public bool IsBtnBanSach { get; internal set; }
+	}
 
 }

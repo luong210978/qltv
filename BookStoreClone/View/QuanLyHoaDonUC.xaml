@@ -29,14 +29,15 @@
                 Style="{StaticResource MaterialDesignFloatingActionButton}"
                 ToolTip="Tạo hóa đơn"
                 ToolTipService.Placement="Right" />
-            <WrapPanel DataContext="{StaticResource QuanLyKhachHangVM}" DockPanel.Dock="Top">
+            <WrapPanel DataContext="{StaticResource QuanLyKhachHangVM}" DockPanel.Dock="Top" Visibility="{Binding nhanvienhien}">
                 <materialDesign:PopupBox
                     x:Name="popupThemKhachHang"
                     Width="0"
                     Height="0"
                     Margin="0"
                     PlacementMode="LeftAndAlignTopEdges"
-                    StaysOpen="True">
+                    StaysOpen="True"
+                    >
                     <StackPanel Margin="10">
                         <TextBlock HorizontalAlignment="Center" FontSize="20">-Thêm mới khách hàng-</TextBlock>
                         <WrapPanel Margin="10">
@@ -109,6 +110,7 @@
                     Margin="5"
                     Width="30"
                     Height="30"
+                    Visibility="{Binding nhanvienhien}"
                     materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding IsPopupOpen, ElementName=popupThemKhachHang}"
                     materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
                     materialDesign:ButtonProgressAssist.Value="-1"
@@ -351,13 +353,13 @@
         </materialDesign:Card>
 
         <materialDesign:Card
-            Width="620"
+            Width="700"
             Margin="5"
-            Name="pnlhoadon"
+           
             DockPanel.Dock="Right"
             Tag="{Binding IDSach, UpdateSourceTrigger=PropertyChanged}"
             Visibility="{Binding VisibilityTaoHoaDon}">
-            <DockPanel Width="600" LastChildFill="True">
+            <DockPanel Width="700" LastChildFill="True"  Name="pnlhoadon">
                 <TextBlock
                     Margin="24,0,0,0"
                     DockPanel.Dock="Top"
@@ -466,17 +468,19 @@
                             </StackPanel>
                         </DockPanel>
                     </DockPanel>
+                    <StackPanel></StackPanel>
                     <TextBlock
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
                         DockPanel.Dock="Top"
-                        FontSize="15">
+                        FontSize="15"
+                         Visibility="{Binding nhanvienhien}">
                         ----------Nhân viên-------------
                     </TextBlock>
                     <StackPanel
                         Margin="20,5,5,5"
                         DockPanel.Dock="Top"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal" Visibility="{Binding nhanvienhien}">
                         <materialDesign:PackIcon
                                                     ToolTip="Họ tên"
                                                     Width="24"
@@ -488,7 +492,7 @@
                     <StackPanel
                         Margin="20,5,5,5"
                         DockPanel.Dock="Top"
-                        Orientation="Horizontal">
+                        Orientation="Horizontal" Visibility="{Binding nhanvienhien}">
                         <materialDesign:PackIcon
                                                     ToolTip="Điện thoại"
                                                     Width="24"
@@ -574,7 +578,7 @@
                                     CommandParameter="{Binding ElementName=btnLuuHoaDon}"
                                     DockPanel.Dock="Bottom"
                                     Style="{StaticResource MaterialDesignRaisedDarkButton}"
-                                    ToolTip="In Hóa Đơn" VerticalAlignment="Bottom" HorizontalAlignment="Right" RenderTransformOrigin="0.503,0.5" >
+                                    ToolTip="In Hóa Đơn" VerticalAlignment="Bottom" HorizontalAlignment="Right" RenderTransformOrigin="0.503,0.5" Click="btnLuuHoaDon_Click" >
                                     Thanh toán
                                 </Button>
 
@@ -599,7 +603,7 @@
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="False"
                         ItemsSource="{Binding ListCTHD_BanSach}"
-                        SelectedItem="{Binding SelectedItemCTHD,Mode=OneWayToSource}" SelectionMode="Single" Width="600">
+                        SelectedItem="{Binding SelectedItemCTHD,Mode=OneWayToSource}" SelectionMode="Single" Width="703">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="CellEditEnding">
                                 <i:InvokeCommandAction Command="{Binding CellEditEndingThemSachCommand}" />
@@ -631,6 +635,14 @@
                                 IsEditable="True"
                                 ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListChonPhuongThuc}"
                                 SelectedValueBinding="{Binding PhuongThuc, UpdateSourceTrigger=PropertyChanged}" CanUserSort="False" 
+                              
+                                 
+                              />
+                            <materialDesign:DataGridComboBoxColumn
+                                Header="Tình Trạng"
+                                IsEditable="True"
+                                ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListChonTinhTrang}"
+                                SelectedValueBinding="{Binding TinhTrang}" CanUserSort="True" 
                               
                                  
                               />
@@ -863,7 +875,7 @@
 
             </DockPanel>
         </materialDesign:Card>
-        <DockPanel LastChildFill="True" Visibility="Visible">
+        <DockPanel LastChildFill="True" Visibility="{Binding nhanvienhien}" >
             <WrapPanel DockPanel.Dock="Top">
                 <materialDesign:ColorZone
                     Width="250"
@@ -924,7 +936,8 @@
                     IsReadOnly="True"
                     ItemsSource="{Binding ListHoaDon}"
                     SelectedIndex="0"
-                    SelectedItem="{Binding SelectedHoaDon}">
+                    SelectedItem="{Binding SelectedHoaDon}"
+                    Visibility="{Binding nhanvienhien}">
 
                     <DataGrid.Columns>
 

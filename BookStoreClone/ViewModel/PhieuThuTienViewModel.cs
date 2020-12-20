@@ -116,23 +116,25 @@ namespace BookStoreClone.ViewModel
 
             }, (p) =>
             {
-                try
-                {
-                    if (SelectedCTHD.PhuongThuc == "Mượn")
-                        if (SelectedCTHD.TrangThai == "Chưa trả")
-                        {
-                            SelectedCTHD.TrangThai = "Đã trả";
-                            SelectedCTHD.isenabletra = false;
+                MessageBoxResult result = MessageBox.Show("Bạn có muốn trả sách?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                    try
+                    {
+                        if (SelectedCTHD.PhuongThuc == "Mượn")
+                            if (SelectedCTHD.TrangThai == "Chưa trả")
+                            {
+                                SelectedCTHD.TrangThai = "Đã trả";
+                                SelectedCTHD.isenabletra = false;
+                                SelectedKhachHang.SoSachChuaTra -= (int)SelectedCTHD.SoLuong;
+                                SelectedCTHD.Sach.SoLuongTon += SelectedCTHD.SoLuong;
+                                SelectedKhachHang.SoTienNo += SelectedKhachHang.SoTienPhat;
+                                SelectedKhachHang.SoTienPhat = 0;
+                            }
+                        SelectedCTHD.isenabletra = false;
 
-                            SelectedCTHD.Sach.SoLuongTon += SelectedCTHD.SoLuong;
-                            SelectedKhachHang.SoTienNo += SelectedKhachHang.SoTienPhat;
-                            SelectedKhachHang.SoTienPhat = 0;
-                        }
-                    SelectedCTHD.isenabletra = false;
-
-                    DataProvider.Ins.DB.SaveChanges();
-                }
-                catch { }
+                        DataProvider.Ins.DB.SaveChanges();
+                    }
+                    catch { }
             });
             XacNhanThuTienCommand = new RelayCommand<Button>((p) => {
                 if (p == null) return false;
@@ -148,17 +150,21 @@ namespace BookStoreClone.ViewModel
                 return true;
             }, (p) =>
             {
-                DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuThuTien] ON");
-                DataProvider.Ins.DB.PhieuThuTiens.Add(new PhieuThuTien() { KhachHang = SelectedKhachHang, SoTienThu = int.Parse(soTienTra), NguoiDung = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == Const.IDNguoiDung).First(), NgayThuTien = SelectedDateTime });
-                DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuThuTien] OFF");
-                SelectedKhachHang.SoTienNo -= int.Parse(soTienTra);
-                DataProvider.Ins.DB.SaveChanges();
-                int idKhach = SelectedKhachHang.MaKH;
-                SelectedKhachHang = new KhachHang();
-                SelectedKhachHang = DataProvider.Ins.DB.KhachHangs.Where(x => x.MaKH == idKhach).First();
-                SoTienTra = "";
-                quanLyKhachHangViewModel.TimKiemKhachHang();
-                SelectedDateTime = System.DateTime.Now;
+                MessageBoxResult result = MessageBox.Show("Xác nhận thu tiền?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+                if (result == MessageBoxResult.Yes)
+                {
+                    DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuThuTien] ON");
+                    DataProvider.Ins.DB.PhieuThuTiens.Add(new PhieuThuTien() { KhachHang = SelectedKhachHang, SoTienThu = int.Parse(soTienTra), NguoiDung = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == Const.IDNguoiDung).First(), NgayThuTien = SelectedDateTime });
+                    DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuThuTien] OFF");
+                    SelectedKhachHang.SoTienNo -= int.Parse(soTienTra);
+                    DataProvider.Ins.DB.SaveChanges();
+                    int idKhach = SelectedKhachHang.MaKH;
+                    SelectedKhachHang = new KhachHang();
+                    SelectedKhachHang = DataProvider.Ins.DB.KhachHangs.Where(x => x.MaKH == idKhach).First();
+                    SoTienTra = "";
+                    quanLyKhachHangViewModel.TimKiemKhachHang();
+                    SelectedDateTime = System.DateTime.Now;
+                }
             });
           
 

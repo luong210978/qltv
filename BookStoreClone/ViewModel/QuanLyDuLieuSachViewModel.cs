@@ -260,15 +260,19 @@
 			ListTheLoai = new ObservableCollection<TheLoai>(DataProvider.Ins.DB.TheLoais);
 			XoaTheLoaiCommand = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
 			{
-				for (int i = Wrap_ListTheLoai.Count - 1; i >= 0; i--)
+				MessageBoxResult result = MessageBox.Show("Xác nhận xóa thể loại?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+				if (result == MessageBoxResult.Yes)
 				{
-					if (Wrap_ListTheLoai[i].MaTL == (p.SelectedItem as TheLoai).MaTL)
-						Wrap_ListTheLoai.Remove(Wrap_ListTheLoai[i]);
+					for (int i = Wrap_ListTheLoai.Count - 1; i >= 0; i--)
+					{
+						if (Wrap_ListTheLoai[i].MaTL == (p.SelectedItem as TheLoai).MaTL)
+							Wrap_ListTheLoai.Remove(Wrap_ListTheLoai[i]);
+					}
+					CapNhatChip_TheLoai();
+					DataProvider.Ins.DB.TheLoais.Remove(p.SelectedItem as TheLoai);
+					DataProvider.Ins.DB.SaveChanges();
+					TextTimKiemTheLoai = "";
 				}
-				CapNhatChip_TheLoai();
-				DataProvider.Ins.DB.TheLoais.Remove(p.SelectedItem as TheLoai);
-				DataProvider.Ins.DB.SaveChanges();
-				TextTimKiemTheLoai = "";
 			});
 			LoadListTheLoai = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
 			{
@@ -324,15 +328,19 @@
 			ListTacGia = new ObservableCollection<TacGia>(DataProvider.Ins.DB.TacGias);
 			XoaTacGiaCommand = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
 			{
-				for (int i = Wrap_ListTacGia.Count - 1; i >= 0; i--)
+				MessageBoxResult result = MessageBox.Show("Xóa tác giả?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+				if (result == MessageBoxResult.Yes)
 				{
-					if (Wrap_ListTacGia[i].MaTG == (p.SelectedItem as TacGia).MaTG)
-						Wrap_ListTacGia.Remove(Wrap_ListTacGia[i]);
+					for (int i = Wrap_ListTacGia.Count - 1; i >= 0; i--)
+					{
+						if (Wrap_ListTacGia[i].MaTG == (p.SelectedItem as TacGia).MaTG)
+							Wrap_ListTacGia.Remove(Wrap_ListTacGia[i]);
+					}
+					CapNhatChip_TacGia();
+					DataProvider.Ins.DB.TacGias.Remove(p.SelectedItem as TacGia);
+					DataProvider.Ins.DB.SaveChanges();
+					TextTimKiemTacGia = "";
 				}
-				CapNhatChip_TacGia();
-				DataProvider.Ins.DB.TacGias.Remove(p.SelectedItem as TacGia);
-				DataProvider.Ins.DB.SaveChanges();
-				TextTimKiemTacGia = "";
 			});
 			ThemTacGiaCommand = new RelayCommand<Button>((p) =>
 			{

@@ -14,20 +14,20 @@ namespace BookStoreClone.View
 
 		private void btnNhapKho_Click(object sender, System.Windows.RoutedEventArgs e)
 		{
-            try
-            {
+            //try
+            //{
 
-                this.IsEnabled = false;
-                PrintDialog printDialog = new PrintDialog();
-                if (printDialog.ShowDialog() == true)
-                {
-                    printDialog.PrintVisual(pnllnhapssach, "Nhập Sách");
-                }
-            }
-            finally
-            {
-                this.IsEnabled = true;
-            }
+            //    this.IsEnabled = false;
+            //    PrintDialog printDialog = new PrintDialog();
+            //    if (printDialog.ShowDialog() == true)
+            //    {
+            //        printDialog.PrintVisual(pnllnhapssach, "Nhập Sách");
+            //    }
+            //}
+            //finally
+            //{
+            //    this.IsEnabled = true;
+            //}
         }
 
 		private void Button1_Click(object sender, System.Windows.RoutedEventArgs e)

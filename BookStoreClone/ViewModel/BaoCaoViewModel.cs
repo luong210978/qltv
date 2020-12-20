@@ -69,7 +69,19 @@ namespace BookStoreClone.ViewModel
 
         public BaoCaoViewModel()
         {
-            Nam = 2020;
+			//var result = from e in DataProvider.Ins.DB.HoaDons
+   //                      join d in DataProvider.Ins.DB.Saches
+                        
+			//			 where (e.NgayBan.Value.Month == Thang && e.NgayBan.Value.Year == Nam)
+			//			 orderby e.TongTien descending
+			//			 select new
+			//			 {
+			//				 e.BaoCaoCongNo.
+			//				 imageName = (from soh in db.tblProductImages
+			//							  where soh.product_id == e.ProductId
+			//							  select new { soh.image_name }).Take(1)
+			//			 };
+			Nam = 2020;
             ListCTBaoCaoCongNo = new ObservableCollection<CTBaoCaoCongNo>(DataProvider.Ins.DB.CTBaoCaoCongNoes);
             ListCTBaoCaoTon = new ObservableCollection<CTBaoCaoTon>(DataProvider.Ins.DB.CTBaoCaoTons);
 

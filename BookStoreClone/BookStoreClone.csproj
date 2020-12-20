@@ -189,7 +189,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="ViewModel\BaoCaoViewModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
-    <Compile Include="ViewModel\HoaDonViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\PhieuThuTienViewModel.cs" />
@@ -205,17 +204,11 @@
     <Compile Include="View\BaoCaoUC.xaml.cs">
       <DependentUpon>BaoCaoUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\HoaDonUC.xaml.cs">
-      <DependentUpon>HoaDonUC.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\NhapSachUC.xaml.cs">
-      <DependentUpon>NhapSachUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PhieuThuTienUC.xaml.cs">
       <DependentUpon>PhieuThuTienUC.xaml</DependentUpon>
@@ -249,10 +242,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\HoaDonUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -264,10 +253,6 @@
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="View\NhapSachUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\PhieuThuTienUC.xaml">
       <SubType>Designer</SubType>

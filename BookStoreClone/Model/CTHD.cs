@@ -19,15 +19,21 @@ public partial class CTHD
 {
 
     public int MaHD { get; set; }
+
     public int MaSach { get; set; }
+
     public Nullable<int> SoLuong { get; set; }
+
     public Nullable<int> DonGiaBan { get; set; }
+
     public string PhuongThuc { get; set; }
-    public Nullable <long> ThanhTien { get; set; }
+    public string TrangThai { get; set; }
+    public int TinhTrang { get; set; }
+    public int ThanhTien { get; set; }
+    public bool isenabletra { get; set; }
     public virtual HoaDon HoaDon { get; set; }
     public virtual Sach Sach { get; set; }
-    public String TrangThai { get; set; }
-    public bool isenabletra { get; set; }
+
 }
 
 }

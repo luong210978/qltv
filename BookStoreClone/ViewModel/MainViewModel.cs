@@ -58,7 +58,7 @@ namespace BookStoreClone.ViewModel
         }
 
         public Visibility SetQuanLy { get => _setQuanLy; set { _setQuanLy = value; OnPropertyChanged(); } }
-
+        public string KinhDoanh { get => _KinhDoanh; set { _KinhDoanh = value; OnPropertyChanged(); } }
         public Visibility SetKinhDoanh { get => _setKinhDoanh; set { _setKinhDoanh = value; OnPropertyChanged(); } }
         public Visibility SetAdmin { get => _setAdmin; set { _setAdmin = value; OnPropertyChanged(); } }
 
@@ -85,7 +85,9 @@ namespace BookStoreClone.ViewModel
         private string _textTimKiem;
 
         string _titleApp;
-        public MainViewModel()
+		private string _KinhDoanh;
+
+		public MainViewModel()
         {
 
             Maximize_Icon = PackIconKind.WindowMaximize;
@@ -102,8 +104,11 @@ namespace BookStoreClone.ViewModel
             {
                 if (LoginViewModel.IsLogin)
                 {
+                    
                     p.Show();
                     string a = Const.IDNguoiDung;
+                    KinhDoanh = "Kinh Doanh";
+
                     User = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == a).First();
                     if (User.NhanVienKho)
                         PQQuanLy();
@@ -128,6 +133,7 @@ namespace BookStoreClone.ViewModel
                 else
                 {
                     p.Show();
+                    KinhDoanh = "Lập Thử";
                     PQKhachHang();
                 }
             });

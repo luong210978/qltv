@@ -17,9 +17,8 @@ using System;
     
 public partial class PhieuNhap
 {
-		
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
     public PhieuNhap()
     {
 
@@ -27,8 +26,7 @@ public partial class PhieuNhap
 
     }
 
-    public int GiaTriPhieuNhap { get; set; }
-    public int TongSoSachNhap { get; set; }
+
     public int MaPN { get; set; }
 
     public Nullable<System.DateTime> NgayNhap { get; set; }
@@ -42,7 +40,8 @@ public partial class PhieuNhap
     public virtual ICollection<CTPhieuNhap> CTPhieuNhaps { get; set; }
 
     public virtual NguoiDung NguoiDung { get; set; }
-
-}
+		public int GiaTriPhieuNhap { get; internal set; }
+		public int TongSoSachNhap { get; internal set; }
+	}
 
 }

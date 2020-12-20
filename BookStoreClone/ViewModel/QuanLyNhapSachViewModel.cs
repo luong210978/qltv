@@ -164,25 +164,28 @@ namespace BookStoreClone.ViewModel
 				p.IsEnabled = true;
 				return true;
 			}, (p) => {
-
-				PhieuNhap phieuNhap = new PhieuNhap() {GiaTriPhieuNhap=TongSoTienNhapSach,TongSoSachNhap=TongSoSach, NguoiDung = User, CTPhieuNhaps = new ObservableCollection<CTPhieuNhap>(ListCTPhieuNhap), NgayNhap = selectedDateTime };
-				DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuNhap] ON");
-				DataProvider.Ins.DB.PhieuNhaps.Add(phieuNhap);
-				DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuNhap] OFF");
-
-
-				for (int i = 0; i < ListCTPhieuNhap.Count; i++)
+				MessageBoxResult result = MessageBox.Show("Bạn có nhập sách?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Information);
+				if (result == MessageBoxResult.Yes)
 				{
-					ListCTPhieuNhap[i].Sach.SoLuongTon += ListCTPhieuNhap[i].SoLuongNhap;
-					ListCTPhieuNhap[i].Sach.DonGia = ListCTPhieuNhap[i].DonGiaNhap * Const.QuyDinh_HeSoDonGia / 100;
-				}
-				DataProvider.Ins.DB.SaveChanges();
-				TimKiemVaCapNhat();
-				ReserTaoMoiHoaDon();
-				quanLyDuLieuSachViewModel.TimKiemSach();
-				SelectedPhieuNhap = phieuNhap;
+					PhieuNhap phieuNhap = new PhieuNhap() { GiaTriPhieuNhap = TongSoTienNhapSach, TongSoSachNhap = TongSoSach, NguoiDung = User, CTPhieuNhaps = new ObservableCollection<CTPhieuNhap>(ListCTPhieuNhap), NgayNhap = selectedDateTime };
+					DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuNhap] ON");
+					DataProvider.Ins.DB.PhieuNhaps.Add(phieuNhap);
+					DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[PhieuNhap] OFF");
 
-				CaiDatGiaoDien(0);
+
+					for (int i = 0; i < ListCTPhieuNhap.Count; i++)
+					{
+						ListCTPhieuNhap[i].Sach.SoLuongTon += ListCTPhieuNhap[i].SoLuongNhap;
+						ListCTPhieuNhap[i].Sach.DonGia = ListCTPhieuNhap[i].DonGiaNhap * Const.QuyDinh_HeSoDonGia / 100;
+					}
+					DataProvider.Ins.DB.SaveChanges();
+					TimKiemVaCapNhat();
+					ReserTaoMoiHoaDon();
+					quanLyDuLieuSachViewModel.TimKiemSach();
+					SelectedPhieuNhap = phieuNhap;
+
+					CaiDatGiaoDien(0);
+				}
 			});
 			#endregion
 
