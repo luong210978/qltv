@@ -38,7 +38,9 @@ namespace BookStoreClone.ViewModel
         private string _textThemDiaChi;
         private string _textThemSDT;
         private string _textThemEmail;
-        public string TextThemTen { get => _textThemTen; set { _textThemTen = value; OnPropertyChanged(); } }
+		private bool isdangnhap;
+
+		public string TextThemTen { get => _textThemTen; set { _textThemTen = value; OnPropertyChanged(); } }
         public string TextThemDiaChi { get => _textThemDiaChi; set { _textThemDiaChi = value; OnPropertyChanged(); } }
         public string TextTimKiem { get => _TextTimKiem; set { _TextTimKiem = value; OnPropertyChanged(); TimKiemKhachHang(); } }
         public string TextThemSDT { get => _textThemSDT; set { _textThemSDT = value; OnPropertyChanged(); } }
@@ -69,9 +71,12 @@ namespace BookStoreClone.ViewModel
 
         public int TongHoaDon { get => _tongHoaDon; set { _tongHoaDon = value; OnPropertyChanged(); } }
 
-        public QuanLyKhachHangViewModel()
+		public NguoiDung User { get; private set; }
+
+		public QuanLyKhachHangViewModel()
         {
             TimKiemKhachHang();
+            try { User = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == Const.IDNguoiDung).First(); isdangnhap = true; } catch { isdangnhap = false; }
             SelectedKhachHang = ListKH.Count > 0 ? ListKH[0] : new KhachHang();
             IconSuaKhachHang = false;
 
@@ -118,6 +123,7 @@ namespace BookStoreClone.ViewModel
             });
             LuuThemMoiCommand = new RelayCommand<PopupBox>((p) => { return TextThemTen != "" ? true : false; }, (p) =>
             {
+
                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[KhachHang] ON");
                 DataProvider.Ins.DB.KhachHangs.Add(new KhachHang() { TenKH = TextThemTen, DiaChi = TextThemDiaChi, Email = TextThemEmail, SDT = TextThemSDT });
                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[KhachHang] OFF");
