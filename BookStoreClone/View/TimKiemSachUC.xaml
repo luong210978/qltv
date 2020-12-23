@@ -198,6 +198,9 @@
                         <ComboBoxItem>
                             Tác giả
                         </ComboBoxItem>
+                        <ComboBoxItem>
+                            Thể Loại
+                        </ComboBoxItem>
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="SelectionChanged">
                                 <i:InvokeCommandAction Command="{Binding ChontimkiemCommand}" CommandParameter="{Binding ElementName=combotimkiem}" />
