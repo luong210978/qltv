@@ -263,7 +263,7 @@
 						source = "no_image.png";
 					else
 						source = a[i].AnhBia;
-					SachUC sachUC = new SachUC(a[i].TenSach, a[i].DonGia.ToString(), source, a[i].SoLuongTon.ToString());
+					SachUC sachUC = new SachUC(a[i].TenSach,/*"Đơn giá mới: " +*/ a[i].DonGia.ToString(), source, a[i].SoLuongTon.ToString());
 					sachUC.Height = 320;
 					sachUC.Width = 200;
 
@@ -283,7 +283,7 @@
 						select st;
 
 			TenSach = query.First().TenSach;
-			GiaSach = query.First().DonGia.ToString() + "VNĐ";
+			GiaSach ="Giá Mới: " + query.First().DonGia.ToString() + "VNĐ";
 			MoTaSach = query.First().MoTa;
 			SoLuongTon = "Tồn kho:  " + query.First().SoLuongTon.ToString();
 

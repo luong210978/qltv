@@ -220,7 +220,7 @@
                                 <TextBlock
                                     FontSize="15"
                                         
-                                    Text="{Binding SelectedKhachHang.SoSachChuaTra}" />
+                                    Text="{Binding SelectedKhachHang.SoSachChuaTra,UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock
                               
                                     FontSize="15"
@@ -237,7 +237,7 @@
 
                                 <TextBlock
                                     FontSize="15"
-                                    Text="{Binding SelectedKhachHang.SoTienNo}" />
+                                    Text="{Binding SelectedKhachHang.SoTienNo,UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBlock  FontSize="15"><Run Text="đ"/></TextBlock>
                             </StackPanel>
 
@@ -446,7 +446,7 @@
                                 Header="Phương Thức"
                                 IsReadOnly="true" />
                                 <DataGridTextColumn
-                                Binding="{Binding TrangThai}"
+                                Binding="{Binding TrangThai,UpdateSourceTrigger=PropertyChanged}"
                                 Header="Trạng thái"
                                 IsReadOnly="true" />
 
