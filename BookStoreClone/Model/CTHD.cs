@@ -25,5 +25,7 @@ namespace BookStoreClone.Model
         public virtual Sach Sach { get; set; }
         public string PhuongThuc { get; internal set; }
         public object TrangThai { get; internal set; }
-    }
+		public int ThanhTien { get; internal set; }
+		public int TinhTrang { get; internal set; }
+	}
 }

@@ -31,5 +31,6 @@ namespace BookStoreClone.Model
         public virtual ICollection<CTHD> CTHDs { get; set; }
         public virtual KhachHang KhachHang { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
-    }
+		public int SoSachMuon { get; internal set; }
+	}
 }

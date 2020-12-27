@@ -43,5 +43,7 @@ namespace BookStoreClone.Model
         public virtual ICollection<TacGia> TacGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TheLoai> TheLoais { get; set; }
-    }
+		public bool IsBtnBanSach { get; internal set; }
+		public bool IsCoTheNhapThem { get; internal set; }
+	}
 }
