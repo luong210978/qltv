@@ -203,7 +203,9 @@ namespace BookStoreClone.ViewModel
 
                                 try
                                 {
-                                    SelectedNhanVien.img = "nhanvien" + SelectedNhanVien.MaND.ToString() + "_";
+                                    SelectedNhanVien.img = "nhanvien" + SelectedNhanVien.MaND.ToString() + "_" + ((SelectedNhanVien.img.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                                    if (File.Exists(_localLink + @"Resources\img\" + SelectedNhanVien.img))
+                                        DeleteDirectory(_localLink + @"Resources\img\" + SelectedNhanVien.img);
                                     File.Copy(LinkAnhBia, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
                                     //break;
                                 }
@@ -245,7 +247,8 @@ namespace BookStoreClone.ViewModel
 								try
 								{
                                     SelectedNhanVien.img ="nhanvien"+SelectedNhanVien.MaND.ToString() + "_" +((SelectedNhanVien.img.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                                    File.Delete(_localLink + @"Resources\img\" + SelectedNhanVien.img);
+                                    if(File.Exists(_localLink + @"Resources\img\" + SelectedNhanVien.img))
+                                    DeleteDirectory(_localLink + @"Resources\img\" + SelectedNhanVien.img);
 									File.Copy(LinkAnhBia, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
                                     //break;
 								}
@@ -267,6 +270,7 @@ namespace BookStoreClone.ViewModel
                     MessageBox.Show("Bạn chưa nhập đủ thông tin!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             });
+
             ChonAnhCommmand = new RelayCommand<Image>((p) => { return true; }, (p) =>
             {
                 OpenFileDialog open = new OpenFileDialog();
@@ -329,6 +333,25 @@ namespace BookStoreClone.ViewModel
 
             });
         }
+        public static void DeleteDirectory(string target_dir)
+        {
+            string[] files = Directory.GetFiles(target_dir);
+            string[] dirs = Directory.GetDirectories(target_dir);
+
+            foreach (string file in files)
+            {
+                File.SetAttributes(file, FileAttributes.Normal);
+                File.Delete(file);
+            }
+
+            foreach (string dir in dirs)
+            {
+                DeleteDirectory(dir);
+            }
+
+            Directory.Delete(target_dir, false);
+        }
+
         void XulyHien(int n)
         {
             if (n == 2)
