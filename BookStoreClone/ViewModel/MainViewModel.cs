@@ -141,6 +141,7 @@ namespace BookStoreClone.ViewModel
                     p.Show();
                     KinhDoanh = "Lập Thử";
                     PQKhachHang();
+                    LinkAnhBiaava = _localLink + @"Resources\img\19476 - 200.png";
                 }
             });
 
