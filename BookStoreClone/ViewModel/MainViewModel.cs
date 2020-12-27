@@ -81,13 +81,16 @@ namespace BookStoreClone.ViewModel
 
         public string TitleApp { get => _titleApp; set { _titleApp = value; OnPropertyChanged(); } }
 
+		public string LinkAnhBiaava { get => _LinkAnhBiaava; set { _LinkAnhBiaava = value; OnPropertyChanged(); } }
         private PackIconKind _maximize_Icon;
         private string _textTimKiem;
 
         string _titleApp;
 		private string _KinhDoanh;
+		private string _LinkAnhBiaava;
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
 
-		public MainViewModel()
+        public MainViewModel()
         {
 
             Maximize_Icon = PackIconKind.WindowMaximize;
@@ -128,6 +131,9 @@ namespace BookStoreClone.ViewModel
                         Nam = false;
                         Nu = true;
                     }
+
+                    LinkAnhBiaava = _localLink + @"Resources\img\" + "nhanvien" + User.MaND.ToString() + "_.jpg";
+
 
                 }
                 else
