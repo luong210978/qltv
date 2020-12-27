@@ -86,14 +86,20 @@ namespace BookStoreClone.ViewModel
         public string TextTimKiemNhanVien { get => _textTimKiemNhanVien; set { _textTimKiemNhanVien = value; OnPropertyChanged(); TimKiemNhanVien(); } }
         private string _Labelnhanvien;
         private string _anhBia;
-        public string LinkAnhBia { get => _anhBia; set { _anhBia = value; OnPropertyChanged(); } }
+		private string _Password;
+
+		public string LinkAnhBia { get => _anhBia; set { _anhBia = value; OnPropertyChanged(); } }
 
         //private string SelectedNhanVien.img { get => _anhBia; set { _anhBia = value; OnPropertyChanged(); } }
 
         public bool SetTaiKhoan { get => _setTaiKhoan; set { _setTaiKhoan = value; OnPropertyChanged(); } }
         public string Labelnhanvien { get => _Labelnhanvien; set { _Labelnhanvien = value; OnPropertyChanged(); } }
+
+		public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
+
         public QuanLyHeThongViewModel()
         {
+            Password = "";
             SelectedQuyDinh = new QuyDinh();
             int a = DataProvider.Ins.DB.QuyDinhs.Count();
             SelectedQuyDinh = DataProvider.Ins.DB.QuyDinhs.ToList()[a - 1];
@@ -151,6 +157,8 @@ namespace BookStoreClone.ViewModel
                     SelectedNhanVien.NgaySinh = DateTime.Today;
                     SetTaiKhoan = true;
                     LinkAnhBia = _localLink + @"Resources\img\" + "BookNull.png";
+                    SelectedNhanVien.MatKhau = "";
+                    Password = "";
                 }
             });
             ShowSuaDoiQuyDinhCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -172,7 +180,7 @@ namespace BookStoreClone.ViewModel
             LuuNguoiDungCommand = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
                 Random random = new Random();
-                if (!(string.IsNullOrEmpty(SelectedNhanVien.TenND) || string.IsNullOrEmpty(SelectedNhanVien.SDT) || string.IsNullOrEmpty(SelectedNhanVien.TenDangNhap) || string.IsNullOrEmpty(SelectedNhanVien.MatKhau)))
+                if (!(string.IsNullOrEmpty(SelectedNhanVien.TenND) || string.IsNullOrEmpty(SelectedNhanVien.SDT) || string.IsNullOrEmpty(SelectedNhanVien.TenDangNhap) || string.IsNullOrEmpty(Password)))
                 {
                     if (log == 1)
                     {
@@ -192,13 +200,15 @@ namespace BookStoreClone.ViewModel
                                 else
                                     SelectedNhanVien.GioiTinh = false;
                                 SelectedNhanVien.img = LinkAnhBia;
+
                                 try
                                 {
-                                    SelectedNhanVien.img = "nhanvien" + SelectedNhanVien.MaND.ToString() + "_" + ((SelectedNhanVien.img.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-                                    File.Copy(SelectedNhanVien.img, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
-
+                                    SelectedNhanVien.img = "nhanvien" + SelectedNhanVien.MaND.ToString() + "_";
+                                    File.Copy(LinkAnhBia, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
+                                    //break;
                                 }
                                 catch { }
+                                SelectedNhanVien.MatKhau = MD5Hash(Base64Encode(Password));
                                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[NguoiDung] ON");
                                 DataProvider.Ins.DB.NguoiDungs.Add(SelectedNhanVien);
                                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[NguoiDung] OFF");
@@ -231,16 +241,18 @@ namespace BookStoreClone.ViewModel
                                 SelectedNhanVien.GioiTinh = true;
                             else
                                 SelectedNhanVien.GioiTinh = false;
+                           // while(true)
 								try
 								{
                                     SelectedNhanVien.img ="nhanvien"+SelectedNhanVien.MaND.ToString() + "_" +((SelectedNhanVien.img.Contains(".jpg")) ? ".jpg" : ".png").ToString();
-									File.Copy(SelectedNhanVien.img, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
-									
+                                    File.Delete(_localLink + @"Resources\img\" + SelectedNhanVien.img);
+									File.Copy(LinkAnhBia, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
+                                    //break;
 								}
 								catch { }
 							DataProvider.Ins.DB.SaveChanges();
 
-                            //ListNV = new ObservableCollection<NguoiDung>(DataProvider.Ins.DB.NguoiDungs);
+                            ListNV = new ObservableCollection<NguoiDung>(DataProvider.Ins.DB.NguoiDungs);
                             //SelectedNhanVien = null;
                             //Nam = false;
                             //Nu = false;
@@ -270,7 +282,8 @@ namespace BookStoreClone.ViewModel
                 XulyHien(1);
                 SelectedNhanVien = p.SelectedItem as NguoiDung;
                 Labelnhanvien = "Chỉnh Sửa Thông Tin Nhân Viên";
-                SelectedNhanVien.MatKhau = "";
+                //SelectedNhanVien.MatKhau ="";
+                Password = "";
                 n = 1;
                 //p.IsEnabled = false;
                 SetTaiKhoan = false;
@@ -286,9 +299,17 @@ namespace BookStoreClone.ViewModel
                 }
                 Admin = SelectedNhanVien.Admin;
                 QuanLyKho = SelectedNhanVien.NhanVienKho;
-                CNV = SelectedNhanVien.NhanVienBan;
+				CNV = SelectedNhanVien.NhanVienBan;
+				// LinkAnhBia = _localLink + @"Resources\img\" + "nhanvien" + SelectedNhanVien.MaND.ToString() + "_".png;
+				//if (SelectedNhanVien.img == null)
+				//	LinkAnhBia = _localLink + @"Resources\img\" + "BookNull.png";
+				//else
+				LinkAnhBia = _localLink + @"Resources\img\" + SelectedNhanVien.img;
                 if(SelectedNhanVien.img==null)
-                    LinkAnhBia= _localLink + @"Resources\img\" + "BookNull.png";
+                   LinkAnhBia= LinkAnhBia = _localLink + @"Resources\img\" + "nhanvien" + SelectedNhanVien.MaND.ToString() + "_.jpg";
+                else
+                    LinkAnhBia = _localLink + @"Resources\img\" + SelectedNhanVien.img;
+
             });
             CapNhatQuyDinhCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
             {

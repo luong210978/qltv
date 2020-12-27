@@ -260,7 +260,7 @@
                     <materialDesign:PackIcon Kind="LockQuestion"   Height="24"  Width="24"
                                              Margin="10,6,10,0"   />
 
-                    <TextBox FontSize="15"  BorderBrush="Black"  Text="{Binding SelectedNhanVien.MatKhau,UpdateSourceTrigger=PropertyChanged}" Width="200"  materialDesign:HintAssist.Hint="Mật Khẩu" />
+                    <TextBox FontSize="15"  BorderBrush="Black"  Text="{Binding Password,UpdateSourceTrigger=PropertyChanged}" Width="200"  materialDesign:HintAssist.Hint="Mật Khẩu" />
                 </StackPanel>
                 <Button
                                 Canvas.Left="42"
@@ -334,11 +334,9 @@
                     CanUserAddRows="False"
                     CanUserSortColumns="True"
                     HeadersVisibility="All"
-                    HorizontalScrollBarVisibility="Auto"
                     IsReadOnly="True"
                     SelectedIndex="0"
-                    SelectedItem="{Binding SelectedNhanVien,Mode=OneWayToSource}"
-                    ItemsSource="{Binding ListNV,UpdateSourceTrigger=PropertyChanged}"
+                    ItemsSource="{Binding ListNV}"
                     SelectionMode="Single">
 
                     <DataGrid.Columns>

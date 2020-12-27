@@ -154,7 +154,7 @@
 
                             </DockPanel>
                         </materialDesign:PopupBox>
-                        <Button
+                        <!--<Button
                             Margin="5"
                             RenderTransformOrigin="-4.018,0.113"
                             Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
@@ -166,6 +166,17 @@
                                 Width="24"
                                 Height="24"
                                 Kind="Account" />
+                        </Button>-->
+                        <Button
+                            Margin="5"
+                            RenderTransformOrigin="-4.018,0.113"
+                            Style="{StaticResource MaterialDesignFloatingActionMiniDarkButton}"
+                            Command="{Binding ChucNangTKCommand}"
+                           
+                            CommandParameter="{Binding ElementName=pbChucNangTaiKhoan}"
+                            >
+                            <Image x:Name="imgage" Width="40" Height="40" Source="{Binding LinkAnhBiaava, UpdateSourceTrigger=PropertyChanged}" />
+
                         </Button>
                         <materialDesign:PopupBox
                             x:Name="pbThongTinTaiKhoan"
