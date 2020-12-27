@@ -66,7 +66,7 @@ namespace BookStoreClone.ViewModel
                         hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
                     else
                     {
-                        hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+                        hd.ThanhTien = ((int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100 * hd.TinhTrang / 100);
                         //TongSachMuon += (int)hd.SoLuong;
                     }
                 SoTienTra = TongGiaBan.ToString();
@@ -123,12 +123,13 @@ namespace BookStoreClone.ViewModel
             {
                 _DisCount = value; OnPropertyChanged(); try
                 {
+                    TongSachMuon = 0;
                     foreach (CTHD hd in ListCTHD_BanSach)
                         if (hd.PhuongThuc == "Mua")
                             hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
                         else
                         {
-                            hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+                            hd.ThanhTien = ((int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100 * hd.TinhTrang / 100);
                             TongSachMuon += (int)hd.SoLuong;
                         }
                     TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
@@ -277,7 +278,7 @@ namespace BookStoreClone.ViewModel
                         hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
                     else
                     {
-                        hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+                        hd.ThanhTien = ((int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100 * hd.TinhTrang / 100);
                         TongSachMuon += (int)hd.SoLuong;
                     }
                 TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
@@ -303,7 +304,7 @@ namespace BookStoreClone.ViewModel
                             hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
                         else
                         {
-                            hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+                            hd.ThanhTien = ((int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon/100 * hd.TinhTrang / 100);
                             TongSachMuon += (int)hd.SoLuong;
                         }
                     TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);
@@ -336,7 +337,7 @@ namespace BookStoreClone.ViewModel
                                     hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * hd.TinhTrang / 100;
                                 else
                                 {
-                                    hd.ThanhTien = (int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon * hd.TinhTrang / 100 / 100;
+                                    hd.ThanhTien = ((int)hd.SoLuong * (int)hd.DonGiaBan * Const.QuyDinh_HeSoDonGiaMuon / 100 * hd.TinhTrang / 100);
                                     TongSachMuon += (int)hd.SoLuong;
                                 }
                             TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.ThanhTien);

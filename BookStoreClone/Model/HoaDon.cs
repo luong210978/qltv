@@ -48,7 +48,7 @@ public partial class HoaDon
     public virtual KhachHang KhachHang { get; set; }
 
     public virtual NguoiDung NguoiDung { get; set; }
-		public int SoSachMuon { get; internal set; }
+	public int SoSachMuon { get; internal set; }
 	}
 
 }

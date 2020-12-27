@@ -29,7 +29,7 @@ public partial class CTHD
     public string PhuongThuc { get; set; }
     public string TrangThai { get; set; }
     public int TinhTrang { get; set; }
-    public int ThanhTien { get; set; }
+    public long ThanhTien { get; set; }
     public bool isenabletra { get; set; }
     public virtual HoaDon HoaDon { get; set; }
     public virtual Sach Sach { get; set; }

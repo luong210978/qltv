@@ -15,7 +15,7 @@
     
    
     WindowStyle="None"
-    mc:Ignorable="d" WindowState="Maximized" Title="Nhà Sách Của Lương" MinWidth="900" MinHeight="200">
+    mc:Ignorable="d" WindowState="Maximized" Title="Thư Viện" MinWidth="900" MinHeight="200">
     <i:Interaction.Triggers>
         <i:EventTrigger EventName="Loaded">
             <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}" CommandParameter="{Binding ElementName=mainWindow}" />
