@@ -35,7 +35,7 @@
 >>>>>>> Stashed changes
         <EntityTypeShape EntityType="QLNSModel.NhaXuatBan" Width="1.5" PointX="0.75" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="QLNSModel.PhieuNhap" Width="1.5" PointX="3" PointY="15.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLNSModel.PhieuThuTien" Width="1.5" PointX="8" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLNSModel.PhieuThuTien" Width="1.5" PointX="7.875" PointY="8.125" IsExpanded="true" />
         <EntityTypeShape EntityType="QLNSModel.QuyDinh" Width="1.5" PointX="7.625" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="QLNSModel.Sach" Width="1.5" PointX="3.25" PointY="7.25" IsExpanded="true" />
         <EntityTypeShape EntityType="QLNSModel.TacGia" Width="1.5" PointX="5.25" PointY="15.875" IsExpanded="true" />

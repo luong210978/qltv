@@ -381,32 +381,6 @@ CREATE TABLE [dbo].[NhaXuatBan](
 ) ON [PRIMARY]
 GO
 
-
-/****** Object: ADD COLUMN [dbo].[HoaDon]    Script Date: 23/12/2020 0:00 AM ******/
-ALTER TABLE [dbo].[CTHD]
-ADD [SoSachMuon] [int] 
-GO
-
-
-/****** Object: ADD COLUMN [dbo].[KhachHang]    Script Date: 23/12/2020 0:00 AM ******/
-ALTER TABLE [dbo].[KhachHang]
-ADD [SoSachChuaTra] [int] 
-
-ALTER TABLE [dbo].[KhachHang]
-ADD [SoTienPhat] [int] 
-GO
-
-
-/****** Object: ADD COLUMN [dbo].[PhieuNhap]    Script Date: 23/12/2020 0:00 AM ******/
-
-ALTER TABLE [dbo].[PhieuNhap]
-ADD [GiaTriPhieuNhap] [int] 
-
-ALTER TABLE [dbo].[PhieuNhap]
-ADD [TongSoSachNhap] [int] 
-GO
-
-
 SET IDENTITY_INSERT [dbo].[NhaXuatBan] ON
 INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (2,N'Kim Đồng')
 INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (3,N'ARTBOOK')
