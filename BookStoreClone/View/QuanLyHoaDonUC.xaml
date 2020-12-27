@@ -559,13 +559,7 @@
                                 <TextBlock FontSize="15" Text="{Binding TongGiaBan}" />
                             </StackPanel>
                             <StackPanel DockPanel.Dock="Top" Orientation="Horizontal">
-                                <TextBox
-                                    Width="100"
-                                    VerticalAlignment="Center"
-                                    materialDesign:HintAssist.Hint="chiết khấu"
-                                    FontSize="15"
-                                    Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                    Text="{Binding DisCount, UpdateSourceTrigger=PropertyChanged}" />
+
                                 <TextBox
                                     Width="100"
                                     VerticalAlignment="Center"
@@ -609,7 +603,7 @@
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="False"
                         ItemsSource="{Binding ListCTHD_BanSach}"
-                        SelectedItem="{Binding SelectedItemCTHD,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" Width="703">
+                        SelectedItem="{Binding SelectedItemCTHD,Mode=OneWayToSource}" SelectionMode="Single" Width="703">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="CellEditEnding">
                                 <i:InvokeCommandAction Command="{Binding CellEditEndingThemSachCommand}" />
@@ -648,7 +642,7 @@
                                 Header="Tình Trạng"
                                 IsEditable="True"
                                 ItemsSourceBinding="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}, Path=DataContext.ListChonTinhTrang}"
-                                SelectedValueBinding="{Binding TinhTrang, UpdateSourceTrigger=PropertyChanged}" CanUserSort="True" 
+                                SelectedValueBinding="{Binding TinhTrang}" CanUserSort="True" 
                               
                                  
                               />
