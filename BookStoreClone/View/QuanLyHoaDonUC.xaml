@@ -243,7 +243,7 @@
             Margin="5"
             DataContext="{StaticResource QuanLyKhachHangVM}"
             DockPanel.Dock="Right"
-            Visibility="{Binding VisibilityChonKhachHang, Source={StaticResource QuanLyHoaDonVM}, UpdateSourceTrigger=PropertyChanged}" Width="433">
+            Visibility="{Binding VisibilityChonKhachHang, Source={StaticResource QuanLyHoaDonVM}, UpdateSourceTrigger=PropertyChanged}" Width="513">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="Loaded">
                     <i:InvokeCommandAction Command="{Binding LoadCardKhachHang, Source={StaticResource QuanLyHoaDonVM}}" CommandParameter="{Binding ElementName=pnlChonKhachHang}" />
@@ -293,7 +293,7 @@
                         </Grid>
                     </materialDesign:ColorZone>
                 </DockPanel>
-                <ScrollViewer Margin="0,10,0,0" Padding="10,0,10,0" Width="442">
+                <ScrollViewer Margin="0,0,0,0" Padding="0,0,0,0" Width="513">
                     <DataGrid
                         x:Name="dataKH"
                         VerticalContentAlignment="Top"
@@ -304,7 +304,7 @@
                         HeadersVisibility="All"
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="True"
-                        ItemsSource="{Binding ListKH}" Width="409" RenderTransformOrigin="0.344,0.493">
+                        ItemsSource="{Binding ListKH}" Width="513" RenderTransformOrigin="0.344,0.493">
 
                         <DataGrid.Columns>
                             <DataGridTemplateColumn>
