@@ -27,7 +27,7 @@ namespace BookStoreClone.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPhieuNhap> CTPhieuNhaps { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
-		public int GiaTriPhieuNhap { get; internal set; }
-		public int TongSoSachNhap { get; internal set; }
+		public int GiaTriPhieuNhap { get;  set; }
+		public int TongSoSachNhap { get;  set; }
 	}
 }

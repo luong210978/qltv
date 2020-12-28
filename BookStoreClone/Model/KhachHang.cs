@@ -35,9 +35,9 @@ namespace BookStoreClone.Model
         public virtual ICollection<HoaDon> HoaDons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuThuTien> PhieuThuTiens { get; set; }
-		public int SoTienPhat { get; internal set; }
-		public int SoSachChuaTra { get; internal set; }
-		public int TongSoTien { get; internal set; }
-		public bool IsEnable_BanSach { get; internal set; }
+		public int SoTienPhat { get;  set; }
+		public int SoSachChuaTra { get;  set; }
+		public int TongSoTien { get;  set; }
+		public bool IsEnable_BanSach { get;  set; }
 	}
 }

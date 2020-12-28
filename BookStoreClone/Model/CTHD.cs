@@ -20,12 +20,12 @@ namespace BookStoreClone.Model
         public int MaSach { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> DonGiaBan { get; set; }
-    
+        public string PhuongThuc { get;  set; }
+        public string TrangThai { get;  set; }
+        public int ThanhTien { get;  set; }
+        public int TinhTrang { get;  set; }
         public virtual HoaDon HoaDon { get; set; }
         public virtual Sach Sach { get; set; }
-        public string PhuongThuc { get; internal set; }
-        public object TrangThai { get; internal set; }
-		public int ThanhTien { get; internal set; }
-		public int TinhTrang { get; internal set; }
+       
 	}
 }
