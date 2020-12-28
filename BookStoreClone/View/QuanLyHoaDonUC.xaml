@@ -602,14 +602,14 @@
                         AutoGenerateColumns="False"
                         Background="Transparent"
                         CanUserAddRows="False"
-                        CanUserSortColumns="True"
+                        CanUserSortColumns="False"
                         DockPanel.Dock="Top"
                         GridLinesVisibility="None"
                         HeadersVisibility="All"
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="False"
                         ItemsSource="{Binding ListCTHD_BanSach}"
-                        SelectedItem="{Binding SelectedItemCTHD,Mode=OneWayToSource,UpdateSourceTrigger=PropertyChanged}" SelectionMode="Single" Width="703">
+                        SelectedItem="{Binding SelectedItemCTHD}" SelectionMode="Single" Width="703">
                         <i:Interaction.Triggers>
                             <i:EventTrigger EventName="CellEditEnding">
                                 <i:InvokeCommandAction Command="{Binding CellEditEndingThemSachCommand}" />
