@@ -14,18 +14,17 @@ namespace BookStoreClone.Model
     
     public partial class CTHD
     {
-        internal bool isenabletra;
-
         public int MaHD { get; set; }
         public int MaSach { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<int> DonGiaBan { get; set; }
-        public string PhuongThuc { get;  set; }
-        public string TrangThai { get;  set; }
-        public int ThanhTien { get;  set; }
-        public int TinhTrang { get;  set; }
+        public string TrangThai { get; set; }
+        public Nullable<int> TinhTrang { get; set; }
+        public Nullable<int> ThanhTien { get; set; }
+        public string PhuongThuc { get; set; }
+        public Nullable<bool> isenabletra { get; set; }
+    
         public virtual HoaDon HoaDon { get; set; }
         public virtual Sach Sach { get; set; }
-       
-	}
+    }
 }

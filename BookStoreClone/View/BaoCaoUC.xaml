@@ -72,7 +72,7 @@
                 <ProgressBar DockPanel.Dock="Top" 
                     Style="{StaticResource MaterialDesignCircularProgressBar}"
                     Value="35"
-                    IsIndeterminate="True" Height="Auto" Margin="103,20,212.6,290" Width="Auto" />
+                    IsIndeterminate="True" Height="Auto" Margin="163,20,322.8,290" Width="Auto" />
                 <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  DockPanel.Dock="Top">
                     <TextBlock Text="Tổng số tiền khách hàng trả trong tháng: " FontSize="15" ></TextBlock>
                     <TextBlock Text="{Binding TongSoTra,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="15"></TextBlock>
@@ -81,7 +81,7 @@
                 <ProgressBar DockPanel.Dock="Top"
                     Style="{StaticResource MaterialDesignCircularProgressBar}"
                     Value="35"
-                    IsIndeterminate="True" Height="Auto" Margin="103,20,212.6,150" Width="Auto" />
+                    IsIndeterminate="True" Height="16" Margin="163,20,322.8,150" Width="Auto" />
             </DockPanel>
         </materialDesign:Card >
         <!--Báo Cáo Tồn-->
@@ -97,7 +97,7 @@
                 </TransformGroup>
             </materialDesign:Card.RenderTransform>
             <DockPanel Margin="10,0,10.2,10.4" >
-                <StackPanel Margin="0,0,0.2,363" DockPanel.Dock="Top" Height="334">
+                <!--<StackPanel Margin="0,0,0.2,363" DockPanel.Dock="Top" Height="334">
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Right"  DockPanel.Dock="Top" Margin="0,0,183.2,0" Height="28" Width="440">
                         <TextBlock Text="Tổng số sách nhập trong tháng: " FontSize="15" Height="28" Width="234"></TextBlock>
                         <TextBlock Text="{Binding TongSoSachNhap,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="15"></TextBlock>
@@ -148,6 +148,7 @@
                         </ScrollViewer>
                     </StackPanel>
                 </StackPanel>
+                -->
                 <!--<chart:Columnchart></chart:Columnchart>-->
                 <!--<chart:
                     >
@@ -156,6 +157,7 @@
 
                 <!--<Canvas x:Name="mainCanvas" 
                 Margin="20,6.4,20,393"/>-->
+                <!--
                 <StackPanel Margin="0,-358,0,1" >
                     <StackPanel  Orientation="Horizontal" Width="610" Height="35">
                         <TextBlock Text="Tổng số sách bán được trong tháng :" FontSize="15" Margin="0,0,0,-0.2" Width="256" Height="30" VerticalAlignment="Bottom"/>
@@ -206,8 +208,29 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </StackPanel>
-                </StackPanel>
+                </StackPanel>-->
+                <DockPanel Margin="10">
+                    <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center"  DockPanel.Dock="Top" Margin="0,90,0,0">
+                        <TextBlock Text="Tổng số sách nhập trong tháng: " FontSize="15" Height="28" Width="234"></TextBlock>
+                        <TextBlock Text="{Binding TongSoSachNhap,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="15"></TextBlock>
+                        <TextBlock Text=" quyển" FontSize="15"></TextBlock>
+                    </StackPanel>
 
+                    <ProgressBar DockPanel.Dock="Top" 
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="35"
+                    IsIndeterminate="True" Height="Auto" Margin="163,20,322.8,290" Width="Auto" />
+                    <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Center"  DockPanel.Dock="Top">
+                        <TextBlock Text="Tổng số sách bán được trong tháng :"  FontSize="15" ></TextBlock>
+                        <TextBlock Text="{Binding TongSoSachBan,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" FontSize="15"></TextBlock>
+                        <TextBlock Text=" quyển" FontSize="15"></TextBlock>
+                    </StackPanel>
+
+                    <ProgressBar DockPanel.Dock="Top"
+                    Style="{StaticResource MaterialDesignCircularProgressBar}"
+                    Value="35"
+                    IsIndeterminate="True" Height="153" Margin="163,20,322.8,150" Width="167" />
+                </DockPanel>
             </DockPanel>
         </materialDesign:Card>
         <!--Quản lí nhân viên-->

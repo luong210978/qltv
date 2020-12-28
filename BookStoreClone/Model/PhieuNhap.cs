@@ -23,11 +23,11 @@ namespace BookStoreClone.Model
         public int MaPN { get; set; }
         public Nullable<System.DateTime> NgayNhap { get; set; }
         public int MaND { get; set; }
+        public Nullable<int> GiaTriPhieuNhap { get; set; }
+        public Nullable<int> TongSoSachNhap { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPhieuNhap> CTPhieuNhaps { get; set; }
         public virtual NguoiDung NguoiDung { get; set; }
-		public int GiaTriPhieuNhap { get;  set; }
-		public int TongSoSachNhap { get;  set; }
-	}
+    }
 }

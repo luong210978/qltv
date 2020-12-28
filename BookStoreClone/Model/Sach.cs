@@ -31,6 +31,8 @@ namespace BookStoreClone.Model
         public string MoTa { get; set; }
         public string AnhBia { get; set; }
         public Nullable<int> MaNXB { get; set; }
+        public Nullable<bool> IsCoTheNhapThem { get; set; }
+        public Nullable<bool> IsBtnBanSach { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTBaoCaoTon> CTBaoCaoTons { get; set; }
@@ -43,7 +45,5 @@ namespace BookStoreClone.Model
         public virtual ICollection<TacGia> TacGias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TheLoai> TheLoais { get; set; }
-		public bool IsBtnBanSach { get;  set; }
-		public bool IsCoTheNhapThem { get;  set; }
-	}
+    }
 }

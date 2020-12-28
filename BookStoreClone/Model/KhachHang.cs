@@ -28,6 +28,10 @@ namespace BookStoreClone.Model
         public string DiaChi { get; set; }
         public string Email { get; set; }
         public int SoTienNo { get; set; }
+        public Nullable<int> TongSoTien { get; set; }
+        public Nullable<bool> IsEnable_BanSach { get; set; }
+        public Nullable<int> SoTienPhat { get; set; }
+        public Nullable<int> SoSachChuaTra { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTBaoCaoCongNo> CTBaoCaoCongNoes { get; set; }
@@ -35,9 +39,5 @@ namespace BookStoreClone.Model
         public virtual ICollection<HoaDon> HoaDons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhieuThuTien> PhieuThuTiens { get; set; }
-		public int SoTienPhat { get;  set; }
-		public int SoSachChuaTra { get;  set; }
-		public int TongSoTien { get;  set; }
-		public bool IsEnable_BanSach { get;  set; }
-	}
+    }
 }

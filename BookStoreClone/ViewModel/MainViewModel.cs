@@ -133,15 +133,15 @@ namespace BookStoreClone.ViewModel
                     }
 
                     LinkAnhBiaava = _localLink + @"Resources\img\" + "nhanvien" + User.MaND.ToString() + "_.jpg";
-                    if(System.IO.Directory.Exists( LinkAnhBiaava))
-                        LinkAnhBiaava = _localLink + @"Resources\img\19476200.png";
+
+
                 }
                 else
                 {
                     p.Show();
                     KinhDoanh = "Lập Thử";
                     PQKhachHang();
-                    LinkAnhBiaava = _localLink + @"Resources\img\19476200.png";
+                    LinkAnhBiaava = _localLink + @"Resources\img\19476 - 200.png";
                 }
             });
 
