@@ -400,8 +400,8 @@
                         HeadersVisibility="All"
                         IsReadOnly="True"
                         VerticalScrollBarVisibility="Auto"
-                        SelectedItem="{Binding SelectedCTHD}"
-                        ItemsSource="{Binding SelectedHoaDon.CTHDs}" Height="120">
+                        SelectedItem="{Binding SelectedCTHD,UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding SelectedHoaDon.CTHDs,UpdateSourceTrigger=PropertyChanged}" Height="120">
 
 
                             <DataGrid.Columns  >
@@ -415,7 +415,7 @@
                                                 Height="25"
                                                 Command="{Binding Trasach}"
                                                 DataContext="{StaticResource PhieuThuTienVM}"
-                                                IsEnabled="{Binding isenabletra}"
+                                                IsEnabled="{Binding isenabletra,UpdateSourceTrigger=PropertyChanged}"
                                                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                                 ToolTip="Trả Sách">
                                                     <materialDesign:PackIcon
@@ -446,7 +446,7 @@
                                 Header="Phương Thức"
                                 IsReadOnly="true" />
                                 <DataGridTextColumn
-                                Binding="{Binding TrangThai}"
+                                Binding="{Binding TrangThai,UpdateSourceTrigger=PropertyChanged}"
                                 Header="Trạng thái"
                                 IsReadOnly="true" />
 

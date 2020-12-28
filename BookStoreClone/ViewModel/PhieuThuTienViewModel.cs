@@ -92,9 +92,9 @@ namespace BookStoreClone.ViewModel
             {
                 _SelectedCTHD = value;
                 OnPropertyChanged();
-                if (SelectedCTHD == null)
-                    return;             
-            }
+				if (SelectedCTHD == null)
+					return;
+			}
         }
 
         public DateTime SelectedDateTime { get => _SelectedDateTime; set { _SelectedDateTime = value; OnPropertyChanged(); } }
@@ -131,7 +131,7 @@ namespace BookStoreClone.ViewModel
                                 SelectedKhachHang.SoTienPhat = 0;
                             }
                         SelectedCTHD.isenabletra = false;
-
+						//SelectedCTHD = = new ObservableCollection<CTHD>(SelectedCTHD);
                         DataProvider.Ins.DB.SaveChanges();
                     }
                     catch { }
