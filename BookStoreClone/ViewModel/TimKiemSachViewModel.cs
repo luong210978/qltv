@@ -14,6 +14,7 @@
 		private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
 		internal List<Sach> a;
 		internal List<TacGia> b;
+		internal List<TheLoai> c;
 
 		internal WrapPanel wrapPanel;
 
@@ -98,7 +99,7 @@
 				{
 					case "Tên sách":
 
-						a = DataProvider.Ins.DB.Saches.Where(x => x.TenSach.Contains(TextTimKiem)).ToList();
+					a = DataProvider.Ins.DB.Saches.Where(x => x.TenSach.Contains(TextTimKiem)).ToList();
 						MaxTrang = a.Count % SoLuongHienThi == 0 ? a.Count / SoLuongHienThi : a.Count / SoLuongHienThi + 1;
 						LoadSachTu(0, SoLuongHienThi - 1 < a.Count ? SoLuongHienThi - 1 : a.Count - 1, wrapPanel);
 
@@ -110,6 +111,15 @@
 						a.Clear();
 						for(int j=0; j < b.Count; j++)
 						{ a.AddRange(b[j].Saches); }
+						MaxTrang = a.Count % SoLuongHienThi == 0 ? a.Count / SoLuongHienThi : a.Count / SoLuongHienThi + 1;
+						LoadSachTu(0, SoLuongHienThi - 1 < a.Count ? SoLuongHienThi - 1 : a.Count - 1, wrapPanel);
+						break;
+					case "Thể Loại":
+
+						c = DataProvider.Ins.DB.TheLoais.Where(x => x.TenTL.Contains(TextTimKiem)).ToList();
+						a.Clear();
+						for (int j = 0; j < c.Count; j++)
+						{ a.AddRange(c[j].Saches); }
 						MaxTrang = a.Count % SoLuongHienThi == 0 ? a.Count / SoLuongHienThi : a.Count / SoLuongHienThi + 1;
 						LoadSachTu(0, SoLuongHienThi - 1 < a.Count ? SoLuongHienThi - 1 : a.Count - 1, wrapPanel);
 						break;
@@ -198,6 +208,9 @@
 						break;
 					case "Tác giả":
 						texttimkiem = "Tác giả";
+						break;
+					case "Thể Loại":
+						texttimkiem = "Thể Loại";
 						break;
 				}
 			}

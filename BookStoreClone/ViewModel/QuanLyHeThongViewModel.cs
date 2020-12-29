@@ -1,7 +1,9 @@
 ﻿using BookStoreClone.Model;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
@@ -14,6 +16,7 @@ namespace BookStoreClone.ViewModel
 {
     class QuanLyHeThongViewModel : BaseViewModel
     {
+        private string _localLink = System.Reflection.Assembly.GetExecutingAssembly().Location.Remove(System.Reflection.Assembly.GetExecutingAssembly().Location.IndexOf(@"bin\Debug"));
         private ObservableCollection<NguoiDung> _listNV;
         private QuyDinh _selectedQuyDinh;
         private bool _setTaiKhoan;
@@ -53,9 +56,10 @@ namespace BookStoreClone.ViewModel
         public ICommand XoaNhanVienCommand { get; set; }
         public ICommand ShowSuaDoiQuyDinhCommand { get; set; }
         public ICommand ShowThemNhanVienCommand { get; set; }
+        public ICommand ChonAnhCommmand { get; set; }
         public bool CheckKhong { get => _checkKhong; set { _checkKhong = value; OnPropertyChanged(); } }
 
-        public NguoiDung SelectedNhanVien { get => _selectedNhanVien; set { _selectedNhanVien = value; OnPropertyChanged(); } }
+        public NguoiDung SelectedNhanVien { get => _selectedNhanVien; set { _selectedNhanVien = value; OnPropertyChanged();  } }
 
         public Visibility VisibilityThayDoiQuyDinh { get => _visibilityThayDoiQuyDinh; set { _visibilityThayDoiQuyDinh = value; OnPropertyChanged(); } }
         public Visibility VisbilityThemNhanVien
@@ -81,10 +85,21 @@ namespace BookStoreClone.ViewModel
 
         public string TextTimKiemNhanVien { get => _textTimKiemNhanVien; set { _textTimKiemNhanVien = value; OnPropertyChanged(); TimKiemNhanVien(); } }
         private string _Labelnhanvien;
+        private string _anhBia;
+		private string _Password;
+
+		public string LinkAnhBia { get => _anhBia; set { _anhBia = value; OnPropertyChanged(); } }
+
+        //private string SelectedNhanVien.img { get => _anhBia; set { _anhBia = value; OnPropertyChanged(); } }
+
         public bool SetTaiKhoan { get => _setTaiKhoan; set { _setTaiKhoan = value; OnPropertyChanged(); } }
         public string Labelnhanvien { get => _Labelnhanvien; set { _Labelnhanvien = value; OnPropertyChanged(); } }
+
+		public string Password { get => _Password; set { _Password = value; OnPropertyChanged(); } }
+
         public QuanLyHeThongViewModel()
         {
+            Password = "";
             SelectedQuyDinh = new QuyDinh();
             int a = DataProvider.Ins.DB.QuyDinhs.Count();
             SelectedQuyDinh = DataProvider.Ins.DB.QuyDinhs.ToList()[a - 1];
@@ -106,6 +121,7 @@ namespace BookStoreClone.ViewModel
                 CheckCo = false;
             }
 
+           // SelectedNhanVien.img = _localLink + @"Resources\SelectedNhanVien.img\" + "BookNull.png";
 
             VisbilityThemNhanVien = Visibility.Collapsed;
             VisibilityThayDoiQuyDinh = Visibility.Collapsed;
@@ -137,8 +153,12 @@ namespace BookStoreClone.ViewModel
                     //p.IsEnabled = false;
                     log = 1;
                     SelectedNhanVien = new NguoiDung();
+                   // SelectedNhanVien.TenND = "a";
                     SelectedNhanVien.NgaySinh = DateTime.Today;
                     SetTaiKhoan = true;
+                    LinkAnhBia = _localLink + @"Resources\img\" + "BookNull.png";
+                    SelectedNhanVien.MatKhau = "";
+                    Password = "";
                 }
             });
             ShowSuaDoiQuyDinhCommand = new RelayCommand<object>((p) => { return true; }, (p) =>
@@ -159,8 +179,8 @@ namespace BookStoreClone.ViewModel
             });
             LuuNguoiDungCommand = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
-
-                if (!(string.IsNullOrEmpty(SelectedNhanVien.TenND) || string.IsNullOrEmpty(SelectedNhanVien.SDT) || string.IsNullOrEmpty(SelectedNhanVien.TenDangNhap) || string.IsNullOrEmpty(SelectedNhanVien.MatKhau)))
+                Random random = new Random();
+                if (!(string.IsNullOrEmpty(SelectedNhanVien.TenND) || string.IsNullOrEmpty(SelectedNhanVien.SDT) || string.IsNullOrEmpty(SelectedNhanVien.TenDangNhap) || string.IsNullOrEmpty(Password)))
                 {
                     if (log == 1)
                     {
@@ -179,15 +199,25 @@ namespace BookStoreClone.ViewModel
                                     SelectedNhanVien.GioiTinh = true;
                                 else
                                     SelectedNhanVien.GioiTinh = false;
+                                SelectedNhanVien.img = LinkAnhBia;
+
+                                try
+                                {
+                                    SelectedNhanVien.img = "nhanvien" + SelectedNhanVien.MaND.ToString() + "_";
+                                    File.Copy(LinkAnhBia, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
+                                    //break;
+                                }
+                                catch { }
+                                SelectedNhanVien.MatKhau = MD5Hash(Base64Encode(Password));
                                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[NguoiDung] ON");
                                 DataProvider.Ins.DB.NguoiDungs.Add(SelectedNhanVien);
                                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT[dbo].[NguoiDung] OFF");
                                 DataProvider.Ins.DB.SaveChanges();
                                 ListNV = new ObservableCollection<NguoiDung>(DataProvider.Ins.DB.NguoiDungs);
-                                SelectedNhanVien = null;
+                                //SelectedNhanVien = null;
 
-                                Nam = false;
-                                Nu = false;
+                                //Nam = false;
+                                //Nu = false;
 
                             }
                         }
@@ -205,17 +235,29 @@ namespace BookStoreClone.ViewModel
                             SelectedNhanVien.Admin = Admin;
                             SelectedNhanVien.NhanVienKho = QuanLyKho;
                             SelectedNhanVien.NhanVienBan = CNV;
+                            SelectedNhanVien.img = LinkAnhBia;
                             SelectedNhanVien.MatKhau = MD5Hash(Base64Encode(SelectedNhanVien.MatKhau));
                             if (Nam == true)
                                 SelectedNhanVien.GioiTinh = true;
                             else
                                 SelectedNhanVien.GioiTinh = false;
+                           // while(true)
+								try
+								{
+                                    SelectedNhanVien.img ="nhanvien"+SelectedNhanVien.MaND.ToString() + "_" +((SelectedNhanVien.img.Contains(".jpg")) ? ".jpg" : ".png").ToString();
+                                    File.Delete(_localLink + @"Resources\img\" + SelectedNhanVien.img);
+									File.Copy(LinkAnhBia, _localLink + @"Resources\img\" + SelectedNhanVien.img, true);
+                                    //break;
+								}
+								catch { }
+							DataProvider.Ins.DB.SaveChanges();
 
-                            DataProvider.Ins.DB.SaveChanges();
                             ListNV = new ObservableCollection<NguoiDung>(DataProvider.Ins.DB.NguoiDungs);
-                            SelectedNhanVien = null;
-                            Nam = false;
-                            Nu = false;
+                            //SelectedNhanVien = null;
+                            //Nam = false;
+                            //Nu = false;
+                            //LinkAnhBia = LinkAnhBia = _localLink + @"Resources\img\" + "BookNull.png";
+                            
                         }
                     }
                 }
@@ -225,14 +267,23 @@ namespace BookStoreClone.ViewModel
                     MessageBox.Show("Bạn chưa nhập đủ thông tin!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 }
             });
-            
+            ChonAnhCommmand = new RelayCommand<Image>((p) => { return true; }, (p) =>
+            {
+                OpenFileDialog open = new OpenFileDialog();
+                open.Filter = "Image Files(*.jpg; *.png)|*.jpg; *.png";
+                if (open.ShowDialog() == true)
+                {
+                    LinkAnhBia = open.FileName;
+                };
+            });
             LoadChiTietNhanVienCommand = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
                 log = 0;
                 XulyHien(1);
                 SelectedNhanVien = p.SelectedItem as NguoiDung;
                 Labelnhanvien = "Chỉnh Sửa Thông Tin Nhân Viên";
-                SelectedNhanVien.MatKhau = "";
+                //SelectedNhanVien.MatKhau ="";
+                Password = "";
                 n = 1;
                 //p.IsEnabled = false;
                 SetTaiKhoan = false;
@@ -248,7 +299,16 @@ namespace BookStoreClone.ViewModel
                 }
                 Admin = SelectedNhanVien.Admin;
                 QuanLyKho = SelectedNhanVien.NhanVienKho;
-                CNV = SelectedNhanVien.NhanVienBan;
+				CNV = SelectedNhanVien.NhanVienBan;
+				// LinkAnhBia = _localLink + @"Resources\img\" + "nhanvien" + SelectedNhanVien.MaND.ToString() + "_".png;
+				//if (SelectedNhanVien.img == null)
+				//	LinkAnhBia = _localLink + @"Resources\img\" + "BookNull.png";
+				//else
+				LinkAnhBia = _localLink + @"Resources\img\" + SelectedNhanVien.img;
+                if(SelectedNhanVien.img==null)
+                   LinkAnhBia= LinkAnhBia = _localLink + @"Resources\img\" + "nhanvien" + SelectedNhanVien.MaND.ToString() + "_.jpg";
+                else
+                    LinkAnhBia = _localLink + @"Resources\img\" + SelectedNhanVien.img;
 
             });
             CapNhatQuyDinhCommand = new RelayCommand<object>((p) => { return true; }, (p) =>

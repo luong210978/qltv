@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookStoreClone", "BookStoreClone\BookStoreClone.csproj", "{57A0EDD6-7725-49B7-9212-30D968BCA1A1}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "qltvttt", "qltvttt\qltvttt.vdproj", "{CBB31378-CE06-48B7-AC5C-8C0566F7CC2C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,8 +15,6 @@ Global
 		{57A0EDD6-7725-49B7-9212-30D968BCA1A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{57A0EDD6-7725-49B7-9212-30D968BCA1A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{57A0EDD6-7725-49B7-9212-30D968BCA1A1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CBB31378-CE06-48B7-AC5C-8C0566F7CC2C}.Debug|Any CPU.ActiveCfg = Debug
-		{CBB31378-CE06-48B7-AC5C-8C0566F7CC2C}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

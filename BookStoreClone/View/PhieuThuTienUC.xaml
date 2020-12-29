@@ -14,11 +14,11 @@
     <DockPanel>
         <ScrollViewer DockPanel.Dock="Right">
             <materialDesign:Card
-            Width="426"
+            Width="516"
             Margin="5,0"
             Tag="{Binding IDSach, UpdateSourceTrigger=PropertyChanged}" Height="730">
 
-                <DockPanel Width="426" LastChildFill="True">
+                <DockPanel Width="516" LastChildFill="True">
 
 
 
@@ -141,7 +141,7 @@
                         HeadersVisibility="All"
                         IsReadOnly="True"
                         SelectedItem="{Binding SelectedHoaDon}"
-                        ItemsSource="{Binding SelectedKhachHang.HoaDons}" HorizontalScrollBarVisibility="Disabled" Height="120">
+                        ItemsSource="{Binding SelectedKhachHang.HoaDons}" HorizontalScrollBarVisibility="Disabled" Height="120" Width="466">
 
                             <DataGrid.Columns>
 
@@ -400,8 +400,8 @@
                         HeadersVisibility="All"
                         IsReadOnly="True"
                         VerticalScrollBarVisibility="Auto"
-                        SelectedItem="{Binding SelectedCTHD}"
-                        ItemsSource="{Binding SelectedHoaDon.CTHDs}" Height="120">
+                        SelectedItem="{Binding SelectedCTHD,UpdateSourceTrigger=PropertyChanged}"
+                        ItemsSource="{Binding SelectedHoaDon.CTHDs,UpdateSourceTrigger=PropertyChanged}" Height="120">
 
 
                             <DataGrid.Columns  >
@@ -415,7 +415,7 @@
                                                 Height="25"
                                                 Command="{Binding Trasach}"
                                                 DataContext="{StaticResource PhieuThuTienVM}"
-                                                IsEnabled="{Binding isenabletra}"
+                                                IsEnabled="{Binding isenabletra,UpdateSourceTrigger=PropertyChanged}"
                                                 Style="{StaticResource MaterialDesignFloatingActionMiniButton}"
                                                 ToolTip="Trả Sách">
                                                     <materialDesign:PackIcon
@@ -545,7 +545,7 @@
                             Header="Nợ"
                             IsReadOnly="False" />
                         <DataGridTextColumn
-                            Binding="{Binding SoSachChuaTra}"
+                            Binding="{Binding SoSachChuaTra,UpdateSourceTrigger=PropertyChanged}"
                             Header="Số sách chưa trả"
                             IsReadOnly="False" />
 

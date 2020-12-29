@@ -41,8 +41,14 @@ namespace BookStoreClone.ViewModel
                     {
                         hd.PhuongThuc = "Mua";
                         hd.isenabletra = false;
+                        DataProvider.Ins.DB.SaveChanges();
                     }
-
+                    if (hd.PhuongThuc == "Mua")
+                    {
+                        hd.PhuongThuc = "Mua";
+                        hd.isenabletra = false;
+                        DataProvider.Ins.DB.SaveChanges();
+                    }
                     if (hd.PhuongThuc == "Mượn")
                     {
                         hd.isenabletra = true;
@@ -50,9 +56,11 @@ namespace BookStoreClone.ViewModel
                         {
                             hd.TrangThai = "Đã trả";
                             hd.isenabletra = false;
-
+                            DataProvider.Ins.DB.SaveChanges();
                         }
+                        DataProvider.Ins.DB.SaveChanges();
                     }
+                    
                 }
 				return;
 
@@ -92,9 +100,9 @@ namespace BookStoreClone.ViewModel
             {
                 _SelectedCTHD = value;
                 OnPropertyChanged();
-                if (SelectedCTHD == null)
-                    return;             
-            }
+				if (SelectedCTHD == null)
+					return;
+			}
         }
 
         public DateTime SelectedDateTime { get => _SelectedDateTime; set { _SelectedDateTime = value; OnPropertyChanged(); } }
@@ -127,11 +135,13 @@ namespace BookStoreClone.ViewModel
                                 SelectedCTHD.isenabletra = false;
                                 SelectedKhachHang.SoSachChuaTra -= (int)SelectedCTHD.SoLuong;
                                 SelectedCTHD.Sach.SoLuongTon += SelectedCTHD.SoLuong;
-                                SelectedKhachHang.SoTienNo += SelectedKhachHang.SoTienPhat;
+                                SelectedHoaDon.SoSachMuon-= SelectedCTHD.SoLuong;
+                                SelectedKhachHang.SoTienNo += (int)SelectedKhachHang.SoTienPhat;
                                 SelectedKhachHang.SoTienPhat = 0;
+                                DataProvider.Ins.DB.SaveChanges();
                             }
                         SelectedCTHD.isenabletra = false;
-
+						//SelectedCTHD = = new ObservableCollection<CTHD>(SelectedCTHD);
                         DataProvider.Ins.DB.SaveChanges();
                     }
                     catch { }

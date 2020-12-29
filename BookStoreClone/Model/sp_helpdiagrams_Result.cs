@@ -10,16 +10,13 @@
 namespace BookStoreClone.Model
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class CTBaoCaoTon
+    public partial class sp_helpdiagrams_Result
     {
-        public int MaBaoCao { get; set; }
-        public int MaSach { get; set; }
-        public int SoLuongTonDau { get; set; }
-        public int SoLuongTonCuoi { get; set; }
-    
-        public virtual BaoCaoTon BaoCaoTon { get; set; }
-        public virtual Sach Sach { get; set; }
+        public string Database { get; set; }
+        public string Name { get; set; }
+        public int ID { get; set; }
+        public string Owner { get; set; }
+        public int OwnerID { get; set; }
     }
 }

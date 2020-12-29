@@ -69,19 +69,19 @@ namespace BookStoreClone.ViewModel
 
         public BaoCaoViewModel()
         {
-			//var result = from e in DataProvider.Ins.DB.HoaDons
-   //                      join d in DataProvider.Ins.DB.Saches
-                        
-			//			 where (e.NgayBan.Value.Month == Thang && e.NgayBan.Value.Year == Nam)
-			//			 orderby e.TongTien descending
-			//			 select new
-			//			 {
-			//				 e.BaoCaoCongNo.
-			//				 imageName = (from soh in db.tblProductImages
-			//							  where soh.product_id == e.ProductId
-			//							  select new { soh.image_name }).Take(1)
-			//			 };
-			Nam = 2020;
+            //var result = from e in DataProvider.Ins.DB.HoaDons
+            //                      join d in DataProvider.Ins.DB.Saches
+
+            //			 where (e.NgayBan.Value.Month == Thang && e.NgayBan.Value.Year == Nam)
+            //			 orderby e.TongTien descending
+            //			 select new
+            //			 {
+            //				 e.BaoCaoCongNo.
+            //				 imageName = (from soh in db.tblProductImages
+            //							  where soh.product_id == e.ProductId
+            //							  select new { soh.image_name }).Take(1)
+            //			 };
+            Nam = 2020;
             ListCTBaoCaoCongNo = new ObservableCollection<CTBaoCaoCongNo>(DataProvider.Ins.DB.CTBaoCaoCongNoes);
             ListCTBaoCaoTon = new ObservableCollection<CTBaoCaoTon>(DataProvider.Ins.DB.CTBaoCaoTons);
 
@@ -107,15 +107,15 @@ namespace BookStoreClone.ViewModel
 
             ShowBCTonCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
 
-             {
+            {
 
-                 showdgTon();
-                 VisibilityBaoCaoTon = Visibility.Visible;
-                 VisibilityBCCongNo = Visibility.Collapsed;
-                 p.Children.Clear();
-                 p.Children.Add(DGBaoCaoTon);
-               
-             });
+                showdgTon();
+                VisibilityBaoCaoTon = Visibility.Visible;
+                VisibilityBCCongNo = Visibility.Collapsed;
+                p.Children.Clear();
+                p.Children.Add(DGBaoCaoTon);
+
+            });
 
             datechange = new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
@@ -224,51 +224,51 @@ namespace BookStoreClone.ViewModel
             });
 
             TimKiemCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
-             {
-                 TongSoNo = 0;
-                 TongSoSachBan = 0;
-                 TongSoSachNhap = 0;
-                 TongSoTra = 0;
+            {
+                TongSoNo = 0;
+                TongSoSachBan = 0;
+                TongSoSachNhap = 0;
+                TongSoTra = 0;
 
-                 if ((Nam == DateTime.Now.Year && Thang < DateTime.Now.Month) || (Nam < DateTime.Now.Year))
-                 {
-                     try
-                     {
-                         _listHD = new ObservableCollection<HoaDon>(DataProvider.Ins.DB.HoaDons.Where(x => x.NgayBan.Value.Month == Thang && x.NgayBan.Value.Year == Nam));
-                         _listPTT = new ObservableCollection<PhieuThuTien>(DataProvider.Ins.DB.PhieuThuTiens.Where(x => x.NgayThuTien.Value.Month == Thang && x.NgayThuTien.Value.Year == Nam));
-                         _listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(x => x.HoaDon.NgayBan.Value.Month == Thang && x.HoaDon.NgayBan.Value.Year == Nam));
+                if ((Nam == DateTime.Now.Year && Thang < DateTime.Now.Month) || (Nam < DateTime.Now.Year))
+                {
+                    try
+                    {
+                        _listHD = new ObservableCollection<HoaDon>(DataProvider.Ins.DB.HoaDons.Where(x => x.NgayBan.Value.Month == Thang && x.NgayBan.Value.Year == Nam));
+                        _listPTT = new ObservableCollection<PhieuThuTien>(DataProvider.Ins.DB.PhieuThuTiens.Where(x => x.NgayThuTien.Value.Month == Thang && x.NgayThuTien.Value.Year == Nam));
+                        _listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs.Where(x => x.HoaDon.NgayBan.Value.Month == Thang && x.HoaDon.NgayBan.Value.Year == Nam));
 
-                         _listCTPN = new ObservableCollection<CTPhieuNhap>(DataProvider.Ins.DB.CTPhieuNhaps.Where(x => x.PhieuNhap.NgayNhap.Value.Month == Thang && x.PhieuNhap.NgayNhap.Value.Year == Nam));
-                         foreach (HoaDon a in _listHD)
-                         {
-                             TongSoNo += (int)(a.TongTien - a.SoTienTra);
-                         }
-                         foreach (PhieuThuTien a in _listPTT)
-                         {
-                             TongSoTra += (int)a.SoTienThu;
-                         }
-                         foreach (CTHD a in _listCTHD)
-                         {
-                             TongSoSachBan += (int)a.SoLuong;
-                         }
-                         foreach (CTPhieuNhap a in _listCTPN)
-                         {
-                             TongSoSachNhap += (int)a.SoLuongNhap;
-                         }
+                        _listCTPN = new ObservableCollection<CTPhieuNhap>(DataProvider.Ins.DB.CTPhieuNhaps.Where(x => x.PhieuNhap.NgayNhap.Value.Month == Thang && x.PhieuNhap.NgayNhap.Value.Year == Nam));
+                        foreach (HoaDon a in _listHD)
+                        {
+                            TongSoNo += (int)(a.TongTien - a.SoTienTra);
+                        }
+                        foreach (PhieuThuTien a in _listPTT)
+                        {
+                            TongSoTra += (int)a.SoTienThu;
+                        }
+                        foreach (CTHD a in _listCTHD)
+                        {
+                            TongSoSachBan += (int)a.SoLuong;
+                        }
+                        foreach (CTPhieuNhap a in _listCTPN)
+                        {
+                            TongSoSachNhap += (int)a.SoLuongNhap;
+                        }
 
-                     }
-                     catch
-                     {
-                         MessageBox.Show("Tạm thời chưa có dữ liệu", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                     }
-                 }
-                 else
-                 {
-                     MessageBox.Show("Chọn khoảng tìm kiếm không hợp lệ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
-                 }
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Tạm thời chưa có dữ liệu", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Chọn khoảng tìm kiếm không hợp lệ!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
 
 
-             });
+            });
         }
         public void showdgNo()
         {
@@ -346,7 +346,7 @@ namespace BookStoreClone.ViewModel
             DGBaoCaoTon.Columns.Add(_tonCuoi);
         }
 
-    }     
+    }
 
 }
 
