@@ -43,25 +43,34 @@ namespace BookStoreClone.ViewModel
         }
         void Login(Window p)
         {
-            if (p == null)
-                return;
-            string pass = Password;
-            string passEncode = MD5Hash(Base64Encode(Password));
-            var account = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == UserName && x.MatKhau == passEncode).Count();
-            if (account > 0)
+            try
             {
-                IsLogin = true;
-                Const.IDNguoiDung = UserName;
-              //  MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
-                MainWindow mainWindow = new MainWindow();
-                mainWindow.Show();
-                p.Hide();
+                if (p == null)
+                    return;
+                string pass = Password;
+                string passEncode = MD5Hash(Base64Encode(Password));
+                var account = DataProvider.Ins.DB.NguoiDungs.Where(x => x.TenDangNhap == UserName && x.MatKhau == passEncode).Count();
+                if (account > 0)
+                {
+                    IsLogin = true;
+                    Const.IDNguoiDung = UserName;
+                    //  MessageBox.Show("Đăng nhập thành công", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
+                    MainWindow mainWindow = new MainWindow();
+                    mainWindow.Show();
+                    p.Hide();
 
+                }
+                else
+                {
+                    MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
+                }
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu");
+                MessageBox.Show("Tài khoản hoặc mật khẩu không hợp lệ!");
+              //  throw;
             }
+            
 
         }
         public static string MD5Hash(string input)

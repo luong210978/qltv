@@ -1,12 +1,12 @@
 ﻿USE [master]
 GO
-/****** Object:  Database [QLNS]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Database [QLNS]    Script Date: 6/10/2020 9:25:22 PM ******/
 CREATE DATABASE [QLNS]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'QLNS', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\QLNS.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+( NAME = N'QLNS', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\QLNS.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
  LOG ON 
-( NAME = N'QLNS_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.SQLEXPRESS\MSSQL\DATA\QLNS_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+( NAME = N'QLNS_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\QLNS_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
 GO
 ALTER DATABASE [QLNS] SET COMPATIBILITY_LEVEL = 140
 GO
@@ -77,7 +77,7 @@ ALTER DATABASE [QLNS] SET QUERY_STORE = OFF
 GO
 USE [QLNS]
 GO
-/****** Object:  Table [dbo].[BaoCaoCongNo]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[BaoCaoCongNo]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -92,7 +92,7 @@ CREATE TABLE [dbo].[BaoCaoCongNo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BaoCaoTon]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[BaoCaoTon]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -107,7 +107,7 @@ CREATE TABLE [dbo].[BaoCaoTon](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CTBaoCaoCongNo]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[CTBaoCaoCongNo]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -124,7 +124,7 @@ CREATE TABLE [dbo].[CTBaoCaoCongNo](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CTBaoCaoTon]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[CTBaoCaoTon]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -141,7 +141,7 @@ CREATE TABLE [dbo].[CTBaoCaoTon](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CTHD]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[CTHD]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -158,16 +158,30 @@ CREATE TABLE [dbo].[CTHD](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CTPhieuNhap]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[CTHD]    Script Date: 27/12/2020 11:41:00 AM ******/
+ALTER TABLE [dbo].[CTHD]
+ADD [TrangThai] [varchar](100) NULL
+ALTER TABLE [dbo].[CTHD]
+ADD [TinhTrang] [varchar](100) NULL
+ALTER TABLE [dbo].[CTHD]
+ADD [ThanhTien] [int] NULL
+ALTER TABLE [dbo].[CTHD]
+ADD [PhuongThuc] [varchar](100) NULL
+ALTER TABLE [dbo].[CTHD]
+ADD [isenabletra] [bit] NULL
+/****** Object:  Table [dbo].[CTPhieuNhap]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
 CREATE TABLE [dbo].[CTPhieuNhap](
 	[MaPN] [int] NOT NULL,
 	[MaSach] [int] NOT NULL,
 	[DonGiaNhap] [int] NOT NULL,
 	[SoLuongNhap] [int] NOT NULL,
+	[GiaTriPhieuNhap] [int] NOT NULL,
+	[TongSoSachNhap] [int] NULL,
  CONSTRAINT [PK_CTPHIEUNHAP] PRIMARY KEY CLUSTERED 
 (
 	[MaPN] ASC,
@@ -175,7 +189,7 @@ CREATE TABLE [dbo].[CTPhieuNhap](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CTTacGia]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[CTTacGia]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +204,7 @@ CREATE TABLE [dbo].[CTTacGia](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[CTTheLoai]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[CTTheLoai]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -205,25 +219,34 @@ CREATE TABLE [dbo].[CTTheLoai](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[HoaDon]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[HoaDon]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
+
+
 CREATE TABLE [dbo].[HoaDon](
 	[MaHD] [int] IDENTITY(1,1) NOT NULL,
 	[TongTien] [int] NULL,
 	[NgayBan] [datetime] NULL,
 	[SoTienTra] [int] NULL,
 	[MaKH] [int] NOT NULL,
-	[MaND] [int] NOT NULL,
+	
  CONSTRAINT [PK_HoaDon] PRIMARY KEY CLUSTERED 
 (
 	[MaHD] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[KhachHang]    Script Date: 6/1/2020 9:25:22 PM ******/
+
+ALTER TABLE [dbo].[HoaDon]
+ADD [SoSachMuon] [int] NULL
+
+ALTER TABLE [dbo].[HoaDon]
+ADD [MaND] [int] NULL
+
+/****** Object:  Table [dbo].[KhachHang]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -235,13 +258,22 @@ CREATE TABLE [dbo].[KhachHang](
 	[DiaChi] [nvarchar](100) NULL,
 	[Email] [nvarchar](100) NULL,
 	[SoTienNo] [int] NOT NULL,
+
+	[TongSoTien] [int] NULL,
+	[IsEnable_BanSach] [bit] NULL,
+	[SoTienPhat] [int] NULL,
+	[TrangThai] [varchar](100) NULL,
+	[SoSachChuaTra] [varchar](100) NULL,
+
  CONSTRAINT [PK_KhachHang] PRIMARY KEY CLUSTERED 
 (
 	[MaKH] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[NguoiDung]    Script Date: 6/1/2020 9:25:22 PM ******/
+
+
+/****** Object:  Table [dbo].[NguoiDung]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -266,7 +298,7 @@ CREATE TABLE [dbo].[NguoiDung](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PhieuNhap]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[PhieuNhap]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -281,7 +313,7 @@ CREATE TABLE [dbo].[PhieuNhap](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[PhieuThuTien]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[PhieuThuTien]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -298,7 +330,7 @@ CREATE TABLE [dbo].[PhieuThuTien](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[QuyDinh]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[QuyDinh]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -317,7 +349,7 @@ CREATE TABLE [dbo].[QuyDinh](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Sach]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[Sach]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -330,13 +362,21 @@ CREATE TABLE [dbo].[Sach](
 	[MoTa] [nvarchar](255) NULL,
 	[AnhBia] [varchar](100) NULL,
 	[MaNXB] [int]  null,
+
+
  CONSTRAINT [PK_Sach] PRIMARY KEY CLUSTERED 
 (
 	[MaSach] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TacGia]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[Sach]    Script Date: 27/12/2020 11:38:00 AM ******/
+ALTER TABLE [dbo].[Sach]
+ADD [IsCoTheNhapThem] [bit] null
+ALTER TABLE [dbo].[Sach]
+ADD [IsBtnBanSach] [bit] null
+
+/****** Object:  Table [dbo].[TacGia]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -350,7 +390,7 @@ CREATE TABLE [dbo].[TacGia](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[TheLoai]    Script Date: 6/1/2020 9:25:22 PM ******/
+/****** Object:  Table [dbo].[TheLoai]    Script Date: 6/10/2020 9:25:22 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -381,6 +421,8 @@ CREATE TABLE [dbo].[NhaXuatBan](
 ) ON [PRIMARY]
 GO
 
+
+
 SET IDENTITY_INSERT [dbo].[NhaXuatBan] ON
 INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (2,N'Kim Đồng')
 INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (3,N'ARTBOOK')
@@ -392,6 +434,179 @@ INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (8,N'Phố sách Trần Huy 
 INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (9,N'TRIBOOK Đồng Khởi')
 INSERT [dbo].[NhaXuatBan] ([MaNXB],[TenNXB]) Values (10,N'Nhà sách Cá Chép')
 SET IDENTITY_INSERT [dbo].[NhaXuatBan] OFF
+
+
+SET IDENTITY_INSERT [dbo].[KhachHang] ON 
+
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (13, N'Khách Hàng Thông Thường', N'00000000000', N'<Địa chỉ>', NULL, 0)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (14, N'Huỳnh Chí Phong', N'01203875665', N'792/4 đường Kha Vạn Cân, nước Việt Nam, tinh cầu Trái Đất, tinh hệ Thái Dương Hệ', N'hiroshi.kaze1994@gmail.com', 12000)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (15, N'Võ Hoài Nam', N'00000000001', N'Trên mặt đất, dưới bầu trời', NULL, 8000)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (16, N'Tô Chính Tín', N'0907993625 ', N'Ngoài hành tinh', NULL, 10000)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (17, N'Lãnh Thừa Phong', N'0123456789 ', N'Có hả?', NULL, 0)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (18, N'Lý Thất Dạ', N'00000000002', N'Trong truyện Đế Bá của lão Yếm', NULL, 0)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (19, N'Hàn Phong', N'00000000003', N'Nhà e ở đâu?', N'emlaai@meomeo.com', 0)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (20, N'Dư Chính Phong', N'00000000004', N'Trong não chui ra, quê quán không rõ', NULL, 12000)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (21, N'Diệu Yến', N'00000000005', N'Ai đây o.O', NULL, 20000)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (22, N'Tiêu Viêm', N'00000000006', N'Đấu Phá Thương Khung/Thiên Tàm Thổ Đậu', NULL, 0)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (23, N'Diệp Phàm', N'00000000007', N'Lý do em đến Trái Đất là gì?', NULL, 8000)
+INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (24, N'Hoa Thiên Cốt', N'00000000008', N'Ờ thì Hoa Thiên Cốt', N'tieucot@quaqua.com', 2000)
+SET IDENTITY_INSERT [dbo].[KhachHang] OFF
+SET IDENTITY_INSERT [dbo].[NguoiDung] ON 
+
+INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (1, N'Nguyễn Phú Trung Anh', CAST(N'2000-07-11T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0374666666', N'admin1', N'87d9bb400c0634691f0e3baaf1e2fd0d',1,0,0)
+INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (2, N'Nguyễn Hữu Trí', CAST(N'2000-08-14T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0312346574', N'user1', N'87d9bb400c0634691f0e3baaf1e2fd0d', 1,0,0)
+INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (3, N'Trần Ngọc Trường', CAST(N'2000-09-27T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0123456786', N'admin2', N'87d9bb400c0634691f0e3baaf1e2fd0d',1,0,0)
+INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (4, N'Phạm Công Hạnh', CAST(N'2000-09-27T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0312458123', N'user2', N'87d9bb400c0634691f0e3baaf1e2fd0d', 1,0,0)
+INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (5, N'Trần Ngọc Chiến', CAST(N'2001-09-27T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0398564212', N'user3', N'87d9bb400c0634691f0e3baaf1e2fd0d',1,0,0)
+SET IDENTITY_INSERT [dbo].[NguoiDung] OFF
+
+SET IDENTITY_INSERT [dbo].[Sach] ON 
+
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (2, 288, 240000, N'Hoa Thiên Cốt - Trọn bộ', N'HOA THIÊN CỐT” - TIỂU THUYẾT TIÊN HIỆP', N'HoaThienCot_TronBo.png',2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (3, 147, 220000, N'Narnia - Trọn bộ', N'The first time Julia Beckett saw Greywethers she was only five, but she knew that it was her house. ', N'Narnia_TronBo.png',2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (4, 149, 40000, N'Truyện Kiều', N'The Tale of Kieu is an epic poem in Vietnamese written by Nguyen Du (1766–1820), and is widely regarded as the most significant work of Vietnamese literature. ', N'TruyenKieu.jpg',3)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (5, 294, 160000, N'Another - Trọn bộ 2 tập', N'In the spring of 1998, Kouichi Sakakibara transfers to Yomiyama North Middle School. In class, he develops a sense of unease as he notices that the people around him act like they are walking on eggshells, and students and teachers alike seem frightened.', N'Another.png',4)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (6, 297, 50000, N'5 Centimet trên giây', N'Love can move at the speed of terminal velocity, but as award-winning director Makoto Shinkai reveals in his latest comic, it can only be shared and embraced by those who refuse to see it stop.', N'5cm_tren_giay.jpg',5)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (7, 148, 248000, N'Hỏa Ngục', N'Với cuốn tiểu thuyết trinh thám kì bí đầy  hấp dẫn này, Dan Brown trở lại với đúng  sở trường của mình và đã tạo nên một "Siêu phẩm được đặt cược nhiều" nhất từ trước đến nay.', N'HoaNguc.jpg',6)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (8, 147, 222000, N'Mật mã Da Vinci', N'Đây là một tuyệt phẩm thuần khiết', N'DaVinciCode.jpg',7)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (10, 148, 212000, N'Thiên thần và ác quỷ', N'Thiên thần và ác quỷ thu hút người đọc bởi sự uyên bác và tài dẫn truyện của Dan Brown, người đã thể hiện khả năng nắm bắt siêu hạng', N'ThienThanVaAcQuy.jpg',8)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (11, 150, 204000, N'Pháo đài số', N'Câu truyện phá án li kì...', N'PhaoDaiSo.jpg',9)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (12, 146, 96000, N'Sword Art Online: Aincrad - Tập 1', N'Câu chuyện kể về một thanh niên hack game để kiếm bạn gái', N'SAO_Aincrad1.jpg',10)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (13, 148, 98000, N'Ma sói', N'Câu truyện kể về một thanh niên cứ tới rằm là động dục...', N'MaSoi.jpg',2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (14, 150, 212000, N'Daren Shan - Trọn Bộ', N'Chịu.........', N'DarrenShan.png',3)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (15, 148, 270000, N'Sherlock Holmes - Trọn bộ', N'Câu chuyện phá án li kì của SH và JW', N'SherlockHolmes_TronBo.png',4)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (16, 150, 110000, N'Bài học yêu của tiểu ma vương', N'Bài học đầu đời của tiểu ma vương', N'BaiHocYeuCuaTieuMaVuong.jpg',5)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (17, 150, 420000, N'Đấu phá thương khung', N'Đọc truyện rất hay nhưng khuyến khích không xem phim', NULL,6)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (18, 150, 450000, N'Đại chúa tể', N'Thật ra thằng chúa tể nào cũng bá và là hư cấu', NULL,7)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (19, 150, 210000, N'Đấu la đại lục', N'Câu truyện kinh điển về kiếm hiệp', NULL,8)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (20, 149, 520000, N'Đế bá', N'Đế bá', NULL,9)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (21, 150, 245000, N'Vệ sĩ thần cấp của nữ tổng giám đốc', N'Câu truyện kể về thằng osin của một nữ giám đốc', NULL,10)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (36, 150, 366000, N'Yêu cung', N'Yêu ma tràn ngập cung điện', NULL,2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (37, 149, 96000, N'Sword Art Online: Aincrad - Tập 2', N'Câu chuyện kể về một thanh niên hack game để kiếm bạn gái', N'SAO_Aincrad2.jpg',2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (38, 149, 106000, N'Bộ sách giáo khoa lớp 9', N'Bộ sách tạo ác mộng tuổi thiếu niên', N'BoSachGiaoKhoaLop9.png',3)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (39, 149, 72000, N'Bộ vở bài tập lớp 9', N'Cuốn sách tạo nên ác mộng tuổi thiếu niên', N'BoVoBaiTapLop9.png',4)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (40, 149, 92000, N'Cô nàng quản trị', N'Kể về cô nàng may mắn được làm quản trị', N'CoNangQuanTri.jpg',5)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (41, 150, 82000, N'Nấu ăn bằng cả trái tim', N'Dạy nấu ăn sao cho tâm hồn to, tròn và đẹp', N'NauAnBangCaTraiTim.png',6)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (42, 150, 77000, N'Ốc đảo mùi hương', N'Ốc đảo tràn đầy mùi thơm', N'OcDaoMuiHuong.jpg',7)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (43, 150, 50000, N'Tài liệu luyện thi năng lực Nhật ngữ N5 (Kèm CD)', N'Tài liệu giúp các thanh niên có thể đi gặp Idol', N'TaiLieuLuyenThiNangLucNhatNguN5_CD.jpg',8)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (44, 149, 180000, N'Chúa tể những chiếc nhẫn: Đoàn hộ nhẫn', N'Câu chuyện kể về biệt đội Squat xông vào lòng địch để phá hủy nhẫn', N'CTNCN_DoanHoNhan.jpg',9)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (45, 149, 180000, N'Chúa tể những chiếc nhẫn: Hai tòa tháp', N'Câu chuyện kể về biệt đội Squat xông vào lòng địch để phá hủy nhẫn', N'CTNCN_HaiToaThap.jpg',10)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (46, 149, 180000, N'Chúa tể những chiếc nhẫn: Nhà vua trở về', N'Câu chuyện kể về biệt đội Squat xông vào lòng địch để phá hủy nhẫn', N'CTNCN_NhaVuaTroVe.jpg',2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (47, 150, 165000, N'Anh Chàng Hobbit (Tái Bản 2014)', N'Câu truyện kể về thanh niên ăn trộm báu vật để đi đuổi một con rồng già', N'AnhChangHobbit.jpg',3)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (48, 148, 90000, N'Khu Vườn Ngôn Từ', N'Khu vườn không có gì ngoài những từ không có nghĩa', N'KhuVuonNgonTu.jpg',4)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (50, 149, 20000, N'Doraemon: Nobita và chuyến phiêu lưu vào xứ quỷ', N'Cuộc phưu lưu của Nobita và nhóm bạn ở xứ sở quỷ', N'Doraemon_PhieuLuuVaoXuQuy.jpg',5)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (51, 149, 20000, N'Doraemon: Nobita ở xứ sở nghìn lẻ một đêm', N'Cuộc phưu lưu của Nobita và nhóm bạn ở xứ sở nghìn lẻ một đêm', N'Doraemon_NghinLeMotDem.jpg',6)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (52, 150, 20000, N'Doraemon: Nobita và người khổng lồ xanh', N'Cuộc phưu lưu của Nobita và các bạn ở xứ sở người khổng lồ', N'Doraemon_NguoiKhongLoXanh.jpg',7)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (53, 149, 20000, N'Doraemon: Nobita và cuộc đại thủy chiến ở xứ sở người cá', N'Cuộc phiêu lưu của Nobita và nhóm bạn ở xứ sở người cá', N'Doraemon_XuSoNguoiCa.jpg',8)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (54, 149, 240000, N'Điểm dối lừa', N'Cuộc đời toàn những dối lừa', N'DeceptionPoint.jpg',9)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (55, 150, 225000, N'Đấu la đại lục 2', N'Phần tiếp theo của Đấu La Đại Lục..', NULL,10)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (56, 149, 86000, N'Yêu anh hơn cả tử thần', N'Truyện ngôn tình chất hơn nước cất', N'YeuAnhHonCaTuThan.jpg',2)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (57, 148, 108000, N'Ame và Yuki: Những đứa con của sói', N'Câu truyện kể về Ame và Yuki, những đứa trẻ bị bỏ rơi..', N'Ame_Yuki_wolf_children.png',3)
+INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (58, 0, 1000000, N'Sách dạy xếp hình', N'Dạy trẻ cách xếp hình 69 tư thế', NULL,4)
+SET IDENTITY_INSERT [dbo].[Sach] OFF
+
+SET IDENTITY_INSERT [dbo].[HoaDon] ON 
+
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (1, 3900000, CAST(N'2020-03-24T00:00:00.000' AS DateTime), 3900000, 13, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (2, 412000, CAST(N'2020-04-10T00:00:00.000' AS DateTime), 412000, 13, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (3, 340000, CAST(N'2020-03-28T00:00:00.000' AS DateTime), 338000, 16, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (4, 188000, CAST(N'2020-04-14T00:00:00.000' AS DateTime), 180000, 16, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (5, 512000, CAST(N'2020-04-24T00:00:00.000' AS DateTime), 512000, 14, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (6, 212000, CAST(N'2020-05-19T00:00:00.000' AS DateTime), 200000, 14, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (7, 540000, CAST(N'2020-04-01T00:00:00.000' AS DateTime), 540000, 17, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (8, 106000, CAST(N'2020-05-07T00:00:00.000' AS DateTime), 106000, 14, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (9, 312000, CAST(N'2020-04-08T00:00:00.000' AS DateTime), 310000, 24, 1)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (10, 628000, CAST(N'2020-04-05T00:00:00.000' AS DateTime), 628000, 13, 2)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (11, 1316000, CAST(N'2020-05-17T00:00:00.000' AS DateTime), 1316000, 18, 4)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (12, 608000, CAST(N'2020-05-27T00:00:00.000' AS DateTime), 600000, 23, 5)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (13, 192000, CAST(N'2020-04-02T00:00:00.000' AS DateTime), 192000, 15, 5)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (14, 612000, CAST(N'2020-05-28T00:00:00.000' AS DateTime), 600000, 20, 5)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (15, 280000, CAST(N'2020-05-14T00:00:00.000' AS DateTime), 270000, 21, 5)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (16, 542000, CAST(N'2020-03-01T00:00:00.000' AS DateTime), 542000, 13, 5)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (17, 418000, CAST(N'2020-03-07T00:00:00.000' AS DateTime), 418000, 21, 4)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (18, 298000, CAST(N'2020-05-16T00:00:00.000' AS DateTime), 298000, 14, 4)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (19, 98000, CAST(N'2020-05-14T00:00:00.000' AS DateTime), 90000, 15, 4)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (20, 240000, CAST(N'2020-03-13T00:00:00.000' AS DateTime), 240000, 15, 4)
+INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (21, 270000, CAST(N'2020-04-14T00:00:00.000' AS DateTime), 260000, 21, 4)
+SET IDENTITY_INSERT [dbo].[HoaDon] OFF
+SET IDENTITY_INSERT [dbo].[TacGia] ON 
+
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (1, N'Nhiều tác giả')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (2, N'Fred Vargas')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (3, N'Darren Shan')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (4, N'Fresh Quả Quả')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (5, N'Thiên Tàm Thổ Đậu')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (6, N'Dan Brown')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (7, N'Yukito Ayatsuji')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (8, N'Nguyễn Nhật Ánh')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (9, N'Nguyễn Du')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (10, N'Shinkai Makoto')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (11, N'Clive Staples Lewis')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (12, N'Yếm Bút Tiêu Sinh')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (13, N'Mamoru Hasoda')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (14, N'Kobayashi Ritz')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (15, N'Yonezawa Honobu')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (16, N'Kawahara Reki')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (17, N'Tanigawa Nagaru')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (18, N'Minh Nguyệt Thính Phong')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (19, N'Đường Gia Tam Thiếu')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (20, N'Mai Can Thái Thiếu Bính')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (21, N'Fujiko F. Fujio')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (22, N'Minh Nguyệt')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (24, N'Conan Doyle')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (25, N'Iwasaki Natsumi')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (26, N'Christine Hà')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (27, N'Huỳnh Hải Yến')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (28, N'J.R.R Tolkien')
+INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (29, N'Tào Đình')
+SET IDENTITY_INSERT [dbo].[TacGia] OFF
+SET IDENTITY_INSERT [dbo].[TheLoai] ON 
+
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (10, N'10+')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (16, N'16+')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (18, N'18+')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (21, N'Trinh Thám')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (22, N'Kinh Dị')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (23, N'Huyền Huyễn')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (24, N'Dị Giới')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (25, N'Tu Tiên')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (26, N'Thơ')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (27, N'Xuyên Không')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (28, N'Trùng Sinh')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (29, N'Sách Giáo Khoa')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (30, N'Lãng Mạng')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (31, N'Học Trò')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (32, N'Thiếu Nhi')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (33, N'Thể Thao')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (34, N'Hư Cấu')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (35, N'Truyện Tranh, Comic, Manga')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (36, N'Game')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (37, N'Ngôn Tình')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (38, N'Đời Thường')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (39, N'Giả Tưởng')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (40, N'Tiên Hiệp')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (41, N'Huyền Ảo')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (42, N'Khoa Học Giả Tưởng')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (43, N'Kỳ Ảo')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (44, N'Sử Thi')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (45, N'Sách Học Ngoại Ngữ')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (46, N'Từ Điển')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (47, N'Sách Thường Thức - Đời Sống')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (48, N'Sách Văn Học - Truyện Ngắn - Tiểu Thuyết')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (49, N'Ngược')
+INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (50, N'Siêu năng lực')
+SET IDENTITY_INSERT [dbo].[TheLoai] OFF
+SET IDENTITY_INSERT [dbo].[PhieuNhap] ON 
+
+INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (2, CAST(N'2020-06-01T00:00:00.000' AS DateTime), 1)
+INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (3, CAST(N'2020-05-08T00:00:00.000' AS DateTime), 1)
+INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (4, CAST(N'2020-04-06T00:00:00.000' AS DateTime), 1)
+INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (5, CAST(N'2020-03-25T00:00:00.000' AS DateTime), 1)
+SET IDENTITY_INSERT [dbo].[PhieuNhap] OFF
+SET IDENTITY_INSERT [dbo].[PhieuThuTien] ON 
+
+INSERT [dbo].[PhieuThuTien] ([MaPT], [MaKH], [NgayThuTien], [SoTienThu], [MaND]) VALUES (1, 18, CAST(N'2020-04-17T00:00:00.000' AS DateTime), 20000, 1)
+SET IDENTITY_INSERT [dbo].[PhieuThuTien] OFF
 
 INSERT [dbo].[CTHD] ([MaHD], [MaSach], [SoLuong], [DonGiaBan]) VALUES (1, 2, 10, 240000)
 INSERT [dbo].[CTHD] ([MaHD], [MaSach], [SoLuong], [DonGiaBan]) VALUES (2, 5, 2, 160000)
@@ -634,176 +849,7 @@ INSERT [dbo].[CTTheLoai] ([MaTL], [MaSach]) VALUES (48, 58)
 
 
 
-
-SET IDENTITY_INSERT [dbo].[HoaDon] ON 
-
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (1, 3900000, CAST(N'2020-03-24T00:00:00.000' AS DateTime), 3900000, 13, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (2, 412000, CAST(N'2020-04-10T00:00:00.000' AS DateTime), 412000, 13, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (3, 340000, CAST(N'2020-03-28T00:00:00.000' AS DateTime), 338000, 16, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (4, 188000, CAST(N'2020-04-14T00:00:00.000' AS DateTime), 180000, 16, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (5, 512000, CAST(N'2020-04-24T00:00:00.000' AS DateTime), 512000, 14, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (6, 212000, CAST(N'2020-05-19T00:00:00.000' AS DateTime), 200000, 14, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (7, 540000, CAST(N'2020-04-01T00:00:00.000' AS DateTime), 540000, 17, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (8, 106000, CAST(N'2020-05-07T00:00:00.000' AS DateTime), 106000, 14, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (9, 312000, CAST(N'2020-04-08T00:00:00.000' AS DateTime), 310000, 24, 1)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (10, 628000, CAST(N'2020-04-05T00:00:00.000' AS DateTime), 628000, 13, 2)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (11, 1316000, CAST(N'2020-05-17T00:00:00.000' AS DateTime), 1316000, 18, 4)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (12, 608000, CAST(N'2020-05-27T00:00:00.000' AS DateTime), 600000, 23, 5)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (13, 192000, CAST(N'2020-04-02T00:00:00.000' AS DateTime), 192000, 15, 5)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (14, 612000, CAST(N'2020-05-28T00:00:00.000' AS DateTime), 600000, 20, 5)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (15, 280000, CAST(N'2020-05-14T00:00:00.000' AS DateTime), 270000, 21, 5)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (16, 542000, CAST(N'2020-03-01T00:00:00.000' AS DateTime), 542000, 13, 5)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (17, 418000, CAST(N'2020-03-07T00:00:00.000' AS DateTime), 418000, 21, 4)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (18, 298000, CAST(N'2020-05-16T00:00:00.000' AS DateTime), 298000, 14, 4)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (19, 98000, CAST(N'2020-05-14T00:00:00.000' AS DateTime), 90000, 15, 4)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (20, 240000, CAST(N'2020-03-13T00:00:00.000' AS DateTime), 240000, 15, 4)
-INSERT [dbo].[HoaDon] ([MaHD], [TongTien], [NgayBan], [SoTienTra], [MaKH], [MaND]) VALUES (21, 270000, CAST(N'2020-04-14T00:00:00.000' AS DateTime), 260000, 21, 4)
-SET IDENTITY_INSERT [dbo].[HoaDon] OFF
-SET IDENTITY_INSERT [dbo].[KhachHang] ON 
-
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (13, N'Khách Hàng Thông Thường', N'00000000000', N'<Địa chỉ>', NULL, 0)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (14, N'Huỳnh Chí Phong', N'01203875665', N'792/4 đường Kha Vạn Cân, nước Việt Nam, tinh cầu Trái Đất, tinh hệ Thái Dương Hệ', N'hiroshi.kaze1994@gmail.com', 12000)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (15, N'Võ Hoài Nam', N'00000000001', N'Trên mặt đất, dưới bầu trời', NULL, 8000)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (16, N'Tô Chính Tín', N'0907993625 ', N'Ngoài hành tinh', NULL, 10000)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (17, N'Lãnh Thừa Phong', N'0123456789 ', N'Có hả?', NULL, 0)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (18, N'Lý Thất Dạ', N'00000000002', N'Trong truyện Đế Bá của lão Yếm', NULL, 0)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (19, N'Hàn Phong', N'00000000003', N'Nhà e ở đâu?', N'emlaai@meomeo.com', 0)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (20, N'Dư Chính Phong', N'00000000004', N'Trong não chui ra, quê quán không rõ', NULL, 12000)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (21, N'Diệu Yến', N'00000000005', N'Ai đây o.O', NULL, 20000)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (22, N'Tiêu Viêm', N'00000000006', N'Đấu Phá Thương Khung/Thiên Tàm Thổ Đậu', NULL, 0)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (23, N'Diệp Phàm', N'00000000007', N'Lý do em đến Trái Đất là gì?', NULL, 8000)
-INSERT [dbo].[KhachHang] ([MaKH], [TenKH], [SDT], [DiaChi], [Email], [SoTienNo]) VALUES (24, N'Hoa Thiên Cốt', N'00000000008', N'Ờ thì Hoa Thiên Cốt', N'tieucot@quaqua.com', 2000)
-SET IDENTITY_INSERT [dbo].[KhachHang] OFF
-SET IDENTITY_INSERT [dbo].[NguoiDung] ON 
-
-INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (1, N'Nguyễn Phú Trung Anh', CAST(N'2000-07-11T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0374666666', N'admin1', N'87d9bb400c0634691f0e3baaf1e2fd0d',1,0,0,0)
-INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (2, N'Nguyễn Hữu Trí', CAST(N'2000-08-14T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0312346574', N'user1', N'87d9bb400c0634691f0e3baaf1e2fd0d', 1,0,0,0)
-INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (3, N'Trần Ngọc Trường', CAST(N'2000-09-27T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0123456786', N'admin2', N'87d9bb400c0634691f0e3baaf1e2fd0d',1,0,0,0)
-INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (4, N'Phạm Công Hạnh', CAST(N'2000-09-27T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0312458123', N'user2', N'87d9bb400c0634691f0e3baaf1e2fd0d', 1,0,0,0)
-INSERT [dbo].[NguoiDung] ([MaND], [TenND], [NgaySinh], [GioiTinh], [DiaChi], [SDT], [TenDangNhap], [MatKhau],[Admin], [NhanVienKho], [NhanVienBan]) VALUES (5, N'Trần Ngọc Chiến', CAST(N'2001-09-27T00:00:00.000' AS DateTime), 1, N' 1017 D6 Khu B, HCM - VNU, Trái đất- Hành tinh số 7, Vũ trụ 7', N'0398564212', N'user3', N'87d9bb400c0634691f0e3baaf1e2fd0d',1,0,0,0)
-SET IDENTITY_INSERT [dbo].[NguoiDung] OFF
-SET IDENTITY_INSERT [dbo].[PhieuNhap] ON 
-
-INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (2, CAST(N'2020-06-01T00:00:00.000' AS DateTime), 1)
-INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (3, CAST(N'2020-05-08T00:00:00.000' AS DateTime), 1)
-INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (4, CAST(N'2020-04-06T00:00:00.000' AS DateTime), 1)
-INSERT [dbo].[PhieuNhap] ([MaPN], [NgayNhap], [MaND]) VALUES (5, CAST(N'2020-03-25T00:00:00.000' AS DateTime), 1)
-SET IDENTITY_INSERT [dbo].[PhieuNhap] OFF
-SET IDENTITY_INSERT [dbo].[PhieuThuTien] ON 
-
-INSERT [dbo].[PhieuThuTien] ([MaPT], [MaKH], [NgayThuTien], [SoTienThu], [MaND]) VALUES (1, 18, CAST(N'2020-04-17T00:00:00.000' AS DateTime), 20000, 1)
-SET IDENTITY_INSERT [dbo].[PhieuThuTien] OFF
-SET IDENTITY_INSERT [dbo].[Sach] ON 
-
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (2, 288, 240000, N'Hoa Thiên Cốt - Trọn bộ', N'HOA THIÊN CỐT” - TIỂU THUYẾT TIÊN HIỆP', N'HoaThienCot_TronBo.png',2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (3, 147, 220000, N'Narnia - Trọn bộ', N'The first time Julia Beckett saw Greywethers she was only five, but she knew that it was her house. ', N'Narnia_TronBo.png',2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (4, 149, 40000, N'Truyện Kiều', N'The Tale of Kieu is an epic poem in Vietnamese written by Nguyen Du (1766–1820), and is widely regarded as the most significant work of Vietnamese literature. ', N'TruyenKieu.jpg',3)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (5, 294, 160000, N'Another - Trọn bộ 2 tập', N'In the spring of 1998, Kouichi Sakakibara transfers to Yomiyama North Middle School. In class, he develops a sense of unease as he notices that the people around him act like they are walking on eggshells, and students and teachers alike seem frightened.', N'Another.png',4)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (6, 297, 50000, N'5 Centimet trên giây', N'Love can move at the speed of terminal velocity, but as award-winning director Makoto Shinkai reveals in his latest comic, it can only be shared and embraced by those who refuse to see it stop.', N'5cm_tren_giay.jpg',5)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (7, 148, 248000, N'Hỏa Ngục', N'Với cuốn tiểu thuyết trinh thám kì bí đầy  hấp dẫn này, Dan Brown trở lại với đúng  sở trường của mình và đã tạo nên một "Siêu phẩm được đặt cược nhiều" nhất từ trước đến nay.', N'HoaNguc.jpg',6)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (8, 147, 222000, N'Mật mã Da Vinci', N'Đây là một tuyệt phẩm thuần khiết', N'DaVinciCode.jpg',7)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (10, 148, 212000, N'Thiên thần và ác quỷ', N'Thiên thần và ác quỷ thu hút người đọc bởi sự uyên bác và tài dẫn truyện của Dan Brown, người đã thể hiện khả năng nắm bắt siêu hạng', N'ThienThanVaAcQuy.jpg',8)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (11, 150, 204000, N'Pháo đài số', N'Câu truyện phá án li kì...', N'PhaoDaiSo.jpg',9)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (12, 146, 96000, N'Sword Art Online: Aincrad - Tập 1', N'Câu chuyện kể về một thanh niên hack game để kiếm bạn gái', N'SAO_Aincrad1.jpg',10)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (13, 148, 98000, N'Ma sói', N'Câu truyện kể về một thanh niên cứ tới rằm là động dục...', N'MaSoi.jpg',2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (14, 150, 212000, N'Daren Shan - Trọn Bộ', N'Chịu.........', N'DarrenShan.png',3)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (15, 148, 270000, N'Sherlock Holmes - Trọn bộ', N'Câu chuyện phá án li kì của SH và JW', N'SherlockHolmes_TronBo.png',4)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (16, 150, 110000, N'Bài học yêu của tiểu ma vương', N'Bài học đầu đời của tiểu ma vương', N'BaiHocYeuCuaTieuMaVuong.jpg',5)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (17, 150, 420000, N'Đấu phá thương khung', N'Đọc truyện rất hay nhưng khuyến khích không xem phim', NULL,6)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (18, 150, 450000, N'Đại chúa tể', N'Thật ra thằng chúa tể nào cũng bá và là hư cấu', NULL,7)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (19, 150, 210000, N'Đấu la đại lục', N'Câu truyện kinh điển về kiếm hiệp', NULL,8)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (20, 149, 520000, N'Đế bá', N'Đế bá', NULL,9)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (21, 150, 245000, N'Vệ sĩ thần cấp của nữ tổng giám đốc', N'Câu truyện kể về thằng osin của một nữ giám đốc', NULL,10)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (36, 150, 366000, N'Yêu cung', N'Yêu ma tràn ngập cung điện', NULL,2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (37, 149, 96000, N'Sword Art Online: Aincrad - Tập 2', N'Câu chuyện kể về một thanh niên hack game để kiếm bạn gái', N'SAO_Aincrad2.jpg',2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (38, 149, 106000, N'Bộ sách giáo khoa lớp 9', N'Bộ sách tạo ác mộng tuổi thiếu niên', N'BoSachGiaoKhoaLop9.png',3)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (39, 149, 72000, N'Bộ vở bài tập lớp 9', N'Cuốn sách tạo nên ác mộng tuổi thiếu niên', N'BoVoBaiTapLop9.png',4)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (40, 149, 92000, N'Cô nàng quản trị', N'Kể về cô nàng may mắn được làm quản trị', N'CoNangQuanTri.jpg',5)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (41, 150, 82000, N'Nấu ăn bằng cả trái tim', N'Dạy nấu ăn sao cho tâm hồn to, tròn và đẹp', N'NauAnBangCaTraiTim.png',6)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (42, 150, 77000, N'Ốc đảo mùi hương', N'Ốc đảo tràn đầy mùi thơm', N'OcDaoMuiHuong.jpg',7)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (43, 150, 50000, N'Tài liệu luyện thi năng lực Nhật ngữ N5 (Kèm CD)', N'Tài liệu giúp các thanh niên có thể đi gặp Idol', N'TaiLieuLuyenThiNangLucNhatNguN5_CD.jpg',8)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (44, 149, 180000, N'Chúa tể những chiếc nhẫn: Đoàn hộ nhẫn', N'Câu chuyện kể về biệt đội Squat xông vào lòng địch để phá hủy nhẫn', N'CTNCN_DoanHoNhan.jpg',9)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (45, 149, 180000, N'Chúa tể những chiếc nhẫn: Hai tòa tháp', N'Câu chuyện kể về biệt đội Squat xông vào lòng địch để phá hủy nhẫn', N'CTNCN_HaiToaThap.jpg',10)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (46, 149, 180000, N'Chúa tể những chiếc nhẫn: Nhà vua trở về', N'Câu chuyện kể về biệt đội Squat xông vào lòng địch để phá hủy nhẫn', N'CTNCN_NhaVuaTroVe.jpg',2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (47, 150, 165000, N'Anh Chàng Hobbit (Tái Bản 2014)', N'Câu truyện kể về thanh niên ăn trộm báu vật để đi đuổi một con rồng già', N'AnhChangHobbit.jpg',3)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (48, 148, 90000, N'Khu Vườn Ngôn Từ', N'Khu vườn không có gì ngoài những từ không có nghĩa', N'KhuVuonNgonTu.jpg',4)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (50, 149, 20000, N'Doraemon: Nobita và chuyến phiêu lưu vào xứ quỷ', N'Cuộc phưu lưu của Nobita và nhóm bạn ở xứ sở quỷ', N'Doraemon_PhieuLuuVaoXuQuy.jpg',5)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (51, 149, 20000, N'Doraemon: Nobita ở xứ sở nghìn lẻ một đêm', N'Cuộc phưu lưu của Nobita và nhóm bạn ở xứ sở nghìn lẻ một đêm', N'Doraemon_NghinLeMotDem.jpg',6)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (52, 150, 20000, N'Doraemon: Nobita và người khổng lồ xanh', N'Cuộc phưu lưu của Nobita và các bạn ở xứ sở người khổng lồ', N'Doraemon_NguoiKhongLoXanh.jpg',7)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (53, 149, 20000, N'Doraemon: Nobita và cuộc đại thủy chiến ở xứ sở người cá', N'Cuộc phiêu lưu của Nobita và nhóm bạn ở xứ sở người cá', N'Doraemon_XuSoNguoiCa.jpg',8)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (54, 149, 240000, N'Điểm dối lừa', N'Cuộc đời toàn những dối lừa', N'DeceptionPoint.jpg',9)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (55, 150, 225000, N'Đấu la đại lục 2', N'Phần tiếp theo của Đấu La Đại Lục..', NULL,10)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (56, 149, 86000, N'Yêu anh hơn cả tử thần', N'Truyện ngôn tình chất hơn nước cất', N'YeuAnhHonCaTuThan.jpg',2)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (57, 148, 108000, N'Ame và Yuki: Những đứa con của sói', N'Câu truyện kể về Ame và Yuki, những đứa trẻ bị bỏ rơi..', N'Ame_Yuki_wolf_children.png',3)
-INSERT [dbo].[Sach] ([MaSach], [SoLuongTon], [DonGia], [TenSach], [MoTa], [AnhBia],[MaNXB]) VALUES (58, 0, 1000000, N'Sách dạy xếp hình', N'Dạy trẻ cách xếp hình 69 tư thế', NULL,4)
-SET IDENTITY_INSERT [dbo].[Sach] OFF
-SET IDENTITY_INSERT [dbo].[TacGia] ON 
-
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (1, N'Nhiều tác giả')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (2, N'Fred Vargas')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (3, N'Darren Shan')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (4, N'Fresh Quả Quả')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (5, N'Thiên Tàm Thổ Đậu')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (6, N'Dan Brown')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (7, N'Yukito Ayatsuji')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (8, N'Nguyễn Nhật Ánh')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (9, N'Nguyễn Du')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (10, N'Shinkai Makoto')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (11, N'Clive Staples Lewis')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (12, N'Yếm Bút Tiêu Sinh')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (13, N'Mamoru Hasoda')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (14, N'Kobayashi Ritz')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (15, N'Yonezawa Honobu')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (16, N'Kawahara Reki')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (17, N'Tanigawa Nagaru')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (18, N'Minh Nguyệt Thính Phong')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (19, N'Đường Gia Tam Thiếu')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (20, N'Mai Can Thái Thiếu Bính')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (21, N'Fujiko F. Fujio')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (22, N'Minh Nguyệt')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (24, N'Conan Doyle')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (25, N'Iwasaki Natsumi')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (26, N'Christine Hà')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (27, N'Huỳnh Hải Yến')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (28, N'J.R.R Tolkien')
-INSERT [dbo].[TacGia] ([MaTG], [TenTG]) VALUES (29, N'Tào Đình')
-SET IDENTITY_INSERT [dbo].[TacGia] OFF
-SET IDENTITY_INSERT [dbo].[TheLoai] ON 
-
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (10, N'10+')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (16, N'16+')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (18, N'18+')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (21, N'Trinh Thám')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (22, N'Kinh Dị')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (23, N'Huyền Huyễn')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (24, N'Dị Giới')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (25, N'Tu Tiên')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (26, N'Thơ')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (27, N'Xuyên Không')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (28, N'Trùng Sinh')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (29, N'Sách Giáo Khoa')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (30, N'Lãng Mạng')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (31, N'Học Trò')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (32, N'Thiếu Nhi')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (33, N'Thể Thao')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (34, N'Hư Cấu')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (35, N'Truyện Tranh, Comic, Manga')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (36, N'Game')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (37, N'Ngôn Tình')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (38, N'Đời Thường')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (39, N'Giả Tưởng')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (40, N'Tiên Hiệp')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (41, N'Huyền Ảo')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (42, N'Khoa Học Giả Tưởng')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (43, N'Kỳ Ảo')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (44, N'Sử Thi')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (45, N'Sách Học Ngoại Ngữ')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (46, N'Từ Điển')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (47, N'Sách Thường Thức - Đời Sống')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (48, N'Sách Văn Học - Truyện Ngắn - Tiểu Thuyết')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (49, N'Ngược')
-INSERT [dbo].[TheLoai] ([MaTL], [TenTL]) VALUES (50, N'Siêu năng lực')
-SET IDENTITY_INSERT [dbo].[TheLoai] OFF
+USE [QLNS]
 ALTER TABLE [dbo].[CTBaoCaoCongNo]  WITH CHECK ADD  CONSTRAINT [FK_CTBaoCaoCongNo_BaoCaoCongNo] FOREIGN KEY([MaBaoCao])
 REFERENCES [dbo].[BaoCaoCongNo] ([MaBaoCao])
 ON UPDATE CASCADE
@@ -936,6 +982,7 @@ USE [master]
 GO
 ALTER DATABASE [QLNS] SET  READ_WRITE 
 GO
+USE [QLNS]
 SET IDENTITY_INSERT [dbo].[BaoCaoTon] ON
 INSERT [dbo].[BaoCaoTon] ([MaBaoCao], [Thang], [Nam]) VALUES (3, 4, 2020)
 INSERT [dbo].[BaoCaoTon] ([MaBaoCao], [Thang], [Nam]) VALUES (4, 3, 2020)
@@ -949,7 +996,6 @@ INSERT [dbo].[BaoCaoCongNo] ([MaBaoCao], [Thang], [Nam]) VALUES (2, 3, 2020)
 INSERT [dbo].[BaoCaoCongNo] ([MaBaoCao], [Thang], [Nam]) VALUES (3, 4, 2020)
 SET IDENTITY_INSERT [dbo].[BaoCaoCongNo] OFF
 
-INSERT [dbo].[CTBaoCaoTon] ([MaBaoCao], [MaSach], [SoLuongTonDau], [SoLuongTonCuoi]) VALUES (3, 1, 142, 342)
 INSERT [dbo].[CTBaoCaoTon] ([MaBaoCao], [MaSach], [SoLuongTonDau], [SoLuongTonCuoi]) VALUES (3, 2, 138, 288)
 INSERT [dbo].[CTBaoCaoTon] ([MaBaoCao], [MaSach], [SoLuongTonDau], [SoLuongTonCuoi]) VALUES (3, 3, 147, 147)
 INSERT [dbo].[CTBaoCaoTon] ([MaBaoCao], [MaSach], [SoLuongTonDau], [SoLuongTonCuoi]) VALUES (3, 4, 149, 149)
