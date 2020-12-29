@@ -24,5 +24,6 @@
         {
             DB = new QLNSEntities3();
         }
+
     }
 }
