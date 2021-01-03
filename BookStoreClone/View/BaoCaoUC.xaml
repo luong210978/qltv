@@ -140,15 +140,7 @@
 
                     </StackPanel>
                 </StackPanel>
-                -->
-                <!--<chart:Columnchart></chart:Columnchart>-->
-                <!--<chart:
-                    >
-                    
-                </chart:>-->
 
-                <!--<Canvas x:Name="mainCanvas" 
-                Margin="20,6.4,20,393"/>-->
                 <StackPanel Margin="0,-670,0,1" >
 
                     <StackPanel  Orientation="Horizontal" Width="610" Height="35">
@@ -202,7 +194,7 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </StackPanel>
-                </StackPanel>-->
+                </StackPanel>
                 <DockPanel Margin="10">
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center"  DockPanel.Dock="Top" Margin="0,90,0,0">
                         <TextBlock Text="Tổng số sách nhập trong tháng: " FontSize="15" Height="28" Width="234"></TextBlock>
