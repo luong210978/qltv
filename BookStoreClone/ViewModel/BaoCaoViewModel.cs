@@ -84,7 +84,8 @@ namespace BookStoreClone.ViewModel
 
 
 
-
+            TongSoSachNhap = 0;
+            TongSoSachBan = 0;
 
             SeriesCollection = new SeriesCollection()
                 {
@@ -123,6 +124,7 @@ namespace BookStoreClone.ViewModel
                     }
                 }
                 SeriesCollection[1].Values.Add(s);
+                TongSoSachBan += s;
             }
 
             for (int i = 1; i <= 12; i++)
@@ -138,6 +140,7 @@ namespace BookStoreClone.ViewModel
                     }
                 }
                 SeriesCollection[0].Values.Add(s);
+                TongSoSachNhap += s;
             }
 
 
@@ -253,8 +256,7 @@ namespace BookStoreClone.ViewModel
                     p.Children.Clear();
                     p.Children.Add(DGBaoCaoNo);
                     TongSoNo = 0;
-                    TongSoSachBan = 0;
-                    TongSoSachNhap = 0;
+                    
                     TongSoTra = 0;
 
                     if ((Nam == DateTime.Now.Year && Thang < DateTime.Now.Month) || (Nam < DateTime.Now.Year))
@@ -304,8 +306,7 @@ namespace BookStoreClone.ViewModel
             TimKiemCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
                 TongSoNo = 0;
-                TongSoSachBan = 0;
-                TongSoSachNhap = 0;
+                
                 TongSoTra = 0;
 
                 if ((Nam == DateTime.Now.Year && Thang < DateTime.Now.Month) || (Nam < DateTime.Now.Year))
@@ -325,14 +326,7 @@ namespace BookStoreClone.ViewModel
                         {
                             TongSoTra += (int)a.SoTienThu;
                         }
-                        foreach (CTHD a in _listCTHD)
-                        {
-                            TongSoSachBan += (int)a.SoLuong;
-                        }
-                        foreach (CTPhieuNhap a in _listCTPN)
-                        {
-                            TongSoSachNhap += (int)a.SoLuongNhap;
-                        }
+
 
                     }
                     catch
