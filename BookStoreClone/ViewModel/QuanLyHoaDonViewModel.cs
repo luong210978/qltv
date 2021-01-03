@@ -269,7 +269,7 @@ namespace BookStoreClone.ViewModel
                     if (p.MaSach == ListCTHD_BanSach[i].Sach.MaSach)
                         return;
                 }
-
+              
                 ListCTHD_BanSach.Add(new CTHD() { Sach = DataProvider.Ins.DB.Saches.Where(x => x.MaSach == p.MaSach).First(), DonGiaBan = p.DonGia, SoLuong = 1, PhuongThuc = "Mua", TinhTrang = 100 });
                 //TongGiaBan = ListCTHD_BanSach.Sum(x => (int)x.SoLuong * (int)x.DonGiaBan);
                 TongSachMuon = 0;

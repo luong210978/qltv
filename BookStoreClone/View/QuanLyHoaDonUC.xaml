@@ -195,7 +195,7 @@
                         HeadersVisibility="All"
                         HorizontalScrollBarVisibility="Auto"
                         IsReadOnly="True"
-                        ItemsSource="{Binding ListSach}">
+                        ItemsSource="{Binding ListSach}" >
 
                         <DataGrid.Columns>
                             <DataGridTemplateColumn>

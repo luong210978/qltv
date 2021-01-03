@@ -141,7 +141,7 @@ namespace BookStoreClone.ViewModel
                     p.Show();
                     KinhDoanh = "Lập Thử";
                     PQKhachHang();
-                    LinkAnhBiaava = _localLink + @"Resources\img\19476 - 200.png";
+                    LinkAnhBiaava = _localLink + @"Resources\img\19476200.png";
                 }
             });
 
@@ -244,7 +244,8 @@ namespace BookStoreClone.ViewModel
 					case "Lập Hóa Đơn Bán Sách/ Mượn Sách":
 						PnlContent.Children.Clear();
 						PnlContent.Children.Add(new QuanLyHoaDonUC() { });
-						TitleApp = "Lập Hóa Đơn Bán Sách/ Mượn Sách";
+                       
+                        TitleApp = "Lập Hóa Đơn Bán Sách/ Mượn Sách";
 						break;
 
 					case "Lập Phiếu Thu Tiền/ Trả Sách":
