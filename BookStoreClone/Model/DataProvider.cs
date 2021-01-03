@@ -18,11 +18,11 @@
             }
         }
 
-        public QLNSEntities4 DB { get; set; }
+        public QLNSEntities5 DB { get; set; }
 
         private DataProvider()
         {
-            DB = new QLNSEntities4();
+            DB = new QLNSEntities5();
         }
 
     }

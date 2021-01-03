@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="QLNSModel2.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLNSModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="BaoCaoCongNo">
           <Key>
             <PropertyRef Name="MaBaoCao" />
@@ -178,16 +178,6 @@
           <Property Name="MaNXB" Type="int" />
           <Property Name="IsCoTheNhapThem" Type="bit" />
           <Property Name="IsBtnBanSach" Type="bit" />
-        </EntityType>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="principal_id" Type="int" Nullable="false" />
-          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="version" Type="int" />
-          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -455,7 +445,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="QLNSModel2StoreContainer">
+        <EntityContainer Name="QLNSModel3StoreContainer">
           <EntitySet Name="BaoCaoCongNo" EntityType="Self.BaoCaoCongNo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="BaoCaoTon" EntityType="Self.BaoCaoTon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CTBaoCaoCongNo" EntityType="Self.CTBaoCaoCongNo" Schema="dbo" store:Type="Tables" />
@@ -472,7 +462,6 @@
           <EntitySet Name="PhieuThuTien" EntityType="Self.PhieuThuTien" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="QuyDinh" EntityType="Self.QuyDinh" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Sach" EntityType="Self.Sach" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TacGia" EntityType="Self.TacGia" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TheLoai" EntityType="Self.TheLoai" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CTBaoCaoCongNo_BaoCaoCongNo" Association="Self.FK_CTBaoCaoCongNo_BaoCaoCongNo">
@@ -552,7 +541,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="QLNSModel2" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="QLNSModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="BaoCaoCongNo">
           <Key>
             <PropertyRef Name="MaBaoCao" />
@@ -740,16 +729,6 @@
           <NavigationProperty Name="NhaXuatBan" Relationship="Self.FK_Sach_NhaXuatBan" FromRole="Sach" ToRole="NhaXuatBan" />
           <NavigationProperty Name="TacGias" Relationship="Self.CTTacGia" FromRole="Sach" ToRole="TacGia" />
           <NavigationProperty Name="TheLoais" Relationship="Self.CTTheLoai" FromRole="Sach" ToRole="TheLoai" />
-        </EntityType>
-        <EntityType Name="sysdiagram">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TacGia">
           <Key>
@@ -986,7 +965,6 @@
           <EntitySet Name="PhieuThuTiens" EntityType="Self.PhieuThuTien" />
           <EntitySet Name="QuyDinhs" EntityType="Self.QuyDinh" />
           <EntitySet Name="Saches" EntityType="Self.Sach" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TacGias" EntityType="Self.TacGia" />
           <EntitySet Name="TheLoais" EntityType="Self.TheLoai" />
           <AssociationSet Name="FK_CTBaoCaoCongNo_BaoCaoCongNo" Association="Self.FK_CTBaoCaoCongNo_BaoCaoCongNo">
@@ -1059,9 +1037,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="QLNSModel2StoreContainer" CdmEntityContainer="QLNSEntities5">
+        <EntityContainerMapping StorageEntityContainer="QLNSModel3StoreContainer" CdmEntityContainer="QLNSEntities5">
           <EntitySetMapping Name="BaoCaoCongNoes">
-            <EntityTypeMapping TypeName="QLNSModel2.BaoCaoCongNo">
+            <EntityTypeMapping TypeName="QLNSModel3.BaoCaoCongNo">
               <MappingFragment StoreEntitySet="BaoCaoCongNo">
                 <ScalarProperty Name="MaBaoCao" ColumnName="MaBaoCao" />
                 <ScalarProperty Name="Thang" ColumnName="Thang" />
@@ -1070,7 +1048,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="BaoCaoTons">
-            <EntityTypeMapping TypeName="QLNSModel2.BaoCaoTon">
+            <EntityTypeMapping TypeName="QLNSModel3.BaoCaoTon">
               <MappingFragment StoreEntitySet="BaoCaoTon">
                 <ScalarProperty Name="MaBaoCao" ColumnName="MaBaoCao" />
                 <ScalarProperty Name="Thang" ColumnName="Thang" />
@@ -1079,7 +1057,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTBaoCaoCongNoes">
-            <EntityTypeMapping TypeName="QLNSModel2.CTBaoCaoCongNo">
+            <EntityTypeMapping TypeName="QLNSModel3.CTBaoCaoCongNo">
               <MappingFragment StoreEntitySet="CTBaoCaoCongNo">
                 <ScalarProperty Name="MaBaoCao" ColumnName="MaBaoCao" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -1089,7 +1067,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTBaoCaoTons">
-            <EntityTypeMapping TypeName="QLNSModel2.CTBaoCaoTon">
+            <EntityTypeMapping TypeName="QLNSModel3.CTBaoCaoTon">
               <MappingFragment StoreEntitySet="CTBaoCaoTon">
                 <ScalarProperty Name="MaBaoCao" ColumnName="MaBaoCao" />
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
@@ -1099,7 +1077,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTHDs">
-            <EntityTypeMapping TypeName="QLNSModel2.CTHD">
+            <EntityTypeMapping TypeName="QLNSModel3.CTHD">
               <MappingFragment StoreEntitySet="CTHD">
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
@@ -1114,7 +1092,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CTPhieuNhaps">
-            <EntityTypeMapping TypeName="QLNSModel2.CTPhieuNhap">
+            <EntityTypeMapping TypeName="QLNSModel3.CTPhieuNhap">
               <MappingFragment StoreEntitySet="CTPhieuNhap">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
@@ -1124,7 +1102,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
-            <EntityTypeMapping TypeName="QLNSModel2.HoaDon">
+            <EntityTypeMapping TypeName="QLNSModel3.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
                 <ScalarProperty Name="MaHD" ColumnName="MaHD" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
@@ -1137,7 +1115,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="KhachHangs">
-            <EntityTypeMapping TypeName="QLNSModel2.KhachHang">
+            <EntityTypeMapping TypeName="QLNSModel3.KhachHang">
               <MappingFragment StoreEntitySet="KhachHang">
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
                 <ScalarProperty Name="TenKH" ColumnName="TenKH" />
@@ -1153,7 +1131,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NguoiDungs">
-            <EntityTypeMapping TypeName="QLNSModel2.NguoiDung">
+            <EntityTypeMapping TypeName="QLNSModel3.NguoiDung">
               <MappingFragment StoreEntitySet="NguoiDung">
                 <ScalarProperty Name="MaND" ColumnName="MaND" />
                 <ScalarProperty Name="TenND" ColumnName="TenND" />
@@ -1171,7 +1149,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaXuatBans">
-            <EntityTypeMapping TypeName="QLNSModel2.NhaXuatBan">
+            <EntityTypeMapping TypeName="QLNSModel3.NhaXuatBan">
               <MappingFragment StoreEntitySet="NhaXuatBan">
                 <ScalarProperty Name="MaNXB" ColumnName="MaNXB" />
                 <ScalarProperty Name="TenNXB" ColumnName="TenNXB" />
@@ -1179,7 +1157,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhieuNhaps">
-            <EntityTypeMapping TypeName="QLNSModel2.PhieuNhap">
+            <EntityTypeMapping TypeName="QLNSModel3.PhieuNhap">
               <MappingFragment StoreEntitySet="PhieuNhap">
                 <ScalarProperty Name="MaPN" ColumnName="MaPN" />
                 <ScalarProperty Name="NgayNhap" ColumnName="NgayNhap" />
@@ -1190,7 +1168,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PhieuThuTiens">
-            <EntityTypeMapping TypeName="QLNSModel2.PhieuThuTien">
+            <EntityTypeMapping TypeName="QLNSModel3.PhieuThuTien">
               <MappingFragment StoreEntitySet="PhieuThuTien">
                 <ScalarProperty Name="MaPT" ColumnName="MaPT" />
                 <ScalarProperty Name="MaKH" ColumnName="MaKH" />
@@ -1201,7 +1179,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="QuyDinhs">
-            <EntityTypeMapping TypeName="QLNSModel2.QuyDinh">
+            <EntityTypeMapping TypeName="QLNSModel3.QuyDinh">
               <MappingFragment StoreEntitySet="QuyDinh">
                 <ScalarProperty Name="MaQuyDinh" ColumnName="MaQuyDinh" />
                 <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
@@ -1214,7 +1192,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Saches">
-            <EntityTypeMapping TypeName="QLNSModel2.Sach">
+            <EntityTypeMapping TypeName="QLNSModel3.Sach">
               <MappingFragment StoreEntitySet="Sach">
                 <ScalarProperty Name="MaSach" ColumnName="MaSach" />
                 <ScalarProperty Name="SoLuongTon" ColumnName="SoLuongTon" />
@@ -1228,19 +1206,8 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="QLNSModel2.sysdiagram">
-              <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="definition" ColumnName="definition" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="TacGias">
-            <EntityTypeMapping TypeName="QLNSModel2.TacGia">
+            <EntityTypeMapping TypeName="QLNSModel3.TacGia">
               <MappingFragment StoreEntitySet="TacGia">
                 <ScalarProperty Name="MaTG" ColumnName="MaTG" />
                 <ScalarProperty Name="TenTG" ColumnName="TenTG" />
@@ -1248,14 +1215,14 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TheLoais">
-            <EntityTypeMapping TypeName="QLNSModel2.TheLoai">
+            <EntityTypeMapping TypeName="QLNSModel3.TheLoai">
               <MappingFragment StoreEntitySet="TheLoai">
                 <ScalarProperty Name="MaTL" ColumnName="MaTL" />
                 <ScalarProperty Name="TenTL" ColumnName="TenTL" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="CTTacGia" TypeName="QLNSModel2.CTTacGia" StoreEntitySet="CTTacGia">
+          <AssociationSetMapping Name="CTTacGia" TypeName="QLNSModel3.CTTacGia" StoreEntitySet="CTTacGia">
             <EndProperty Name="Sach">
               <ScalarProperty Name="MaSach" ColumnName="MaSach" />
             </EndProperty>
@@ -1263,7 +1230,7 @@
               <ScalarProperty Name="MaTG" ColumnName="MaTG" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="CTTheLoai" TypeName="QLNSModel2.CTTheLoai" StoreEntitySet="CTTheLoai">
+          <AssociationSetMapping Name="CTTheLoai" TypeName="QLNSModel3.CTTheLoai" StoreEntitySet="CTTheLoai">
             <EndProperty Name="Sach">
               <ScalarProperty Name="MaSach" ColumnName="MaSach" />
             </EndProperty>

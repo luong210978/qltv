@@ -25,7 +25,7 @@ namespace BookStoreClone.Model
         }
     
         public int MaSach { get; set; }
-        public int SoLuongTon { get; set; }
+        public Nullable<int> SoLuongTon { get; set; }
         public Nullable<int> DonGia { get; set; }
         public string TenSach { get; set; }
         public string MoTa { get; set; }
