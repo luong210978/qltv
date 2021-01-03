@@ -177,21 +177,7 @@
       <DependentUpon>dataluong.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\Model1.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model1.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="Model\Model2.Context.cs">
+
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Model2.Context.tt</DependentUpon>
@@ -204,6 +190,23 @@
     <Compile Include="Model\Model2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model2.Context.cs">
+
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model3.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model3.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Model3.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+
       <DependentUpon>Model2.edmx</DependentUpon>
     </Compile>
     <Compile Include="Model\NguoiDung.cs">
@@ -223,6 +226,7 @@
     </Compile>
     <Compile Include="Model\Sach.cs">
       <DependentUpon>dataluong.tt</DependentUpon>
+
     </Compile>
     <Compile Include="Model\sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>Model2.tt</DependentUpon>
@@ -238,6 +242,7 @@
     </Compile>
     <Compile Include="Model\TheLoai.cs">
       <DependentUpon>dataluong.tt</DependentUpon>
+
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="ViewModel\BaoCaoViewModel.cs" />
@@ -359,6 +364,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EntityDeploy Include="Model\Model2.edmx">
+
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model2.Designer.cs</LastGenOutput>
     </EntityDeploy>
@@ -367,6 +373,7 @@
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <EntityDeploy Include="Model\dataluong.edmx">
+
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>dataluong.Designer.cs</LastGenOutput>
     </EntityDeploy>
@@ -378,6 +385,7 @@
     </None>
     <None Include="Model\Model2.edmx.diagram">
       <DependentUpon>Model2.edmx</DependentUpon>
+
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -409,6 +417,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+
     <Content Include="Model\Model2.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model2.edmx</DependentUpon>
@@ -418,6 +427,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model2.edmx</DependentUpon>
       <LastGenOutput>Model2.cs</LastGenOutput>
+
     </Content>
     <Resource Include="Resources\img\ohno.jpg" />
     <Resource Include="Resources\img\sdg.gif" />

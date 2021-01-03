@@ -146,6 +146,7 @@ namespace BookStoreClone.ViewModel
 
 
 
+
             Nam = 2020;
             ListCTBaoCaoCongNo = new ObservableCollection<CTBaoCaoCongNo>(DataProvider.Ins.DB.CTBaoCaoCongNoes);
             ListCTBaoCaoTon = new ObservableCollection<CTBaoCaoTon>(DataProvider.Ins.DB.CTBaoCaoTons);
@@ -296,6 +297,7 @@ namespace BookStoreClone.ViewModel
             {
                 TongSoNo = 0;
                 
+
                 TongSoTra = 0;
 
                 if ((Nam == DateTime.Now.Year && Thang < DateTime.Now.Month) || (Nam < DateTime.Now.Year))
@@ -315,6 +317,7 @@ namespace BookStoreClone.ViewModel
                         {
                             TongSoTra += (int)a.SoTienThu;
                         }
+
 
 
                     }
