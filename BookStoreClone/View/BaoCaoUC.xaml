@@ -118,7 +118,7 @@
 
                         <Canvas x:Name="mainCanvas" 
                 Margin="10,100"/>
-                        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Width="503" Margin="0,0,0,314.4" RenderTransformOrigin="0.5,0.5">
+                        <lvc:CartesianChart Series="{Binding SeriesCollection}" LegendLocation="Left" Width="503" Margin="0,2,0,314.4" RenderTransformOrigin="0.5,0.5">
                             <lvc:CartesianChart.RenderTransform>
                                 <TransformGroup>
                                     <ScaleTransform/>
@@ -140,16 +140,8 @@
 
                     </StackPanel>
                 </StackPanel>
-                -->
-                <!--<chart:Columnchart></chart:Columnchart>-->
-                <!--<chart:
-                    >
-                    
-                </chart:>-->
 
-                <!--<Canvas x:Name="mainCanvas" 
-                Margin="20,6.4,20,393"/>-->
-                <StackPanel Margin="0,-670,0,1" >
+                <StackPanel Margin="0,-657,0,1" >
 
                     <StackPanel  Orientation="Horizontal" Width="610" Height="35">
                         <TextBlock Text="Tổng số sách bán được trong tháng :" FontSize="15" Margin="0,0,0,-0.333" Width="265" Height="30" VerticalAlignment="Bottom"/>
@@ -202,7 +194,7 @@
                             </ItemsControl>
                         </ScrollViewer>
                     </StackPanel>
-                </StackPanel>-->
+                </StackPanel>
                 <DockPanel Margin="10">
                     <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center"  DockPanel.Dock="Top" Margin="0,90,0,0">
                         <TextBlock Text="Tổng số sách nhập trong tháng: " FontSize="15" Height="28" Width="234"></TextBlock>
