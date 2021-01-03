@@ -16,7 +16,7 @@ namespace BookStoreClone.Model
     {
         public int MaHD { get; set; }
         public int MaSach { get; set; }
-        public Nullable<int> SoLuong { get; set; }
+        public int SoLuong { get; set; }
         public Nullable<int> DonGiaBan { get; set; }
         public string TrangThai { get; set; }
         public Nullable<int> TinhTrang { get; set; }

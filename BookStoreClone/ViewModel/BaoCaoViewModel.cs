@@ -16,6 +16,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+
+using LiveCharts;
+using LiveCharts.Wpf;
 namespace BookStoreClone.ViewModel
 {
     class BaoCaoViewModel : BaseViewModel
@@ -31,9 +34,11 @@ namespace BookStoreClone.ViewModel
         private int _tongSoTra;
         private ObservableCollection<CTHD> _listCTHD;
         private ObservableCollection<HoaDon> _listHD;
+        private ObservableCollection<PhieuNhap> _listPN;
         private ObservableCollection<PhieuThuTien> _listPTT;
         private ObservableCollection<CTPhieuNhap> _listCTPN;
         private ObservableCollection<CTBaoCaoCongNo> _listCTBaoCaoCongNo;
+        private ObservableCollection<BaoCaoTon> _listBaoCaoTon;
         private ObservableCollection<CTBaoCaoTon> _listCTBaoCaoTon;
         private DataGrid _dGBaoCaoNo;
         private DataGrid _dGBaoCaoTon;
@@ -49,6 +54,8 @@ namespace BookStoreClone.ViewModel
 
         public ObservableCollection<CTBaoCaoTon> ListCTBaoCaoTon { get => _listCTBaoCaoTon; set { _listCTBaoCaoTon = value; OnPropertyChanged(); } }
 
+        public ObservableCollection<BaoCaoTon> ListBaoCaoTon { get => _listBaoCaoTon; set { _listBaoCaoTon = value; OnPropertyChanged(); } }
+
         public int Thang
         {
             get => _thang; set
@@ -63,12 +70,78 @@ namespace BookStoreClone.ViewModel
         public DataGrid DGBaoCaoTon { get => _dGBaoCaoTon; set { _dGBaoCaoTon = value; OnPropertyChanged(); } }
 
         public int TongSoSachNhap { get => _tongSoSachNhap; set { _tongSoSachNhap = value; OnPropertyChanged(); } }
+
         public int TongSoSachBan { get => _tongSoSachBan; set { _tongSoSachBan = value; OnPropertyChanged(); } }
         public int TongSoNo { get => _tongSoNo; set { _tongSoNo = value; OnPropertyChanged(); } }
         public int TongSoTra { get => _tongSoTra; set { _tongSoTra = value; OnPropertyChanged(); } }
 
+        public SeriesCollection SeriesCollection { get; set; }
+        public string[] Labels { get; set; }
+        public Func<double, string> Formatter { get; set; }
+
         public BaoCaoViewModel()
         {
+
+
+
+
+
+            SeriesCollection = new SeriesCollection()
+                {
+                    new ColumnSeries
+                    {
+                        Title = "Số lượng sách nhập",
+                        Values = new ChartValues<int>{}
+                       // Values = new ChartValues<double> { 10, 50, 39, 50 }
+                    }
+                };
+
+            //adding series will update and animate the chart automatically
+            SeriesCollection.Add(new ColumnSeries
+            {
+                Title = "Số lượng sách xuất",
+                Values = new ChartValues<int> { }
+                //Values = new ChartValues<double> { 11, 56, 42 }
+            });
+
+            //also adding values updates and animates the chart automatically
+            //    SeriesCollection[1].Values.Add(48d);
+
+            Labels = new[] { "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6", "Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" };
+            Formatter = value => value.ToString("N");
+
+            for (int i = 1; i <= 12; i++)
+            {
+                _listHD = new ObservableCollection<HoaDon>(DataProvider.Ins.DB.HoaDons.Where(x => x.NgayBan.Value.Month == i && x.NgayBan.Value.Year == DateTime.Now.Year - 1));
+                _listCTHD = new ObservableCollection<CTHD>(DataProvider.Ins.DB.CTHDs);
+                int s = 0;
+                foreach (var a in _listHD)
+                {
+                    foreach (var b in _listCTHD)
+                    {
+                        if (a.MaHD == b.MaHD && b.PhuongThuc == "Mua") { s += b.SoLuong; }
+                    }
+                }
+                SeriesCollection[1].Values.Add(s);
+            }
+
+            for (int i = 1; i <= 12; i++)
+            {
+                _listPN = new ObservableCollection<PhieuNhap>(DataProvider.Ins.DB.PhieuNhaps.Where(x => x.NgayNhap.Value.Month == i && x.NgayNhap.Value.Year == DateTime.Now.Year - 1));
+                _listCTPN = new ObservableCollection<CTPhieuNhap>(DataProvider.Ins.DB.CTPhieuNhaps);
+                int s = 0;
+                foreach (var a in _listPN)
+                {
+                    foreach (var b in _listCTPN)
+                    {
+                        if (a.MaPN == b.MaPN) { s += b.SoLuongNhap; }
+                    }
+                }
+                SeriesCollection[0].Values.Add(s);
+            }
+
+
+
             //var result = from e in DataProvider.Ins.DB.HoaDons
             //                      join d in DataProvider.Ins.DB.Saches
 
@@ -98,6 +171,7 @@ namespace BookStoreClone.ViewModel
                 return true;
             }, (p) =>
             {
+                p.Children.Clear();
                 showdgNo();
                 VisibilityBaoCaoTon = Visibility.Collapsed;
                 VisibilityBCCongNo = Visibility.Visible;
@@ -108,7 +182,7 @@ namespace BookStoreClone.ViewModel
             ShowBCTonCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
 
             {
-
+                p.Children.Clear();
                 showdgTon();
                 VisibilityBaoCaoTon = Visibility.Visible;
                 VisibilityBCCongNo = Visibility.Collapsed;
@@ -123,6 +197,7 @@ namespace BookStoreClone.ViewModel
 
                 if (VisibilityBaoCaoTon == Visibility.Visible)
                 {
+                    p.Children.Clear();
                     showdgTon();
                     p.Children.Clear();
                     p.Children.Add(DGBaoCaoTon);
@@ -173,6 +248,7 @@ namespace BookStoreClone.ViewModel
 
                 if (VisibilityBCCongNo == Visibility.Visible)
                 {
+                    p.Children.Clear();
                     showdgNo();
                     p.Children.Clear();
                     p.Children.Add(DGBaoCaoNo);
@@ -222,6 +298,8 @@ namespace BookStoreClone.ViewModel
 
                 }
             });
+
+
 
             TimKiemCommand = new RelayCommand<Grid>((p) => { return true; }, (p) =>
             {
