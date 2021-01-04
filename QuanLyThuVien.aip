@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<DOCUMENT Type="Advanced Installer" CreateVersion="17.8" version="17.8" Modules="simple" RootPath="." Language="en" Id="{F4EB572F-85A1-421C-8A88-CBEE5E0E77C0}">
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
+    <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
+    <ROW Property="AI_PREDEF_LCONDS_PROPS" Value="AI_DETECTED_DOTNET_VERSION"/>
+    <ROW Property="AI_REQUIRED_DOTNET_DISPLAY" MultiBuildValue="DefaultBuild:3.5 SP1" ValueLocId="-"/>
+    <ROW Property="AI_REQUIRED_DOTNET_VERSION" MultiBuildValue="DefaultBuild:3.5.1" ValueLocId="-"/>
+    <ROW Property="ALLUSERS" Value="1"/>
+    <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
+    <ROW Property="ARPPRODUCTICON" Value="reading.exe" Type="8"/>
+    <ROW Property="Manufacturer" Value="LTTQ"/>
+    <ROW Property="ProductCode" Value="1033:{33DE6B03-0093-4EE1-A349-D090BE7D5F00} " Type="16"/>
+    <ROW Property="ProductLanguage" Value="1033"/>
+    <ROW Property="ProductName" Value="QuanLyThuVien"/>
+    <ROW Property="ProductVersion" Value="1.0.0" Type="32"/>
+    <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND"/>
+    <ROW Property="UpgradeCode" Value="{B5BB09AF-8144-42FD-8FF5-A070356A6A04}"/>
+    <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsType9XDisplay" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT40Display" MultiBuildValue="DefaultBuild:Windows NT 4.0" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT50Display" MultiBuildValue="DefaultBuild:Windows 2000" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5X" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+    <ROW Property="WindowsTypeNT5XDisplay" MultiBuildValue="DefaultBuild:Windows XP/2003" ValueLocId="-"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiDirsComponent">
+    <ROW Directory="APPDIR" Directory_Parent="TARGETDIR" DefaultDir="APPDIR:." IsPseudoRoot="1"/>
+    <ROW Directory="DesktopFolder" Directory_Parent="TARGETDIR" DefaultDir="DESKTO~1|DesktopFolder" IsPseudoRoot="1"/>
+    <ROW Directory="SHORTCUTDIR" Directory_Parent="TARGETDIR" DefaultDir="SHORTC~1|SHORTCUTDIR" IsPseudoRoot="1"/>
+    <ROW Directory="TARGETDIR" DefaultDir="SourceDir"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCompsComponent">
+    <ROW Component="APPDIR" ComponentId="{3F1233D7-B861-436E-AB3F-2BF6F0828922}" Directory_="APPDIR" Attributes="0"/>
+    <ROW Component="BookStoreClone.exe" ComponentId="{3CDFF4DB-9C63-4754-AC7C-EA9D94A39E94}" Directory_="APPDIR" Attributes="0" KeyPath="BookStoreClone.exe"/>
+    <ROW Component="BookStoreClone.exe.config" ComponentId="{B67591FD-F921-4B9A-B8D4-8A362FB9FBAC}" Directory_="APPDIR" Attributes="0" KeyPath="BookStoreClone.exe.config" Type="0"/>
+    <ROW Component="EntityFramework.SqlServer.dll" ComponentId="{8497B0C8-36ED-4BB6-826A-C12FADC9FD50}" Directory_="APPDIR" Attributes="0" KeyPath="EntityFramework.SqlServer.dll"/>
+    <ROW Component="EntityFramework.dll" ComponentId="{FA6032C3-0939-44E6-AC0E-6F722C6CE959}" Directory_="APPDIR" Attributes="0" KeyPath="EntityFramework.dll"/>
+    <ROW Component="LiveCharts.Wpf.dll" ComponentId="{AFBE7F90-4E7D-4344-8EE1-933C9345C60D}" Directory_="APPDIR" Attributes="0" KeyPath="LiveCharts.Wpf.dll"/>
+    <ROW Component="LiveCharts.dll" ComponentId="{4CB53A13-0663-482C-9E0B-E7965CD02AA9}" Directory_="APPDIR" Attributes="0" KeyPath="LiveCharts.dll"/>
+    <ROW Component="MaterialDesignColors.dll" ComponentId="{64723B79-7442-4A70-9CF3-83F0FD7C125B}" Directory_="APPDIR" Attributes="0" KeyPath="MaterialDesignColors.dll"/>
+    <ROW Component="MaterialDesignThemes.Wpf.dll" ComponentId="{8E7E015F-9C27-48BE-A3D6-E2EE5C8C2157}" Directory_="APPDIR" Attributes="0" KeyPath="MaterialDesignThemes.Wpf.dll"/>
+    <ROW Component="Microsoft.CSharp.dll" ComponentId="{63A7A5DA-1173-436F-9842-DE0D26D9CF51}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.CSharp.dll"/>
+    <ROW Component="Microsoft.Expression.Interactions.dll" ComponentId="{B376E7DF-C3A1-45EF-8DEE-CAA6F49D8954}" Directory_="APPDIR" Attributes="0" KeyPath="Microsoft.Expression.Interactions.dll"/>
+    <ROW Component="PresentationCore.dll" ComponentId="{BA9C4219-FF4F-49A3-B46D-BD1EBBBDBA9B}" Directory_="APPDIR" Attributes="0" KeyPath="PresentationCore.dll"/>
+    <ROW Component="PresentationFramework.dll" ComponentId="{3AEE8EDB-D267-4C96-8D33-1B76F7F7804C}" Directory_="APPDIR" Attributes="0" KeyPath="PresentationFramework.dll"/>
+    <ROW Component="ProductInformation" ComponentId="{0B4BC4F1-05C6-46B0-81F3-2BFDF8A64935}" Directory_="APPDIR" Attributes="4" KeyPath="Version"/>
+    <ROW Component="ReachFramework.dll" ComponentId="{B7CF84D8-C3E3-47A4-BC1D-53578EFC6F4B}" Directory_="APPDIR" Attributes="0" KeyPath="ReachFramework.dll"/>
+    <ROW Component="SHORTCUTDIR" ComponentId="{F0A81122-F2F8-4EE2-9F90-73F901BF85B7}" Directory_="SHORTCUTDIR" Attributes="0"/>
+    <ROW Component="Syncfusion.Core.XForms.dll" ComponentId="{2457683A-52D8-49D2-ABF9-D59FF1CE18D7}" Directory_="APPDIR" Attributes="0" KeyPath="Syncfusion.Core.XForms.dll"/>
+    <ROW Component="Syncfusion.Licensing.dll" ComponentId="{82567BC5-4C29-4314-BF32-78C3090EF6CE}" Directory_="APPDIR" Attributes="0" KeyPath="Syncfusion.Licensing.dll"/>
+    <ROW Component="Syncfusion.SfChart.WPF.dll" ComponentId="{F5ED44ED-88AE-4374-B76F-60D7C5524982}" Directory_="APPDIR" Attributes="0" KeyPath="Syncfusion.SfChart.WPF.dll"/>
+    <ROW Component="Syncfusion.SfChart.XForms.dll" ComponentId="{26AB22F1-C607-4BC5-AD88-7C571FBE65FB}" Directory_="APPDIR" Attributes="0" KeyPath="Syncfusion.SfChart.XForms.dll"/>
+    <ROW Component="System.ComponentModel.DataAnnotations.dll" ComponentId="{6E8A3C67-7BCD-4A99-888F-7AA7F2794875}" Directory_="APPDIR" Attributes="0" KeyPath="System.ComponentModel.DataAnnotations.dll"/>
+    <ROW Component="System.Configuration.dll" ComponentId="{1BA4C1E2-F666-4F95-9658-C173C3442362}" Directory_="APPDIR" Attributes="0" KeyPath="System.Configuration.dll"/>
+    <ROW Component="System.Core.dll" ComponentId="{889AC960-DB69-4EA7-A772-3AB307A3BD08}" Directory_="APPDIR" Attributes="0" KeyPath="System.Core.dll"/>
+    <ROW Component="System.Data.DataSetExtensions.dll" ComponentId="{9F8E2F37-D0F5-423C-81B0-EBDCB7B92D42}" Directory_="APPDIR" Attributes="0" KeyPath="System.Data.DataSetExtensions.dll"/>
+    <ROW Component="System.Data.dll" ComponentId="{BF42E3F1-B5EC-4538-A3A6-2A828BFA8547}" Directory_="APPDIR" Attributes="0" KeyPath="System.Data.dll"/>
+    <ROW Component="System.Drawing.dll" ComponentId="{4DC9F576-B81F-4153-9ACB-83430EF88B67}" Directory_="APPDIR" Attributes="0" KeyPath="System.Drawing.dll"/>
+    <ROW Component="System.Net.Http.dll" ComponentId="{F18B1489-7924-4E04-94B4-39CEF5717ACB}" Directory_="APPDIR" Attributes="0" KeyPath="System.Net.Http.dll"/>
+    <ROW Component="System.Printing.dll" ComponentId="{B8D333A6-4C0F-4348-B25A-E2B891C982FB}" Directory_="APPDIR" Attributes="0" KeyPath="System.Printing.dll"/>
+    <ROW Component="System.Runtime.Serialization.dll" ComponentId="{D5D7947E-B2A7-43C1-BB7D-A2AE952393D6}" Directory_="APPDIR" Attributes="0" KeyPath="System.Runtime.Serialization.dll"/>
+    <ROW Component="System.Security.dll" ComponentId="{2B464B04-57B8-464E-915A-2DBB960B26A0}" Directory_="APPDIR" Attributes="0" KeyPath="System.Security.dll"/>
+    <ROW Component="System.Transactions.dll" ComponentId="{EC2D0781-2F7D-4805-B1F8-724D1062C91C}" Directory_="APPDIR" Attributes="0" KeyPath="System.Transactions.dll"/>
+    <ROW Component="System.Windows.Controls.DataVisualization.Toolkit.dll" ComponentId="{1F46D0C3-459C-4FF8-8B4E-7C74DBA9EDD1}" Directory_="APPDIR" Attributes="0" KeyPath="System.Windows.Controls.DataVisualization.Toolkit.dll"/>
+    <ROW Component="System.Windows.Forms.dll" ComponentId="{99B4340C-FA30-4A4D-AA1C-F560F9F76595}" Directory_="APPDIR" Attributes="0" KeyPath="System.Windows.Forms.dll"/>
+    <ROW Component="System.Windows.Interactivity.dll" ComponentId="{8FF7121B-4426-4EE6-BFA6-3EC14AAEE2E6}" Directory_="APPDIR" Attributes="0" KeyPath="System.Windows.Interactivity.dll"/>
+    <ROW Component="System.Xaml.dll" ComponentId="{9A024454-3030-4B41-A55B-BA3070AA47AD}" Directory_="APPDIR" Attributes="0" KeyPath="System.Xaml.dll"/>
+    <ROW Component="System.Xml.Linq.dll" ComponentId="{0E99C95C-93CC-46A1-8613-4DFF3783DCBC}" Directory_="APPDIR" Attributes="0" KeyPath="System.Xml.Linq.dll"/>
+    <ROW Component="System.Xml.dll" ComponentId="{813809B9-63C9-4D94-9309-E6A1219E508E}" Directory_="APPDIR" Attributes="0" KeyPath="System.Xml.dll"/>
+    <ROW Component="System.dll" ComponentId="{5E231D7F-20E6-4BA2-8FF7-C01D3EFE4E0B}" Directory_="APPDIR" Attributes="0" KeyPath="System.dll"/>
+    <ROW Component="WindowsBase.dll" ComponentId="{FAFC4B58-F299-4FEC-99E3-83900B0F9963}" Directory_="APPDIR" Attributes="0" KeyPath="WindowsBase.dll"/>
+    <ROW Component="Xamarin.Forms.Core.dll" ComponentId="{980FE96C-2810-4FBE-A865-01EC2578CC75}" Directory_="APPDIR" Attributes="0" KeyPath="Xamarin.Forms.Core.dll"/>
+    <ROW Component="Xamarin.Forms.Platform.dll" ComponentId="{0070710D-AB0F-47EB-9479-A4732D34C33A}" Directory_="APPDIR" Attributes="0" KeyPath="Xamarin.Forms.Platform.dll"/>
+    <ROW Component="Xamarin.Forms.Xaml.dll" ComponentId="{EEFB482E-D8EF-4F05-8CD2-16524D6BA8C6}" Directory_="APPDIR" Attributes="0" KeyPath="Xamarin.Forms.Xaml.dll"/>
+    <ROW Component="mscorlib.dll" ComponentId="{2554044C-D762-44A6-B400-9B51C871CF38}" Directory_="APPDIR" Attributes="0" KeyPath="mscorlib.dll"/>
+    <ROW Component="netstandard.dll" ComponentId="{804B32DB-D0D1-415B-BEF4-E6815287B405}" Directory_="APPDIR" Attributes="0" KeyPath="netstandard.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatsComponent">
+    <ROW Feature="MainFeature" Title="MainFeature" Description="Description" Display="1" Level="1" Directory_="APPDIR" Attributes="0"/>
+    <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
+    <ROW File="BookStoreClone.exe" Component_="BookStoreClone.exe" FileName="BOOKST~1.EXE|BookStoreClone.exe" Attributes="0" SourcePath="BookStoreClone\bin\Debug\BookStoreClone.exe" SelfReg="false" DigSign="true"/>
+    <ROW File="BookStoreClone.exe.config" Component_="BookStoreClone.exe.config" FileName="BOOKST~1.CON|BookStoreClone.exe.config" Attributes="0" SourcePath="BookStoreClone\bin\Debug\BookStoreClone.exe.config" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.dll" Component_="MaterialDesignThemes.Wpf.dll" FileName="MATERI~1.DLL|MaterialDesignThemes.Wpf.dll" Attributes="0" SourcePath="packages\MaterialDesignThemes.3.1.3\lib\net45\MaterialDesignThemes.Wpf.dll" SelfReg="false"/>
+    <ROW File="LiveCharts.Wpf.dll" Component_="LiveCharts.Wpf.dll" FileName="LIVECH~1.DLL|LiveCharts.Wpf.dll" Attributes="0" SourcePath="packages\LiveCharts.Wpf.0.9.7\lib\net45\LiveCharts.Wpf.dll" SelfReg="false"/>
+    <ROW File="LiveCharts.dll" Component_="LiveCharts.dll" FileName="LIVECH~2.DLL|LiveCharts.dll" Attributes="0" SourcePath="packages\LiveCharts.0.9.7\lib\net45\LiveCharts.dll" SelfReg="false"/>
+    <ROW File="System.Printing.dll" Component_="System.Printing.dll" FileName="SYSTEM~1.DLL|System.Printing.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Printing.dll" SelfReg="false"/>
+    <ROW File="EntityFramework.dll" Component_="EntityFramework.dll" FileName="ENTITY~1.DLL|EntityFramework.dll" Attributes="0" SourcePath="packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll" SelfReg="false"/>
+    <ROW File="EntityFramework.SqlServer.dll" Component_="EntityFramework.SqlServer.dll" FileName="ENTITY~2.DLL|EntityFramework.SqlServer.dll" Attributes="0" SourcePath="packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll" SelfReg="false"/>
+    <ROW File="MaterialDesignColors.dll" Component_="MaterialDesignColors.dll" FileName="MATERI~2.DLL|MaterialDesignColors.dll" Attributes="0" SourcePath="packages\MaterialDesignColors.1.2.6\lib\net45\MaterialDesignColors.dll" SelfReg="false"/>
+    <ROW File="ReachFramework.dll" Component_="ReachFramework.dll" FileName="REACHF~1.DLL|ReachFramework.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\ReachFramework.dll" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Xaml.dll" Component_="Xamarin.Forms.Xaml.dll" FileName="XAMARI~1.DLL|Xamarin.Forms.Xaml.dll" Attributes="0" SourcePath="packages\Xamarin.Forms.4.5.0.617\lib\netstandard2.0\Xamarin.Forms.Xaml.dll" SelfReg="false"/>
+    <ROW File="Microsoft.CSharp.dll" Component_="Microsoft.CSharp.dll" FileName="MICROS~1.DLL|Microsoft.CSharp.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Microsoft.CSharp.dll" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Core.dll" Component_="Xamarin.Forms.Core.dll" FileName="XAMARI~2.DLL|Xamarin.Forms.Core.dll" Attributes="0" SourcePath="packages\Xamarin.Forms.4.5.0.617\lib\netstandard2.0\Xamarin.Forms.Core.dll" SelfReg="false"/>
+    <ROW File="System.Net.Http.dll" Component_="System.Net.Http.dll" FileName="SYSTEM~2.DLL|System.Net.Http.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Net.Http.dll" SelfReg="false"/>
+    <ROW File="Microsoft.Expression.Interactions.dll" Component_="Microsoft.Expression.Interactions.dll" FileName="MICROS~2.DLL|Microsoft.Expression.Interactions.dll" Attributes="0" SourcePath="packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll" SelfReg="false"/>
+    <ROW File="mscorlib.dll" Component_="mscorlib.dll" FileName="mscorlib.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\mscorlib.dll" SelfReg="false"/>
+    <ROW File="PresentationCore.dll" Component_="PresentationCore.dll" FileName="PRESEN~1.DLL|PresentationCore.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationCore.dll" SelfReg="false"/>
+    <ROW File="BookStoreClone.pdb" Component_="BookStoreClone.exe" FileName="BOOKST~1.PDB|BookStoreClone.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\BookStoreClone.pdb" SelfReg="false"/>
+    <ROW File="PresentationFramework.dll" Component_="PresentationFramework.dll" FileName="PRESEN~2.DLL|PresentationFramework.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\PresentationFramework.dll" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Platform.dll" Component_="Xamarin.Forms.Platform.dll" FileName="XAMARI~3.DLL|Xamarin.Forms.Platform.dll" Attributes="0" SourcePath="packages\Xamarin.Forms.4.5.0.617\lib\netstandard2.0\Xamarin.Forms.Platform.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfChart.XForms.dll" Component_="Syncfusion.SfChart.XForms.dll" FileName="SYNCFU~1.DLL|Syncfusion.SfChart.XForms.dll" Attributes="0" SourcePath="packages\Syncfusion.Xamarin.SfChart.18.3.0.52\lib\netstandard2.0\Syncfusion.SfChart.XForms.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Core.XForms.dll" Component_="Syncfusion.Core.XForms.dll" FileName="SYNCFU~2.DLL|Syncfusion.Core.XForms.dll" Attributes="0" SourcePath="packages\Syncfusion.Xamarin.Core.18.3.0.52\lib\netstandard2.0\Syncfusion.Core.XForms.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.SfChart.WPF.dll" Component_="Syncfusion.SfChart.WPF.dll" FileName="SYNCFU~3.DLL|Syncfusion.SfChart.WPF.dll" Attributes="0" SourcePath="packages\Syncfusion.SfChart.WPF.18.3.0.52\lib\net46\Syncfusion.SfChart.WPF.dll" SelfReg="false"/>
+    <ROW File="Syncfusion.Licensing.dll" Component_="Syncfusion.Licensing.dll" FileName="SYNCFU~4.DLL|Syncfusion.Licensing.dll" Attributes="0" SourcePath="packages\Syncfusion.Licensing.18.3.0.52\lib\net46\Syncfusion.Licensing.dll" SelfReg="false"/>
+    <ROW File="System.ComponentModel.DataAnnotations.dll" Component_="System.ComponentModel.DataAnnotations.dll" FileName="SYSTEM~3.DLL|System.ComponentModel.DataAnnotations.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.ComponentModel.DataAnnotations.dll" SelfReg="false"/>
+    <ROW File="System.Core.dll" Component_="System.Core.dll" FileName="SYSTEM~4.DLL|System.Core.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Core.dll" SelfReg="false"/>
+    <ROW File="System.Data.DataSetExtensions.dll" Component_="System.Data.DataSetExtensions.dll" FileName="SYSTEM~5.DLL|System.Data.DataSetExtensions.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.DataSetExtensions.dll" SelfReg="false"/>
+    <ROW File="System.Xaml.dll" Component_="System.Xaml.dll" FileName="SYSTEM~6.DLL|System.Xaml.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xaml.dll" SelfReg="false"/>
+    <ROW File="System.Data.dll" Component_="System.Data.dll" FileName="SYSTEM~7.DLL|System.Data.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Data.dll" SelfReg="false"/>
+    <ROW File="System.dll" Component_="System.dll" FileName="System.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll" SelfReg="false"/>
+    <ROW File="System.Drawing.dll" Component_="System.Drawing.dll" FileName="SYSTEM~8.DLL|System.Drawing.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Drawing.dll" SelfReg="false"/>
+    <ROW File="System.Runtime.Serialization.dll" Component_="System.Runtime.Serialization.dll" FileName="SYSTEM~9.DLL|System.Runtime.Serialization.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Runtime.Serialization.dll" SelfReg="false"/>
+    <ROW File="System.Security.dll" Component_="System.Security.dll" FileName="SYSTE~10.DLL|System.Security.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Security.dll" SelfReg="false"/>
+    <ROW File="System.Windows.Controls.DataVisualization.Toolkit.dll" Component_="System.Windows.Controls.DataVisualization.Toolkit.dll" FileName="SYSTE~11.DLL|System.Windows.Controls.DataVisualization.Toolkit.dll" Attributes="0" SourcePath="packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll" SelfReg="false"/>
+    <ROW File="netstandard.dll" Component_="netstandard.dll" FileName="NETSTA~1.DLL|netstandard.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\Facades\netstandard.dll" SelfReg="false"/>
+    <ROW File="System.Windows.Forms.dll" Component_="System.Windows.Forms.dll" FileName="SYSTE~12.DLL|System.Windows.Forms.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Windows.Forms.dll" SelfReg="false"/>
+    <ROW File="System.Windows.Interactivity.dll" Component_="System.Windows.Interactivity.dll" FileName="SYSTE~13.DLL|System.Windows.Interactivity.dll" Attributes="0" SourcePath="packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll" SelfReg="false"/>
+    <ROW File="System.Xml.dll" Component_="System.Xml.dll" FileName="SYSTE~14.DLL|System.Xml.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.dll" SelfReg="false"/>
+    <ROW File="System.Xml.Linq.dll" Component_="System.Xml.Linq.dll" FileName="SYSTE~15.DLL|System.Xml.Linq.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Xml.Linq.dll" SelfReg="false"/>
+    <ROW File="QuanLyKhachHangViewModel.cs" Component_="BookStoreClone.exe.config" FileName="QUANLY~1.CS|QuanLyKhachHangViewModel.cs" Attributes="0" SourcePath="BookStoreClone\bin\Debug\ViewModel\QuanLyKhachHangViewModel.cs" SelfReg="false"/>
+    <ROW File="WindowsBase.dll" Component_="WindowsBase.dll" FileName="WINDOW~1.DLL|WindowsBase.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\WindowsBase.dll" SelfReg="false"/>
+    <ROW File="System.Configuration.dll" Component_="System.Configuration.dll" FileName="SYSTE~16.DLL|System.Configuration.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Configuration.dll" SelfReg="false"/>
+    <ROW File="System.Transactions.dll" Component_="System.Transactions.dll" FileName="SYSTE~17.DLL|System.Transactions.dll" Attributes="0" SourcePath="..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.Transactions.dll" SelfReg="false"/>
+    <ROW File="EntityFramework.SqlServer.xml" Component_="BookStoreClone.exe.config" FileName="ENTITY~1.XML|EntityFramework.SqlServer.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\EntityFramework.SqlServer.xml" SelfReg="false"/>
+    <ROW File="EntityFramework.xml" Component_="BookStoreClone.exe.config" FileName="ENTITY~2.XML|EntityFramework.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\EntityFramework.xml" SelfReg="false"/>
+    <ROW File="LiveCharts.pdb" Component_="LiveCharts.dll" FileName="LIVECH~1.PDB|LiveCharts.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\LiveCharts.pdb" SelfReg="false"/>
+    <ROW File="LiveCharts.Wpf.pdb" Component_="LiveCharts.Wpf.dll" FileName="LIVECH~2.PDB|LiveCharts.Wpf.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\LiveCharts.Wpf.pdb" SelfReg="false"/>
+    <ROW File="LiveCharts.Wpf.xml" Component_="BookStoreClone.exe.config" FileName="LIVECH~1.XML|LiveCharts.Wpf.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\LiveCharts.Wpf.xml" SelfReg="false"/>
+    <ROW File="LiveCharts.xml" Component_="BookStoreClone.exe.config" FileName="LIVECH~2.XML|LiveCharts.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\LiveCharts.xml" SelfReg="false"/>
+    <ROW File="MaterialDesignColors.pdb" Component_="MaterialDesignColors.dll" FileName="MATERI~1.PDB|MaterialDesignColors.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\MaterialDesignColors.pdb" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.pdb" Component_="MaterialDesignThemes.Wpf.dll" FileName="MATERI~2.PDB|MaterialDesignThemes.Wpf.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\MaterialDesignThemes.Wpf.pdb" SelfReg="false"/>
+    <ROW File="MaterialDesignThemes.Wpf.xml" Component_="BookStoreClone.exe.config" FileName="MATERI~1.XML|MaterialDesignThemes.Wpf.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\MaterialDesignThemes.Wpf.xml" SelfReg="false"/>
+    <ROW File="Microsoft.Expression.Interactions.xml" Component_="BookStoreClone.exe.config" FileName="MICROS~1.XML|Microsoft.Expression.Interactions.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Microsoft.Expression.Interactions.xml" SelfReg="false"/>
+    <ROW File="Syncfusion.Core.XForms.xml" Component_="BookStoreClone.exe.config" FileName="SYNCFU~1.XML|Syncfusion.Core.XForms.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Syncfusion.Core.XForms.xml" SelfReg="false"/>
+    <ROW File="Syncfusion.SfChart.WPF.xml" Component_="BookStoreClone.exe.config" FileName="SYNCFU~2.XML|Syncfusion.SfChart.WPF.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Syncfusion.SfChart.WPF.xml" SelfReg="false"/>
+    <ROW File="Syncfusion.SfChart.XForms.xml" Component_="BookStoreClone.exe.config" FileName="SYNCFU~3.XML|Syncfusion.SfChart.XForms.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Syncfusion.SfChart.XForms.xml" SelfReg="false"/>
+    <ROW File="System.Windows.Controls.DataVisualization.Toolkit.xml" Component_="BookStoreClone.exe.config" FileName="SYSTEM~1.XML|System.Windows.Controls.DataVisualization.Toolkit.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\System.Windows.Controls.DataVisualization.Toolkit.xml" SelfReg="false"/>
+    <ROW File="System.Windows.Interactivity.xml" Component_="BookStoreClone.exe.config" FileName="SYSTEM~2.XML|System.Windows.Interactivity.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\System.Windows.Interactivity.xml" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Core.pdb" Component_="Xamarin.Forms.Core.dll" FileName="XAMARI~1.PDB|Xamarin.Forms.Core.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Xamarin.Forms.Core.pdb" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Core.xml" Component_="BookStoreClone.exe.config" FileName="XAMARI~1.XML|Xamarin.Forms.Core.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Xamarin.Forms.Core.xml" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Xaml.pdb" Component_="Xamarin.Forms.Xaml.dll" FileName="XAMARI~2.PDB|Xamarin.Forms.Xaml.pdb" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Xamarin.Forms.Xaml.pdb" SelfReg="false"/>
+    <ROW File="Xamarin.Forms.Xaml.xml" Component_="BookStoreClone.exe.config" FileName="XAMARI~2.XML|Xamarin.Forms.Xaml.xml" Attributes="0" SourcePath="BookStoreClone\bin\Debug\Xamarin.Forms.Xaml.xml" SelfReg="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrOptComponent">
+    <ROW BootstrOptKey="GlobalOptions" DownloadFolder="[AppDataFolder][|Manufacturer]\[|ProductName]\prerequisites" Options="2"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BootstrapperUISequenceComponent">
+    <ROW Action="AI_DetectSoftware" Sequence="151"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.BuildComponent">
+    <ROW BuildKey="DefaultBuild" BuildName="DefaultBuild" BuildOrder="1" BuildType="0" PackageFolder="Setup Files" Languages="en" InstallationType="4" UseLargeSchema="true"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.DictionaryComponent">
+    <ROW Path="&lt;AI_DICTS&gt;ui.ail"/>
+    <ROW Path="&lt;AI_DICTS&gt;ui_en.ail"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.FragmentComponent">
+    <ROW Fragment="CommonUI.aip" Path="&lt;AI_FRAGS&gt;CommonUI.aip"/>
+    <ROW Fragment="FolderDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\FolderDlg.aip"/>
+    <ROW Fragment="MaintenanceTypeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceTypeDlg.aip"/>
+    <ROW Fragment="MaintenanceWelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\MaintenanceWelcomeDlg.aip"/>
+    <ROW Fragment="SequenceDialogs.aip" Path="&lt;AI_THEMES&gt;classic\fragments\SequenceDialogs.aip"/>
+    <ROW Fragment="Sequences.aip" Path="&lt;AI_FRAGS&gt;Sequences.aip"/>
+    <ROW Fragment="StaticUIStrings.aip" Path="&lt;AI_FRAGS&gt;StaticUIStrings.aip"/>
+    <ROW Fragment="UI.aip" Path="&lt;AI_THEMES&gt;classic\fragments\UI.aip"/>
+    <ROW Fragment="Validation.aip" Path="&lt;AI_FRAGS&gt;Validation.aip"/>
+    <ROW Fragment="VerifyRemoveDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRemoveDlg.aip"/>
+    <ROW Fragment="VerifyRepairDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\VerifyRepairDlg.aip"/>
+    <ROW Fragment="WelcomeDlg.aip" Path="&lt;AI_THEMES&gt;classic\fragments\WelcomeDlg.aip"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiBinaryComponent">
+    <ROW Name="SoftwareDetector.dll" SourcePath="&lt;AI_CUSTACTS&gt;SoftwareDetector.dll"/>
+    <ROW Name="aicustact.dll" SourcePath="&lt;AI_CUSTACTS&gt;aicustact.dll"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiControlEventComponent">
+    <ROW Dialog_="WelcomeDlg" Control_="Next" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="FolderDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="FolderDlg" Control_="Back" Event="NewDialog" Argument="WelcomeDlg" Condition="AI_INSTALL" Ordering="1"/>
+    <ROW Dialog_="MaintenanceWelcomeDlg" Control_="Next" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="99"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_MAINT" Ordering="198"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="202"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_INSTALL" Ordering="197"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="FolderDlg" Condition="AI_INSTALL" Ordering="201"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_MAINT" Ordering="101"/>
+    <ROW Dialog_="CustomizeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="ChangeButton" Event="NewDialog" Argument="CustomizeDlg" Condition="AI_MAINT" Ordering="501"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceWelcomeDlg" Condition="AI_MAINT" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RemoveButton" Event="NewDialog" Argument="VerifyRemoveDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="1"/>
+    <ROW Dialog_="MaintenanceTypeDlg" Control_="RepairButton" Event="NewDialog" Argument="VerifyRepairDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="601"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Back" Event="NewDialog" Argument="MaintenanceTypeDlg" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="1"/>
+    <ROW Dialog_="VerifyRepairDlg" Control_="Repair" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Repair&quot;" Ordering="399" Options="1"/>
+    <ROW Dialog_="VerifyRemoveDlg" Control_="Remove" Event="EndDialog" Argument="Return" Condition="AI_MAINT AND InstallMode=&quot;Remove&quot;" Ordering="299" Options="1"/>
+    <ROW Dialog_="PatchWelcomeDlg" Control_="Next" Event="NewDialog" Argument="VerifyReadyDlg" Condition="AI_PATCH" Ordering="201"/>
+    <ROW Dialog_="ResumeDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_RESUME" Ordering="299"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Install" Event="EndDialog" Argument="Return" Condition="AI_PATCH" Ordering="199"/>
+    <ROW Dialog_="VerifyReadyDlg" Control_="Back" Event="NewDialog" Argument="PatchWelcomeDlg" Condition="AI_PATCH" Ordering="203"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCreateFolderComponent">
+    <ROW Directory_="APPDIR" Component_="APPDIR" ManualDelete="true"/>
+    <ROW Directory_="SHORTCUTDIR" Component_="SHORTCUTDIR" ManualDelete="false"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiCustActComponent">
+    <ROW Action="AI_DOWNGRADE" Type="19" Target="4010"/>
+    <ROW Action="AI_DetectSoftware" Type="257" Source="SoftwareDetector.dll" Target="OnDetectSoftware"/>
+    <ROW Action="AI_DpiContentScale" Type="1" Source="aicustact.dll" Target="DpiContentScale"/>
+    <ROW Action="AI_EnableDebugLog" Type="321" Source="aicustact.dll" Target="EnableDebugLog"/>
+    <ROW Action="AI_InstallModeCheck" Type="1" Source="aicustact.dll" Target="UpdateInstallMode" WithoutSeq="true"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Type="65" Source="aicustact.dll" Target="PrepareUpgrade"/>
+    <ROW Action="AI_RESTORE_LOCATION" Type="65" Source="aicustact.dll" Target="RestoreLocation"/>
+    <ROW Action="AI_ResolveKnownFolders" Type="1" Source="aicustact.dll" Target="AI_ResolveKnownFolders"/>
+    <ROW Action="AI_SHOW_LOG" Type="65" Source="aicustact.dll" Target="LaunchLogFile" WithoutSeq="true"/>
+    <ROW Action="AI_STORE_LOCATION" Type="51" Source="ARPINSTALLLOCATION" Target="[APPDIR]"/>
+    <ROW Action="SET_APPDIR" Type="307" Source="APPDIR" Target="[ProgramFilesFolder][Manufacturer]\[ProductName]"/>
+    <ROW Action="SET_SHORTCUTDIR" Type="307" Source="SHORTCUTDIR" Target="[ProgramMenuFolder][ProductName]"/>
+    <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiFeatCompsComponent">
+    <ROW Feature_="MainFeature" Component_="APPDIR"/>
+    <ROW Feature_="MainFeature" Component_="ProductInformation"/>
+    <ROW Feature_="MainFeature" Component_="BookStoreClone.exe"/>
+    <ROW Feature_="MainFeature" Component_="BookStoreClone.exe.config"/>
+    <ROW Feature_="MainFeature" Component_="MaterialDesignThemes.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="LiveCharts.Wpf.dll"/>
+    <ROW Feature_="MainFeature" Component_="LiveCharts.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Printing.dll"/>
+    <ROW Feature_="MainFeature" Component_="EntityFramework.dll"/>
+    <ROW Feature_="MainFeature" Component_="EntityFramework.SqlServer.dll"/>
+    <ROW Feature_="MainFeature" Component_="MaterialDesignColors.dll"/>
+    <ROW Feature_="MainFeature" Component_="ReachFramework.dll"/>
+    <ROW Feature_="MainFeature" Component_="Xamarin.Forms.Xaml.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.CSharp.dll"/>
+    <ROW Feature_="MainFeature" Component_="Xamarin.Forms.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Net.Http.dll"/>
+    <ROW Feature_="MainFeature" Component_="Microsoft.Expression.Interactions.dll"/>
+    <ROW Feature_="MainFeature" Component_="mscorlib.dll"/>
+    <ROW Feature_="MainFeature" Component_="PresentationCore.dll"/>
+    <ROW Feature_="MainFeature" Component_="PresentationFramework.dll"/>
+    <ROW Feature_="MainFeature" Component_="Xamarin.Forms.Platform.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfChart.XForms.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Core.XForms.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.SfChart.WPF.dll"/>
+    <ROW Feature_="MainFeature" Component_="Syncfusion.Licensing.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.ComponentModel.DataAnnotations.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Core.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.DataSetExtensions.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Xaml.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Data.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Drawing.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Runtime.Serialization.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Security.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Windows.Controls.DataVisualization.Toolkit.dll"/>
+    <ROW Feature_="MainFeature" Component_="netstandard.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Windows.Forms.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Windows.Interactivity.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Xml.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Xml.Linq.dll"/>
+    <ROW Feature_="MainFeature" Component_="WindowsBase.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Configuration.dll"/>
+    <ROW Feature_="MainFeature" Component_="System.Transactions.dll"/>
+    <ROW Feature_="MainFeature" Component_="SHORTCUTDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
+    <ROW Name="reading.exe" SourcePath="..\..\..\Desktop\Icon\reading.ico" Index="0"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
+    <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_STORE_LOCATION" Condition="(Not Installed) OR REINSTALL" Sequence="1501"/>
+    <ROW Action="AI_PREPARE_UPGRADE" Condition="AI_UPGRADE=&quot;No&quot; AND (Not Installed)" Sequence="1399"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiInstallUISequenceComponent">
+    <ROW Action="AI_RESTORE_LOCATION" Condition="APPDIR=&quot;&quot;" Sequence="749"/>
+    <ROW Action="AI_ResolveKnownFolders" Sequence="53"/>
+    <ROW Action="AI_DpiContentScale" Sequence="52"/>
+    <ROW Action="AI_EnableDebugLog" Sequence="51"/>
+    <ROW Action="AI_DetectSoftware" Sequence="101"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiLaunchConditionsComponent">
+    <ROW Condition="((VersionNT &lt;&gt; 501) AND (VersionNT &lt;&gt; 502))" Description="[ProductName] cannot be installed on [WindowsTypeNT5XDisplay]." DescriptionLocId="AI.LaunchCondition.NoNT5X" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 400)" Description="[ProductName] cannot be installed on [WindowsTypeNT40Display]." DescriptionLocId="AI.LaunchCondition.NoNT40" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="(VersionNT &lt;&gt; 500)" Description="[ProductName] cannot be installed on [WindowsTypeNT50Display]." DescriptionLocId="AI.LaunchCondition.NoNT50" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="AI_DETECTED_DOTNET_VERSION &gt;= AI_REQUIRED_DOTNET_VERSION" Description="[ProductName] cannot be installed on systems with .NET Framework version lower than [AI_REQUIRED_DOTNET_DISPLAY]." DescriptionLocId="AI.LaunchCondition.DotNET" IsPredefined="true" Builds="DefaultBuild"/>
+    <ROW Condition="VersionNT" Description="[ProductName] cannot be installed on [WindowsType9XDisplay]." DescriptionLocId="AI.LaunchCondition.No9X" IsPredefined="true" Builds="DefaultBuild"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiRegsComponent">
+    <ROW Registry="Path" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Path" Value="[APPDIR]" Component_="ProductInformation"/>
+    <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
+    <ROW Shortcut="QuanLyThuVien.exe" Directory_="SHORTCUTDIR" Name="QUANLY~1.EXE|QuanLyThuVien.exe" Component_="BookStoreClone.exe" Target="[#BookStoreClone.exe]" Description="QuanLyThuVien.exe" Hotkey="0" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+    <ROW Shortcut="QuanLyThuVien.exe_1" Directory_="DesktopFolder" Name="QUANLY~1.EXE|QuanLyThuVien.exe" Component_="BookStoreClone.exe" Target="[#BookStoreClone.exe]" Description="QuanLyThuVien.exe" Hotkey="0" Icon_="reading.exe" IconIndex="0" ShowCmd="1" WkDir="APPDIR"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
+    <ATTRIBUTE name="UsedTheme" value="classic"/>
+  </COMPONENT>
+  <COMPONENT cid="caphyon.advinst.msicomp.MsiUpgradeComponent">
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="0.0.1" VersionMax="[|ProductVersion]" Attributes="257" ActionProperty="OLDPRODUCTS"/>
+    <ROW UpgradeCode="[|UpgradeCode]" VersionMin="[|ProductVersion]" Attributes="2" ActionProperty="AI_NEWERPRODUCTFOUND"/>
+  </COMPONENT>
+</DOCUMENT>
