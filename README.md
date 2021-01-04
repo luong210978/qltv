@@ -15,6 +15,12 @@ Members included:
 ## Acknowledgments
 Many thanks to Mr. Nguyen Tan Toan for accompanying and supporting our team to implement the project.
 
+## Install
+Tải tại link GitHub: https://github.com/luong210978/qltv.git
+Cài đặt trực tiếp bằng file msi như hướng dẫn.
+Tài khoản: admin1
+Mật khẩu: 123456
+
 ## Feedbacks
 Come into our Issues, your every opinion will make the project more perfect day after day. Regards.
 
