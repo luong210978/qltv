@@ -129,6 +129,8 @@ namespace BookStoreClone.ViewModel
             ListNV = new ObservableCollection<NguoiDung>(DataProvider.Ins.DB.NguoiDungs);
             XoaNhanVienCommand = new RelayCommand<DataGrid>((p) => { return true; }, (p) =>
             {
+                SelectedNhanVien = p.SelectedItem as NguoiDung;
+
                 MessageBoxResult x = MessageBox.Show("Bạn có chắc muốn xóa nhân viên này?", "Thông báo", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (x == MessageBoxResult.Yes)
                 {
@@ -236,7 +238,7 @@ namespace BookStoreClone.ViewModel
                             SelectedNhanVien.NhanVienKho = QuanLyKho;
                             SelectedNhanVien.NhanVienBan = CNV;
                             SelectedNhanVien.img = LinkAnhBia;
-                            SelectedNhanVien.MatKhau = MD5Hash(Base64Encode(SelectedNhanVien.MatKhau));
+                            SelectedNhanVien.MatKhau = MD5Hash(Base64Encode(Password));
                             if (Nam == true)
                                 SelectedNhanVien.GioiTinh = true;
                             else

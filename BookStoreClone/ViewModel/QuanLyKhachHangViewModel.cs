@@ -125,7 +125,7 @@ namespace BookStoreClone.ViewModel
             {
 
                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[KhachHang] ON");
-                DataProvider.Ins.DB.KhachHangs.Add(new KhachHang() { TenKH = TextThemTen, DiaChi = TextThemDiaChi, Email = TextThemEmail, SDT = TextThemSDT });
+                DataProvider.Ins.DB.KhachHangs.Add(new KhachHang() { TenKH = TextThemTen, DiaChi = TextThemDiaChi, Email = TextThemEmail, SDT = TextThemSDT, SoSachChuaTra = 0 });
                 DataProvider.Ins.DB.Database.ExecuteSqlCommand("SET IDENTITY_INSERT [dbo].[KhachHang] OFF");
                 DataProvider.Ins.DB.SaveChanges();
                 TimKiemKhachHang();

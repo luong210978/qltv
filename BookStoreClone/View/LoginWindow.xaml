@@ -12,7 +12,7 @@
         WindowStartupLocation="CenterScreen"
         x:Name="Loginwd"
         DataContext="{StaticResource LoginVM}"
-        Title="LoginWindow" Height="544" Width="360">
+        Title="Thư viện" Height="544" Width="360">
     <materialDesign:Flipper Style="{StaticResource MaterialDesignCardFlipper}" HorizontalAlignment="Left" Width="360" AutomationProperties.Name="loginwd" Height="544" VerticalAlignment="Bottom">
 
         <materialDesign:Flipper.FrontContent>
